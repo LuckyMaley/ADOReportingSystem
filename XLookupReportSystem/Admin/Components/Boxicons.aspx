@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Boxicons" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Boxicons.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.Boxicons" %>
+﻿<%@ Page Title="Boxicons" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Boxicons.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.Boxicons" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -1,0 +1,14 @@
+﻿
+Enable-Migrations -ContextTypeName XLookupReportSystem.Models.XLookupReportingDB -Force
+
+You must update database with application data everytime you update the tables so db and app are in sync
+
+Go to package manager console and type this below:
+
+Add-Migration InitialCreate
+
+Delete any previous initial create and re-do previous step
+
+Then type this:
+
+Update-Database

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="General Tables" Language="C#" MasterPageFile="~/Admin/Store/Components/Components.Master" AutoEventWireup="true" CodeBehind="GeneralTables.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.GeneralTables" %>
+﻿<%@ Page Title="General Tables" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="GeneralTables.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.GeneralTables" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

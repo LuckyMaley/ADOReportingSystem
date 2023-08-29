@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Chart.js" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Chartjs.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.Chartjs" %>
+﻿<%@ Page Title="Chart.js" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Chartjs.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.Chartjs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Cards" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Cards.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.Cards" %>
+﻿<%@ Page Title="Cards" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Cards.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.Cards" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -86,7 +86,7 @@
 
           <!-- Card with an image overlay -->
           <div class="card">
-            <img src="../../Assets/assets/img/card.jpg" class="card-img-top" alt="..." />
+            <img src="../../Assets/img/card.jpg" class="card-img-top" alt="..." />
             <div class="card-img-overlay">
               <h5 class="card-title">Card with an image overlay</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

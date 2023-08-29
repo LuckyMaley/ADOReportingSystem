@@ -1,4 +1,4 @@
-﻿<%@ Page Title="ApexCharts" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="ApexCharts.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.ApexCharts" %>
+﻿<%@ Page Title="ApexCharts" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="ApexCharts.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.ApexCharts" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

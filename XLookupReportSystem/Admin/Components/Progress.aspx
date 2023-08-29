@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Progress" Language="C#" MasterPageFile="~/Admin/Store/Components/Components.Master" AutoEventWireup="true" CodeBehind="Progress.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.Progress" %>
+﻿<%@ Page Title="Progress" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Progress.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.Progress" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

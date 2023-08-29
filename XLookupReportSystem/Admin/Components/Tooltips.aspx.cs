@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CommanderWebsite.Admin.Store.Components
+namespace XLookupReportSystem.Admin.Components
 {
     public partial class Tooltips : System.Web.UI.Page
     {

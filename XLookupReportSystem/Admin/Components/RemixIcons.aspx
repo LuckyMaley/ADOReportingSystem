@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Remix Icons" Language="C#" MasterPageFile="~/Admin/Store/Components/Components.Master" AutoEventWireup="true" CodeBehind="RemixIcons.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.RemixIcons" %>
+﻿<%@ Page Title="Remix Icons" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="RemixIcons.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.RemixIcons" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -1,21 +1,22 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.Owin;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
+using System.Web.UI.WebControls;
+using XLookupReportSystem.Controllers;
 using XLookupReportSystem.Models;
 
 namespace XLookupReportSystem.Account
 {
-    public partial class Login : Page
+    public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
             // Enable this once you have account confirmation enabled for password reset functionality
-            //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
-            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
+            ForgotPasswordHyperLink.NavigateUrl = "Forgot";
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
             if (!String.IsNullOrEmpty(returnUrl))
             {
@@ -27,6 +28,11 @@ namespace XLookupReportSystem.Account
         {
             if (IsValid)
             {
+                XLookupReportingDB db = new XLookupReportingDB();
+                if (db.Users.Count() == 0)
+                {
+                    StaffController.DefaultStaff(Context.GetOwinContext().GetUserManager<ApplicationUserManager>());
+                }
                 // Validate the user password
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
@@ -38,13 +44,21 @@ namespace XLookupReportSystem.Account
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+                        if (!String.IsNullOrEmpty(returnUrl))
+                        {
+                            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        }
+                        else
+                        {
+                            Response.Redirect("~/Admin/DashBoard.aspx");
+                        }
                         break;
                     case SignInStatus.LockedOut:
                         Response.Redirect("/Account/Lockout");
                         break;
                     case SignInStatus.RequiresVerification:
-                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", 
+                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}",
                                                         Request.QueryString["ReturnUrl"],
                                                         RememberMe.Checked),
                                           true);

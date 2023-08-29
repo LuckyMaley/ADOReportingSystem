@@ -1,4 +1,4 @@
-﻿<%@ Page Title="ECharts" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="ECharts.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.ECharts" %>
+﻿<%@ Page Title="ECharts" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="ECharts.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.ECharts" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

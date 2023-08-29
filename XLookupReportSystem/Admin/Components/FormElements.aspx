@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Form Elements" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="FormElements.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.FormElements" %>
+﻿<%@ Page Title="Form Elements" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="FormElements.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.FormElements" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="DashBoard.aspx.cs" Inherits="CommanderWebsite.Admin.DashBoard" %>
+﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="DashBoard.aspx.cs" Inherits="XLookupReportSystem.Admin.DashBoard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">	
     	
@@ -63,13 +63,123 @@
     
         <main id="main" class="main">
             <div class="pagetitle">
-                <h1>Dashboard</h1>
                 <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                </nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                        </nav>
+                <div class=" row py-2 flex-wrap">
+                     <div class="col-auto me-auto">
+                        <h1>Dashboard</h1>
+                        
+                    </div>
+                     <div class="col-auto d-flex align-items-center">
+                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+                            New Project
+                          </button>
+                         
+                         <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Create New Project</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                                            <p class="text-danger">
+                                                <asp:Literal runat="server" ID="FailureText" />
+                                            </p>
+                                        </asp:PlaceHolder>
+                                        <div class="row g-3 needs-validation" novalidate="">
+                                            <div class="col-12">
+                                                    <asp:Label runat="server" AssociatedControlID="ProjectName" CssClass="form-label">Project Name</asp:Label>
+                                                    
+                                                        <asp:TextBox runat="server" ID="ProjectName" CssClass="form-control" required="" />
+                                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please enter the Project Name.</div>
+                                                   
+                                            </div>
+                                            
+                                            <div class="col-12">
+                                                    <asp:Label runat="server" AssociatedControlID="SemesterCBTxt" CssClass="form-label">Select Semester</asp:Label>
+                                                        <asp:DropDownList ID="SemesterCBTxt" CssClass="form-select" runat="server" required="">
+                                                            <asp:ListItem Value="1">Semester 1</asp:ListItem>
+                                                            <asp:ListItem Value="2">Semester 2</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please select Semester.</div>
+                                                   
+                                            </div>
+                                            <div class="col-12">
+                                                    <asp:Label runat="server" AssociatedControlID="SelectYearCBTxt" CssClass="form-label">Select Year</asp:Label>
+                                                        <asp:DropDownList ID="SelectYearCBTxt" CssClass="form-select" runat="server" required="">
+                                                            <asp:ListItem>2021</asp:ListItem>
+                                                            <asp:ListItem>2022</asp:ListItem>
+                                                            <asp:ListItem Selected="True">2023</asp:ListItem>
+                                                            
+                                                    </asp:DropDownList>
+                                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please select year.</div>
+                                                   
+                                            </div>
+                                            <div class="col-12">
+                                                <asp:Label runat="server" AssociatedControlID="SelectModuleTxt" CssClass="form-label">Module Code</asp:Label>
+                                                <asp:TextBox runat="server" ID="SelectModuleTxt" CssClass="form-control" Placeholder="e.g. ISTN101" required="" />        
+                                                <%--<asp:DropDownList ID="SelectModuleTxt" CssClass="form-select" runat="server" required=""></asp:DropDownList>
+                                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please enter module code e.g ISTN101.</div>
+                                                 
+                                            </div>
+                                            <div class="col-12">
+                                                    <asp:Label runat="server" AssociatedControlID="UploadRegister" CssClass="form-label">Upload Register</asp:Label>
+                                                        <asp:FileUpload ID="UploadRegister" runat="server" CssClass="form-control"  required=""/>
+                                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please upload a register.</div>
+                                                   
+                                            </div>
+                                            <div class="col-12">
+                                                    <asp:Label runat="server" AssociatedControlID="UploadModuleData" CssClass="form-label">Upload Module Data</asp:Label>
+                                                        <asp:FileUpload ID="UploadModuleData" runat="server" CssClass="form-control"  required=""/>
+                                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please upload the module data.</div>
+                                                   
+                                            </div>
+                                            <div class="col-12">
+                                                    <asp:Label runat="server" AssociatedControlID="UploadSuppModuleData" CssClass="form-label">Upload Supp Module Data</asp:Label>
+                                                        <asp:FileUpload ID="UploadSuppModuleData" runat="server" CssClass="form-control" />
+                                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please upload the supp module data.</div>
+                                                   
+                                            </div>
+                                            <div class="col-12">
+                                                    <asp:Label runat="server" AssociatedControlID="UploadRiskCodeBeg" CssClass="form-label">Upload Risk Codes S2 2022</asp:Label>
+                                                        <asp:FileUpload ID="UploadRiskCodeBeg" runat="server" CssClass="form-control"  required=""/>
+                                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please upload the risk code beginning data.</div>
+                                                   
+                                            </div>
+                                            <div class="col-12">
+                                                    <asp:Label runat="server" AssociatedControlID="UploadRiskCodeEnd" CssClass="form-label">Upload Risk Codes S1 2023</asp:Label>
+                                                        <asp:FileUpload ID="UploadRiskCodeEnd" runat="server" CssClass="form-control"  required=""/>
+                                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please upload the risk code end data.</div>
+                                                   
+                                            </div>
+
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              <asp:Button ID="Createbtn" CssClass="btn btn-primary" runat="server" Text="Create" OnClick="Createbtn_Click" />
+                                            </div>
+                                        </div>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                     </div>
+                </div>
             </div>
             <section class="section dashboard">
                 <div class="row">

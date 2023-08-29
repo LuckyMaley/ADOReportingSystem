@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Breadcrumbs" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Breadcrumbs.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.Breadcrumbs" %>
+﻿<%@ Page Title="Breadcrumbs" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Breadcrumbs.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.Breadcrumbs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

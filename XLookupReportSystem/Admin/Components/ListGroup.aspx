@@ -1,4 +1,4 @@
-﻿<%@ Page Title="List Group" Language="C#" MasterPageFile="~/Admin/Store/Components/Components.Master" AutoEventWireup="true" CodeBehind="ListGroup.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.ListGroup" %>
+﻿<%@ Page Title="List Group" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="ListGroup.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.ListGroup" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Badges" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Badges.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.Badges" %>
+﻿<%@ Page Title="Badges" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Badges.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.Badges" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

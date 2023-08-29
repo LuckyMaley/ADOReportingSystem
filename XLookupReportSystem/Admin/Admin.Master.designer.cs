@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CommanderWebsite.Admin {
+namespace XLookupReportSystem.Admin {
     
     
-    public partial class Admin1 {
+    public partial class Admin {
         
         /// <summary>
         /// head control.

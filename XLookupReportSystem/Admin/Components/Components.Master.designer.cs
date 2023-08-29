@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CommanderWebsite.Admin.Store.Components {
+namespace XLookupReportSystem.Admin.Components {
     
     
     public partial class Components {

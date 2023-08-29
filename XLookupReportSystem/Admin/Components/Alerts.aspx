@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Alerts" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Alerts.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.Alerts" %>
+﻿<%@ Page Title="Alerts" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Alerts.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.Alerts" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

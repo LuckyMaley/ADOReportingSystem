@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Error404.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Error404" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Error404.aspx.cs" Inherits="XLookupReportSystem.Admin.Error404" %>
 
 <!DOCTYPE html>
 
@@ -51,8 +51,8 @@
                 <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
                     <h1>404</h1>
                     <h2>The page you are looking for doesn't exist.</h2>
-                    <a class="btn" href="index.html">Back to home</a>
-                    <img src="../Assets/img/not-found.svg" class="img-fluid py-5" alt="Page Not Found" /><div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+                    <a class="btn" href="DashBoard.aspx">Back to home</a>
+                    <img src="../Assets/img/not-found.svg" class="img-fluid py-5" alt="Page Not Found" /><div class="credits">Designed by <a href="#">TechMan Solutions</a>.</div>
                 </section>
             </div>
         </main>

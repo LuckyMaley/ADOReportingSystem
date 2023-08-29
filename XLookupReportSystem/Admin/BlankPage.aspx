@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Blank Page" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="BlankPage.aspx.cs" Inherits="CommanderWebsite.Admin.Store.BlankPage" %>
+﻿<%@ Page Title="Blank Page" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="BlankPage.aspx.cs" Inherits="XLookupReportSystem.Admin.BlankPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

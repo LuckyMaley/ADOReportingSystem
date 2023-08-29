@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Spinners" Language="C#" MasterPageFile="~/Admin/Store/Components/Components.Master" AutoEventWireup="true" CodeBehind="Spinners.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.Spinners" %>
+﻿<%@ Page Title="Spinners" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Spinners.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.Spinners" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

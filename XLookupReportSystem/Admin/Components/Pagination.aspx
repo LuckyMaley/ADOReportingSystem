@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Pagination" Language="C#" MasterPageFile="~/Admin/Store/Components/Components.Master" AutoEventWireup="true" CodeBehind="Pagination.aspx.cs" Inherits="CommanderWebsite.Admin.Store.Components.Pagination" %>
+﻿<%@ Page Title="Pagination" Language="C#" MasterPageFile="~/Admin/Components/Components.Master" AutoEventWireup="true" CodeBehind="Pagination.aspx.cs" Inherits="XLookupReportSystem.Admin.Components.Pagination" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
