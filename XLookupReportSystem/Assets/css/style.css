@@ -1237,6 +1237,38 @@ h6 {
   }
 }
 
+.btn-sa-loading {
+    --sa-button--normal-font-color:#0000;
+    --sa-button--hover-bg-color:var(--sa-button--normal-bg-color);
+    --sa-button--hover-border-color:var(--sa-button--normal-bg-color);
+    --sa-button--hover-font-color:var(--sa-button--normal-font-color);
+    --sa-button--active-bg-color:var(--sa-button--normal-bg-color);
+    --sa-button--active-border-color:var(--sa-button--normal-bg-color);
+    --sa-button--active-font-color:var(--sa-button--normal-font-color);
+    position: relative;
+}
+
+    .btn-sa-loading:before {
+        animation-duration: .5s;
+        animation-iteration-count: infinite;
+        animation-name: sa-loader-animation;
+        animation-timing-function: linear;
+        border: .125rem solid #fff3;
+        border-radius: 0;
+        border-top-color: #fff9;
+        content: "";
+        display: block;
+        height: 0;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        width: 0;
+    }
+
+    .btn-sa-loading:not(:disabled) {
+        cursor: default;
+    }
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

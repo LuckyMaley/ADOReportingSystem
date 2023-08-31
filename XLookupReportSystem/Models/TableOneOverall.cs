@@ -6,21 +6,20 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Register_Attendance")]    
-    public class Register_Attendance
+    [Table("TableOneOverall")]
+    public class TableOneOverall
     {
         [Key]
         [StringLength(50)]
-        public string Register_Attendance_ID { get; set; }
+        public string TableOneOverall_ID { get; set; }
 
-        [StringLength(50)]
-        public string ModuleData_ID { get; set; }
+        public int NoOfOverallStudents { get; set; }
 
-        [StringLength(50)]
-        public string Project_Register_ID { get; set; }
+        public int NoOfOverallStudentsPassed { get; set; }
 
-        
-        public int Attendance { get; set; }
+        public decimal Overall_Students_Pass_Rate { get; set; }
+
+        public decimal AverageOverall_Students_Pass_Rate { get; set; }
 
         [StringLength(50)]
         public string Project_ID { get; set; }
@@ -32,9 +31,5 @@
         public DateTime modifiedDate { get; set; }
 
         public virtual Project Project { get; set; }
-
-        public virtual Project_Register Project_Register { get; set; }
-
-        public virtual ModuleData ModuleData { get; set; }
     }
 }

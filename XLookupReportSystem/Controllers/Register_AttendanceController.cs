@@ -8,15 +8,16 @@ namespace XLookupReportSystem.Controllers
 {
     public class Register_AttendanceController
     {
-        public static void AddNewRegister_Attendance(string stuAttendance, string regID, string projID)
+        public static void AddNewRegister_Attendance(string moduleDataID, string projRegID, int stuAttendance,  string projID)
         {
             using (var context = new XLookupReportingDB())
             {
                 var newRegisterAttendance = new Register_Attendance()
                 {
                     Register_Attendance_ID = Guid.NewGuid().ToString(),
+                    ModuleData_ID = moduleDataID,
+                    Project_Register_ID = projRegID,
                     Attendance = stuAttendance,
-                    Register_ID = regID,
                     Project_ID = projID,
                     createdDate = DateTime.Now,
                     modifiedDate = DateTime.Now

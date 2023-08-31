@@ -57,7 +57,12 @@
       }	
       .apexcharts-inactive-legend {	
         opacity: 0.45;	
-      }</style>
+      }
+
+
+
+
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
@@ -170,7 +175,9 @@
 
                                             <div class="modal-footer">
                                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <div class="twoToneCenter">
                                               <asp:Button ID="Createbtn" CssClass="btn btn-primary" runat="server" Text="Create" OnClick="Createbtn_Click" />
+                                                </div>
                                             </div>
                                         </div>
                                 </div>
@@ -716,4 +723,6 @@
             </section>
         </main>
         <!-- End #main -->
+
+    
 </asp:Content>

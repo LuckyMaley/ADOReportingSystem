@@ -47,7 +47,14 @@ namespace XLookupReportSystem.Account
                         var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
                         if (!String.IsNullOrEmpty(returnUrl))
                         {
-                            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                            if(returnUrl != "Default.aspx")
+                            {
+                                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                            }
+                            else
+                            {
+                                Response.Redirect("~/Admin/DashBoard.aspx");
+                            }
                         }
                         else
                         {

@@ -32,6 +32,25 @@
         
         public decimal FinalMark { get; set; }
 
+        [StringLength(50)]
+        public string SI_Student { get; set; }
+
+        [StringLength(50)]
+        public string NegativeTermDecisionsBeg_ID { get; set; }
+
+        [StringLength(50)]
+        public string Risk_Code_Beg { get; set; }
+        
+        public int Code_Beg { get; set; }
+
+        [StringLength(50)]
+        public string NegativeTermDecisionsEnd_ID { get; set; }
+
+        [StringLength(50)]
+        public string Risk_Code_End { get; set; }
+
+        public int Code_End { get; set; }
+
         [Column(TypeName = "datetime")]
         public DateTime createdDate { get; set; }
 
@@ -42,6 +61,10 @@
         public string Project_ID { get; set; }
 
         public virtual Project Project { get; set; }
+
+        public virtual NegativeTermDecisionsBeginning NegativeTermDecisionsBeginning { get; set; }
+
+        public virtual NegativeTermDecisionsEnd NegativeTermDecisionsEnd { get; set; }
 
 
     }

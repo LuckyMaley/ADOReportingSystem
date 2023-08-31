@@ -14,7 +14,7 @@
         public string Register_ID { get; set; }
 
         [StringLength(50)]
-        public string RegisterName { get; set; }
+        public string Project_Register_ID { get; set; }
 
         [StringLength(50)]
         public string StudentNumber { get; set; }
@@ -29,5 +29,7 @@
         public DateTime modifiedDate { get; set; }
 
         public virtual Project Project { get; set; }
+
+        public virtual Project_Register Project_Register { get; set; }
     }
 }

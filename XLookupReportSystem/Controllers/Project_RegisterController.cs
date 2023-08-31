@@ -6,24 +6,23 @@ using XLookupReportSystem.Models;
 
 namespace XLookupReportSystem.Controllers
 {
-    public class RegisterController
+    public class Project_RegisterController
     {
-        public static string AddNewRegister(string projRegID, string studentNumber, string projID)
+        public static string AddNewProject_Register(string registerName, string projID)
         {
             using (var context = new XLookupReportingDB())
             {
-                var newRegister = new Register()
+                var newProject_Register = new Project_Register()
                 {
-                    Register_ID = Guid.NewGuid().ToString(),
-                    Project_Register_ID = projRegID,
-                    StudentNumber = studentNumber,
+                    Project_Register_ID = Guid.NewGuid().ToString(),
+                    RegisterName = registerName,
                     Project_ID = projID,
                     createdDate = DateTime.Now,
                     modifiedDate = DateTime.Now
                 };
-                context.Registers.Add(newRegister);
+                context.Project_Registers.Add(newProject_Register);
                 context.SaveChanges();
-                return newRegister.Register_ID;
+                return newProject_Register.Project_Register_ID;
             }
         }
     }
