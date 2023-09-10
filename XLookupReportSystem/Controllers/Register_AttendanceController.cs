@@ -27,5 +27,21 @@ namespace XLookupReportSystem.Controllers
                 
             }
         }
+
+        public static List<Register_Attendance> AddNewRegister_AttendanceList(string moduleDataID, string projRegID, int stuAttendance, string projID, List<Register_Attendance> regAttendance)
+        {
+            var newRegisterAttendance = new Register_Attendance()
+            {
+                Register_Attendance_ID = Guid.NewGuid().ToString(),
+                ModuleData_ID = moduleDataID,
+                Project_Register_ID = projRegID,
+                Attendance = stuAttendance,
+                Project_ID = projID,
+                createdDate = DateTime.Now,
+                modifiedDate = DateTime.Now
+            };
+            regAttendance.Add(newRegisterAttendance);
+            return regAttendance;
+        }
     }
 }

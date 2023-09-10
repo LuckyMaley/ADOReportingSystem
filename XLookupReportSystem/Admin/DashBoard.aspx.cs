@@ -23,7 +23,8 @@ namespace XLookupReportSystem.Admin
 
             
             string ProjID = ProjectController.AddNewProject(UserController.getUserID(Context.User.Identity.Name), ProjectName.Text, SemesterCBTxt.Text, SelectYearCBTxt.Text, SelectModuleTxt.Text);
-
+            List<Project_Register> projRegList = new List<Models.Project_Register>();
+            List<Register> regList = new List<Register>();
             if (UploadRegister.HasFile == true)
             {
                 //String contenttype = UploadRegister.PostedFile.ContentType;
@@ -42,12 +43,22 @@ namespace XLookupReportSystem.Admin
                     var currentsheet = package.Workbook.Worksheets;
                     foreach (ExcelWorksheet worksheet in currentsheet)
                     {
-                        string projRegID = Project_RegisterController.AddNewProject_Register(worksheet.Name, ProjID);
+                        //string projRegID = Project_RegisterController.AddNewProject_Register(worksheet.Name, ProjID);
+                        string projRegID = Project_RegisterController.AddNewProject_RegisterList(worksheet.Name, ProjID, ref projRegList);
                         var noOfCol = worksheet.Dimension.End.Column;
                         var noOfRow = worksheet.Dimension.End.Row;
                         for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                         {
-                            RegisterController.AddNewRegister(projRegID, worksheet.Cells[rowIterator, 1].Value.ToString(), ProjID);
+                            string studNum = "";
+                            for(int colIterator = 1; colIterator <= noOfCol; colIterator++)
+                            {
+                                if (worksheet.Cells[1, colIterator].Value.ToString().Contains("STUDENT NUMBER") || worksheet.Cells[1, colIterator].Value.ToString().Contains("Student number") || worksheet.Cells[1, colIterator].Value.ToString().Contains("Student no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("stu no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("stud no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("student no"))
+                                {
+                                    studNum = worksheet.Cells[rowIterator, colIterator].Value.ToString();
+                                }
+                            }
+                            //RegisterController.AddNewRegister(projRegID, worksheet.Cells[rowIterator, 1].Value.ToString(), ProjID);
+                           var regID = RegisterController.AddNewRegisterList(projRegID, studNum, ProjID, ref regList);
                         }
                     }
                 }
@@ -137,7 +148,7 @@ namespace XLookupReportSystem.Admin
                     }
                 }
             }
-
+            List<NegativeTermDecisionsBeginning> negDecisionsBeg = new List<NegativeTermDecisionsBeginning>();
             if (UploadRiskCodeBeg.HasFile == true)
             {
                 //String contenttype = UploadRegister.PostedFile.ContentType;
@@ -171,13 +182,15 @@ namespace XLookupReportSystem.Admin
                                 {
                                     studentnum = worksheet.Cells[rowIterator, 3].Value.ToString();
                                 }
-                                NegativeTermDecisionsBegController.AddNewBegNegTermDecision(studentnum, worksheet.Cells[rowIterator, 10].Value.ToString(), ProjID);
+                                //NegativeTermDecisionsBegController.AddNewBegNegTermDecision(studentnum, worksheet.Cells[rowIterator, 10].Value.ToString(), ProjID);
+                                negDecisionsBeg = NegativeTermDecisionsBegController.AddNewBegNegTermDecisionList(studentnum, worksheet.Cells[rowIterator, 10].Value.ToString(), ProjID, negDecisionsBeg);
                             }
                         }
                     }
                 }
             }
-
+            
+            List<NegativeTermDecisionsEnd> negDecisionsEnd = new List<NegativeTermDecisionsEnd>();
             if (UploadRiskCodeEnd.HasFile == true)
             {
                 //String contenttype = UploadRegister.PostedFile.ContentType;
@@ -211,7 +224,8 @@ namespace XLookupReportSystem.Admin
                                 {
                                     studentnum = worksheet.Cells[rowIterator, 3].Value.ToString();
                                 }
-                                NegativeTermDecisionsEndController.AddNewEndNegTermDecision(studentnum, worksheet.Cells[rowIterator, 10].Value.ToString(), ProjID);
+                                //NegativeTermDecisionsEndController.AddNewEndNegTermDecision(studentnum, worksheet.Cells[rowIterator, 10].Value.ToString(), ProjID);
+                                negDecisionsEnd = NegativeTermDecisionsEndController.AddNewEndNegTermDecisionList(studentnum, worksheet.Cells[rowIterator, 10].Value.ToString(), ProjID, negDecisionsEnd);
                             }
                         }
                     }
@@ -220,16 +234,21 @@ namespace XLookupReportSystem.Admin
 
             //Generating the Register Attandance data
             XLookupReportingDB db = new XLookupReportingDB();
+            List<Register_Attendance> regAttendanceList = new List<Register_Attendance>();
             foreach (ModuleData md in db.ModuleDatas)
             {
                 var stuID = md.StudentNumber;
-                foreach (Project_Register projReg in db.Project_Registers)
+                //foreach (Project_Register projReg in db.Project_Registers)
+                foreach (Project_Register projReg in projRegList)
                 {
                     var ProjRegID = projReg.Project_Register_ID;
-                    int attendanceCount= db.Registers.Where(c => c.StudentNumber == stuID && c.Project_ID == ProjID && c.Project_Register_ID == ProjRegID).Count();
-                    Register_AttendanceController.AddNewRegister_Attendance(md.ModuleData_ID, ProjRegID, attendanceCount, ProjID);
+                    //int attendanceCount= db.Registers.Where(c => c.StudentNumber == stuID && c.Project_ID == ProjID && c.Project_Register_ID == ProjRegID).Count();
+                    int attendanceCount = regList.Where(c => c.StudentNumber == stuID && c.Project_ID == ProjID && c.Project_Register_ID == ProjRegID).Count();
+                    //Register_AttendanceController.AddNewRegister_Attendance(md.ModuleData_ID, ProjRegID, attendanceCount, ProjID);
+                    regAttendanceList = Register_AttendanceController.AddNewRegister_AttendanceList(md.ModuleData_ID, ProjRegID, attendanceCount, ProjID, regAttendanceList);
                 }
-                var studentAttendance = db.Register_Attendances.Where(c => c.ModuleData_ID == md.ModuleData_ID && c.Project_ID == ProjID).Sum(c=> c.Attendance);
+                //var studentAttendance = db.Register_Attendances.Where(c => c.ModuleData_ID == md.ModuleData_ID && c.Project_ID == ProjID).Sum(c=> c.Attendance);
+                var studentAttendance = regAttendanceList.Where(c => c.ModuleData_ID == md.ModuleData_ID && c.Project_ID == ProjID).Sum(c => c.Attendance);
                 if (studentAttendance > 0)
                 {
                     md.SI_Student = "Yes";
@@ -250,7 +269,8 @@ namespace XLookupReportSystem.Admin
             foreach (var cons in consultationsADD)
             {
                 string modID = cons.ModuleData_ID.ToString();
-                var reg = db.Register_Attendances.Where(c => c.ModuleData_ID == modID && c.Project_ID == ProjID);
+                //var reg = db.Register_Attendances.Where(c => c.ModuleData_ID == modID && c.Project_ID == ProjID);
+                var reg = regAttendanceList.Where(c => c.ModuleData_ID == modID && c.Project_ID == ProjID);
                 foreach (var regData in reg)
                 {
                     attendStud += regData.Attendance;
@@ -298,10 +318,11 @@ namespace XLookupReportSystem.Admin
             foreach(ModuleData modData in db.ModuleDatas)
             {
                 //Negative Term Decisions Beginning
-                var dataBeg = db.NegativeTermDecisionBeginnings.SingleOrDefault(c => c.StudentNumber == modData.StudentNumber && c.Project_ID == ProjID);
-                if(dataBeg != null)
+                //var dataBeg = db.NegativeTermDecisionBeginnings.SingleOrDefault(c => c.StudentNumber == modData.StudentNumber && c.Project_ID == ProjID);
+                var dataBeg = negDecisionsBeg.SingleOrDefault(c => c.StudentNumber == modData.StudentNumber && c.Project_ID == ProjID);
+                if (dataBeg != null)
                 {
-                    modData.NegativeTermDecisionsBeg_ID = dataBeg.NegativeTermDecisionsBeg_ID;
+                    //modData.NegativeTermDecisionsBeg_ID = dataBeg.NegativeTermDecisionsBeg_ID;
                     modData.Risk_Code_Beg = dataBeg.RiskCodeBeg;
                     modData.Code_Beg = RiskCode(dataBeg.RiskCodeBeg);
                 }
@@ -312,10 +333,11 @@ namespace XLookupReportSystem.Admin
                 }
 
                 //Negative Term Decisions End
-                var dataEnd = db.NegativeTermDecisionEnds.SingleOrDefault(c => c.StudentNumber == modData.StudentNumber && c.Project_ID == ProjID);
+                //var dataEnd = db.NegativeTermDecisionEnds.SingleOrDefault(c => c.StudentNumber == modData.StudentNumber && c.Project_ID == ProjID);
+                var dataEnd = negDecisionsEnd.SingleOrDefault(c => c.StudentNumber == modData.StudentNumber && c.Project_ID == ProjID);
                 if (dataEnd != null)
                 {
-                    modData.NegativeTermDecisionsEnd_ID = dataEnd.NegativeTermDecisionsEnd_ID;
+                    //modData.NegativeTermDecisionsEnd_ID = dataEnd.NegativeTermDecisionsEnd_ID;
                     modData.Risk_Code_End = dataEnd.RiskCodeEnd;
                     modData.Code_End = RiskCode(dataEnd.RiskCodeEnd);
                 }
@@ -359,6 +381,12 @@ namespace XLookupReportSystem.Admin
             int prob_End = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.Code_End == 2).Count();
             int xnfa_End = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.Code_End == 4).Count();
             TermDecisionsEndController.AddNewTermDecisionsEnd(greenEnd, risk_or_rsk2_End, fprr_or_fpma_End, prob_End, xnfa_End, ProjID);
+
+            negDecisionsBeg.Clear();
+            negDecisionsEnd.Clear();
+            regAttendanceList.Clear();
+            projRegList.Clear();
+            regList.Clear();
 
             Response.Redirect("~/Controllers/ExportHandler.ashx?projID="+ProjID);
         }

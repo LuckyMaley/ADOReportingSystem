@@ -29,5 +29,12 @@ namespace XLookupReportSystem.Controllers
                 return newProject.Project_ID;
             }
         }
+
+        public static List<Project> GetProjects(string id)
+        {
+            var _db = new XLookupReportingDB();
+            var projects = _db.Projects.Where(c => c.User_ID == id).ToList();
+            return projects;
+        }
     }
 }

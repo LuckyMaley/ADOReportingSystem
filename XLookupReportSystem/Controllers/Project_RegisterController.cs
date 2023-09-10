@@ -25,5 +25,21 @@ namespace XLookupReportSystem.Controllers
                 return newProject_Register.Project_Register_ID;
             }
         }
+
+        public static string AddNewProject_RegisterList(string registerName, string projID, ref List<Project_Register> projRegisterList)
+        {
+            
+            var newProject_Register = new Project_Register()
+            {
+                Project_Register_ID = Guid.NewGuid().ToString(),
+                RegisterName = registerName,
+                Project_ID = projID,
+                createdDate = DateTime.Now,
+                modifiedDate = DateTime.Now
+            };
+            projRegisterList.Add(newProject_Register);
+            return newProject_Register.Project_Register_ID;
+            
+        }
     }
 }

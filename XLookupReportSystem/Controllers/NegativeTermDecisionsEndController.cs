@@ -26,5 +26,21 @@ namespace XLookupReportSystem.Controllers
                 context.SaveChanges();
             }
         }
+
+        public static List<NegativeTermDecisionsEnd> AddNewEndNegTermDecisionList(string studentNumber, string riskCode, string projID, List<NegativeTermDecisionsEnd> NegDecisionsEnd)
+        {
+            var newEndNegTermDecision = new NegativeTermDecisionsEnd()
+            {
+                NegativeTermDecisionsEnd_ID = Guid.NewGuid().ToString(),
+                StudentNumber = studentNumber,
+                RiskCodeEnd = riskCode,
+                createdDate = DateTime.Now,
+                modifiedDate = DateTime.Now,
+                Project_ID = projID
+
+            };
+            NegDecisionsEnd.Add(newEndNegTermDecision);
+            return NegDecisionsEnd;
+        }
     }
 }

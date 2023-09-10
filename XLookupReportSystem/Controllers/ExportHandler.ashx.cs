@@ -174,6 +174,82 @@ namespace XLookupReportSystem.Controllers
                 wsTableThree.Cells["F23"].Value = termsEnd.XNFA.ToString();
             }
 
+            //worksheet one
+            foreach (var cell in ws.Cells["C1:C2"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            ws.Cells["C1:C2"].Style.Numberformat.Format = "0";
+
+            foreach (var cell in ws.Cells["C3:C4"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            ws.Cells["C3:C4"].Style.Numberformat.Format = "0.00";
+
+            foreach (var cell in ws.Cells["C6:C12"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            ws.Cells["C6:C12"].Style.Numberformat.Format = "0";
+
+
+            foreach (var cell in ws.Cells["F1:F2"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            ws.Cells["F1:F2"].Style.Numberformat.Format = "0";
+
+            foreach (var cell in ws.Cells["F3:F4"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            ws.Cells["F3:F4"].Style.Numberformat.Format = "0.00";
+
+            foreach (var cell in ws.Cells["F6:F12"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            ws.Cells["F6:F12"].Style.Numberformat.Format = "0";
+
+            foreach (var cell in ws.Cells["B18:B19"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            ws.Cells["B18:B19"].Style.Numberformat.Format = "0.00";
+
+            foreach (var cell in ws.Cells["B16:B17"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            ws.Cells["B16:B17"].Style.Numberformat.Format = "0";
+
+            //worksheet two
+             foreach (var cell in wsTableTwo.Cells["B1:B3"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            wsTableTwo.Cells["B1:B3"].Style.Numberformat.Format = "0";
+
+            //worksheet three
+            foreach (var cell in wsTableThree.Cells["G3:G12"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            wsTableThree.Cells["G3:G12"].Style.Numberformat.Format = "0";
+
+            foreach (var cell in wsTableThree.Cells["B19:B23"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            wsTableThree.Cells["B19:B23"].Style.Numberformat.Format = "0";
+
+            foreach (var cell in wsTableThree.Cells["F19:F23"])
+            {
+                cell.Value = Convert.ToDecimal(cell.Value);
+            }
+            wsTableThree.Cells["F19:F23"].Style.Numberformat.Format = "0";
+
             //ws.Cells["A:AZ"].AutoFitColumns();
             //wsTableTwo.Cells["A:AZ"].AutoFitColumns();
             //wsTableThree.Cells["A:AZ"].AutoFitColumns();

@@ -1,10 +1,10 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="XLookupReportSystem.Admin.Admin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="XLookupReportSystem.Admin.Admin" EnableViewState="true"%>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head runat="server">
-    <title><%: Page.Title %> - COMMANDER E-Commerce Website</title>
+    <title><%: Page.Title %> - XLookup Reporting System</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <meta charset="UTF-8" />
@@ -219,56 +219,69 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="../Assets/img/profile-img.jpg" alt="Profile" class="rounded-circle" />
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-          </a><!-- End Profile Iamge Icon -->
+            <span class="d-none d-md-block dropdown-toggle ps-2"><asp:Label ID="UserLoggedIn" runat="server" Text=""></asp:Label></span>
+          </a>
+            <asp:LoginView runat="server" ViewStateMode="Disabled" ID="LoginViewAdmin">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Register">Register</a></li>
+                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                        
+                                <!-- End Profile Iamge Icon -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                            <li class="dropdown-header">
+                              <h6><asp:Label ID="UsernameLoggedIn" runat="server" Text=""></asp:Label></h6>
+                              <span><asp:Label ID="UserRolelb" runat="server" Text=""></asp:Label></span>
+                            </li>
+                            <li>
+                              <hr class="dropdown-divider" />
+                            </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="Profile.aspx">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+                            <%--<li>
+                              <a class="dropdown-item d-flex align-items-center" href="Profile.aspx">
+                                <i class="bi bi-person"></i>
+                                <span>My Profile</span>
+                              </a>
+                            </li>
+                            <li>
+                              <hr class="dropdown-divider" />
+                            </li>--%>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="Profile.aspx">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+                            <li>
+                              <a class="dropdown-item d-flex align-items-center" href="Profile.aspx">
+                                <i class="bi bi-gear"></i>
+                                <span>Account Settings</span>
+                              </a>
+                            </li>
+                            <li>
+                              <hr class="dropdown-divider" />
+                            </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="FAQ.aspx">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+                            <li>
+                              <a class="dropdown-item d-flex align-items-center" href="FAQ.aspx">
+                                <i class="bi bi-question-circle"></i>
+                                <span>Need Help?</span>
+                              </a>
+                            </li>
+                            <li>
+                              <hr class="dropdown-divider" />
+                            </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
+                            <li>
+                                
+                                <span class="dropdown-item d-flex align-items-center"><i class="bi bi-box-arrow-right"></i><asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Sign Out" LogoutPageUrl="~/Account/Login.aspx" OnLoggingOut="Unnamed_LoggingOut" /></span>
+              
+                
+                            </li>
 
-          </ul><!-- End Profile Dropdown Items -->
+                          </ul><!-- End Profile Dropdown Items -->
+                            </LoggedInTemplate>
+                    </asp:LoginView>
+            
         </li><!-- End Profile Nav -->
 
       </ul>

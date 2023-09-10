@@ -219,6 +219,8 @@
     <Content Include="Admin\Error404.aspx" />
     <Content Include="Admin\FAQ.aspx" />
     <Content Include="Admin\Profile.aspx" />
+    <Content Include="Admin\Projects.aspx" />
+    <Content Include="Admin\ProjectView.aspx" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\img\apple-touch-icon.png" />
     <Content Include="Assets\img\card.jpg" />
@@ -773,6 +775,20 @@
     <Compile Include="Admin\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Projects.aspx.cs">
+      <DependentUpon>Projects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Projects.aspx.designer.cs">
+      <DependentUpon>Projects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ProjectView.aspx.cs">
+      <DependentUpon>ProjectView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ProjectView.aspx.designer.cs">
+      <DependentUpon>ProjectView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -864,6 +880,10 @@
     <Compile Include="Migrations\202308302252472_InitialCreate6.Designer.cs">
       <DependentUpon>202308302252472_InitialCreate6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309011651109_InitialCreate7.cs" />
+    <Compile Include="Migrations\202309011651109_InitialCreate7.Designer.cs">
+      <DependentUpon>202309011651109_InitialCreate7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ModuleData.cs" />
@@ -942,6 +962,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308302252472_InitialCreate6.resx">
       <DependentUpon>202308302252472_InitialCreate6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309011651109_InitialCreate7.resx">
+      <DependentUpon>202309011651109_InitialCreate7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
