@@ -25,6 +25,16 @@
         [StringLength(50)]
         public string ModuleCode { get; set; }
 
+        public byte[] ProjectExcelRegister { get; set; }
+
+        public byte[] ProjectExcelMainExamModuleData { get; set; }
+
+        public byte[] ProjectExcelSuppExamModuleData { get; set; }
+
+        public byte[] ProjectExcelNegativeTermDecisionsBeg { get; set; }
+
+        public byte[] ProjectExcelNegativeTermDecisionsEnd { get; set; }
+
         public byte[] ProjectImg { get; set; }
 
         [Column(TypeName = "datetime")]

@@ -15,16 +15,26 @@ namespace XLookupReportSystem.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label usernametb = (Label) LoginViewAdmin.FindControl("UsernameLoggedIn");
-            Label userRoleLB = (Label)LoginViewAdmin.FindControl("UserRolelb");
-            XLookupReportingDB db = new XLookupReportingDB();
-            usernametb.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
-            UserLoggedIn.Text = usernametb.Text;
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var role = manager.GetRoles(db.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
-            foreach(var roleUser in role)
+            if (!IsPostBack)
             {
-                userRoleLB.Text = roleUser;
+                if (Context.User.Identity.IsAuthenticated)
+                {
+                    Label usernametb = (Label)LoginViewAdmin.FindControl("UsernameLoggedIn");
+                    Label userRoleLB = (Label)LoginViewAdmin.FindControl("UserRolelb");
+                    XLookupReportingDB db = new XLookupReportingDB();
+                    usernametb.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                    UserLoggedIn.Text = usernametb.Text;
+                    var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                    var role = manager.GetRoles(db.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
+                    foreach (var roleUser in role)
+                    {
+                        userRoleLB.Text = roleUser;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Account/Login.aspx",false);
+                }
             }
         }
 

@@ -215,6 +215,7 @@
     <Content Include="Admin\Components\Tabs.aspx" />
     <Content Include="Admin\Components\Tooltips.aspx" />
     <Content Include="Admin\Contact.aspx" />
+    <Content Include="Admin\Create.aspx" />
     <Content Include="Admin\DashBoard.aspx" />
     <Content Include="Admin\Error404.aspx" />
     <Content Include="Admin\FAQ.aspx" />
@@ -747,6 +748,13 @@
     <Compile Include="Admin\Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Create.aspx.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Create.aspx.designer.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\DashBoard.aspx.cs">
       <DependentUpon>DashBoard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -884,6 +892,10 @@
     <Compile Include="Migrations\202309011651109_InitialCreate7.Designer.cs">
       <DependentUpon>202309011651109_InitialCreate7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309251732344_InitialCreate8.cs" />
+    <Compile Include="Migrations\202309251732344_InitialCreate8.Designer.cs">
+      <DependentUpon>202309251732344_InitialCreate8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ModuleData.cs" />
@@ -965,6 +977,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309011651109_InitialCreate7.resx">
       <DependentUpon>202309011651109_InitialCreate7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309251732344_InitialCreate8.resx">
+      <DependentUpon>202309251732344_InitialCreate8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

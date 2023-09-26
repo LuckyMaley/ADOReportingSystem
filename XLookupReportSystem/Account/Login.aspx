@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Login" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="XLookupReportSystem.Account.Login" %>
+﻿<%@ Page Title="Login" Language="C#" AutoEventWireup="true" EnableViewState="true" CodeBehind="Login.aspx.cs" Inherits="XLookupReportSystem.Account.Login" %>
 
 <!DOCTYPE html>
 
@@ -45,7 +45,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        
     <div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <Triggers>
+        <asp:PostBackTrigger ControlID="Loginbtn" />
+    </Triggers>
+    <ContentTemplate>
         <main>
             <div class="container">
                 <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
@@ -98,7 +106,39 @@
                                                  
                                             </div>
                                             <div class="col-12">
-                                                <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-primary w-100" />
+                                                <asp:Button runat="server" ID="Loginbtn" OnClick="LogIn" Text="Log in" CssClass="btn btn-primary w-100 loginbtn" UseSubmitBehavior="true"/>
+                                                <div class="spinner" id="loadingSpinner"></div>
+                                                    <asp:HiddenField ID="hideSpinnerFlag" runat="server" />
+                                                    <script type="text/javascript">
+                                                        save_btn = document.querySelector(".loginbtn");
+                                                        save_btn.onclick = function showLoadingSpinner() {
+                                                            
+                                                            console.log("showLoadingSpinner called");
+                                                                // Show the loading spinner
+                                                                //document.getElementById("loadingSpinner").style.display = "block";
+
+                                                                // Optionally, disable the button to prevent multiple clicks
+                                                                save_btn.disabled = true;
+                                                                save_btn.value = "Please wait...";
+                                                                 __doPostBack('<%= Loginbtn.UniqueID %>', '');
+                                                            }
+
+                                                            function hideLoadingSpinner() {
+                                                                var hideSpinnerFlag = document.getElementById("hideSpinnerFlag").value;
+                                                                console.log("hideLoadingSpinner called");
+                                                                if (hideSpinnerFlag === "true") {
+                                                                    // Hide the loading spinner
+                                                                    document.getElementById("loadingSpinner").style.display = "none";
+                                                                }
+
+                                                                // Re-enable the button
+                                                                save_btn.disabled = false;
+
+                                                                return true;
+                                                            }
+
+
+                                                    </script>
                                             </div>
                                             <div class="col-12">
                                                 <p class="small mb-0">Don't have account? <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Create an account</asp:HyperLink>
@@ -114,6 +154,8 @@
                 </section>
             </div>
         </main>
+            </ContentTemplate>
+</asp:UpdatePanel>
         <!-- Vendor JS Files -->
   <script src="../Assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="../Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

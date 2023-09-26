@@ -30,6 +30,21 @@ namespace XLookupReportSystem.Controllers
             }
         }
 
+        public static void AddProjectFiles(string id, byte[] excelReg, byte[] excelMainExam, byte[] excelSupp, byte[] excelNegTermBeg, byte[] excelNegTermEnd)
+        {
+            var _db = new XLookupReportingDB();
+            var projects = _db.Projects.Where(c => c.Project_ID == id);
+            foreach(var proj in projects)
+            {
+                proj.ProjectExcelRegister = excelReg;
+                proj.ProjectExcelMainExamModuleData = excelMainExam;
+                proj.ProjectExcelSuppExamModuleData = excelSupp;
+                proj.ProjectExcelNegativeTermDecisionsBeg = excelNegTermBeg;
+                proj.ProjectExcelNegativeTermDecisionsEnd = excelNegTermEnd;
+            }
+            _db.SaveChanges();
+        }
+
         public static List<Project> GetProjects(string id)
         {
             var _db = new XLookupReportingDB();

@@ -255,9 +255,13 @@ namespace XLookupReportSystem.Controllers
             //wsTableThree.Cells["A:AZ"].AutoFitColumns();
             context.Response.Clear();
             context.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            context.Response.AddHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");
+            context.Response.AppendHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");
             context.Response.BinaryWrite(pck.GetAsByteArray());
-            context.Response.End();
+            context.Response.Flush();
+           
+            //string htmlResponse = @"<html><head><!-- Optionally, you can include JavaScript to automatically trigger the redirection after a delay --><script>setTimeout(function() {window.location.href = '../Admin/ProjectView.aspx?projID=" + projID + "'; }, 3000); // Delay for 3 seconds (optional)</script></head><body><p>Your download will start shortly. If it doesn't, please <a href='../Admin/ProjectView.aspx?projID=" + projID + "'>click here</a>.</p></body></html>";
+            //context.Response.Write(htmlResponse);
+            //context.Response.End();
         }
 
         public bool IsReusable

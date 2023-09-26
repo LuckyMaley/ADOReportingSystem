@@ -28,6 +28,8 @@ namespace XLookupReportSystem.Account
         {
             if (IsValid)
             {
+                Loginbtn.Enabled = false;
+                Loginbtn.Text = "Please wait...";
                 XLookupReportingDB db = new XLookupReportingDB();
                 if (db.Users.Count() == 0)
                 {
@@ -40,7 +42,7 @@ namespace XLookupReportSystem.Account
                 // This doen't count login failures towards account lockout
                 // To enable password failures to trigger lockout, change to shouldLockout: true
                 var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
-
+                
                 switch (result)
                 {
                     case SignInStatus.Success:
@@ -74,6 +76,8 @@ namespace XLookupReportSystem.Account
                     default:
                         FailureText.Text = "Invalid login attempt";
                         ErrorMessage.Visible = true;
+                        Loginbtn.Enabled = true;
+                        Loginbtn.Text = "Log in";
                         break;
                 }
             }

@@ -1,7 +1,6 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,14 +10,11 @@ using XLookupReportSystem.Models;
 
 namespace XLookupReportSystem.Admin
 {
-    public partial class DashBoard : System.Web.UI.Page
+    public partial class Create : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
 
-            }
         }
 
         protected void Createbtn_Click(object sender, EventArgs e)
@@ -58,7 +54,7 @@ namespace XLookupReportSystem.Admin
                         for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                         {
                             string studNum = "";
-                            for(int colIterator = 1; colIterator <= noOfCol; colIterator++)
+                            for (int colIterator = 1; colIterator <= noOfCol; colIterator++)
                             {
                                 if (worksheet.Cells[1, colIterator].Value.ToString().Contains("STUDENT NUMBER") || worksheet.Cells[1, colIterator].Value.ToString().Contains("Student number") || worksheet.Cells[1, colIterator].Value.ToString().Contains("Student no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("stu no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("stud no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("student no"))
                                 {
@@ -66,7 +62,7 @@ namespace XLookupReportSystem.Admin
                                 }
                             }
                             //RegisterController.AddNewRegister(projRegID, worksheet.Cells[rowIterator, 1].Value.ToString(), ProjID);
-                           var regID = RegisterController.AddNewRegisterList(projRegID, studNum, ProjID, ref regList);
+                            var regID = RegisterController.AddNewRegisterList(projRegID, studNum, ProjID, ref regList);
                         }
                     }
                 }
@@ -96,7 +92,8 @@ namespace XLookupReportSystem.Admin
                         {
                             examMark = 0;
                         }
-                        else {
+                        else
+                        {
                             var s = worksheet.Cells[rowIterator, 4].Value;
                             examMark = decimal.Parse(worksheet.Cells[rowIterator, 4].Value.ToString());
                         }
@@ -110,7 +107,7 @@ namespace XLookupReportSystem.Admin
                             for (int rowIterator1 = 2; rowIterator1 <= noOfRows; rowIterator1++)
                             {
                                 decimal suppMark = 0;
-                                if (currentsheet.Cells[rowIterator1, 4].Value == null || currentsheet.Cells[rowIterator1,4].Value.ToString() == "")
+                                if (currentsheet.Cells[rowIterator1, 4].Value == null || currentsheet.Cells[rowIterator1, 4].Value.ToString() == "")
                                 {
                                     suppMark = 0;
                                 }
@@ -182,7 +179,7 @@ namespace XLookupReportSystem.Admin
                             for (int rowIterator = 8; rowIterator <= noOfRow; rowIterator++)
                             {
                                 var studentnum = "";
-                                if ( worksheet.Cells[rowIterator, 3].Value == null || worksheet.Cells[rowIterator, 3].Value.ToString() == "")
+                                if (worksheet.Cells[rowIterator, 3].Value == null || worksheet.Cells[rowIterator, 3].Value.ToString() == "")
                                 {
                                     studentnum = worksheet.Cells[rowIterator - 1, 3].Value.ToString();
                                 }
@@ -197,7 +194,7 @@ namespace XLookupReportSystem.Admin
                     }
                 }
             }
-            
+
             List<NegativeTermDecisionsEnd> negDecisionsEnd = new List<NegativeTermDecisionsEnd>();
             if (UploadRiskCodeEnd.HasFile == true)
             {
@@ -224,7 +221,7 @@ namespace XLookupReportSystem.Admin
                             for (int rowIterator = 8; rowIterator <= noOfRow; rowIterator++)
                             {
                                 var studentnum = "";
-                                if (worksheet.Cells[rowIterator, 3].Value == null || worksheet.Cells[rowIterator, 3].Value.ToString()=="")
+                                if (worksheet.Cells[rowIterator, 3].Value == null || worksheet.Cells[rowIterator, 3].Value.ToString() == "")
                                 {
                                     studentnum = worksheet.Cells[rowIterator - 1, 3].Value.ToString();
                                 }
@@ -260,14 +257,14 @@ namespace XLookupReportSystem.Admin
                 if (studentAttendance > 0)
                 {
                     md.SI_Student = "Yes";
-                    
+
                 }
                 else
                 {
                     md.SI_Student = "No";
-                   
+
                 }
-            
+
             }
             db.SaveChanges();
 
@@ -293,8 +290,8 @@ namespace XLookupReportSystem.Admin
             //Generating Table 1 data
             int noOfSI_Students = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes").Count();
             int noOfSI_Students_Passed = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.FinalMark >= 50).Count();
-            decimal si_Student_Pass_Rate = Math.Round((decimal)noOfSI_Students_Passed / (decimal)noOfSI_Students * (decimal)100,2) == 0 ? 0: Math.Round((decimal)noOfSI_Students_Passed / (decimal)noOfSI_Students * (decimal)100, 2);
-            decimal averageSI_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes").Average(c => c.FinalMark),2);
+            decimal si_Student_Pass_Rate = Math.Round((decimal)noOfSI_Students_Passed / (decimal)noOfSI_Students * (decimal)100, 2) == 0 ? 0 : Math.Round((decimal)noOfSI_Students_Passed / (decimal)noOfSI_Students * (decimal)100, 2);
+            decimal averageSI_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes").Average(c => c.FinalMark), 2);
             int no_SI_Of_A_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.FinalMark >= 75).Count();
             int no_SI_Of_B_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.FinalMark >= 70 && c.FinalMark <= 74).Count();
             int no_SI_Of_C_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.FinalMark >= 60 && c.FinalMark <= 69).Count();
@@ -303,8 +300,8 @@ namespace XLookupReportSystem.Admin
             int total_SI_Students = no_SI_Of_A_Symbols + no_SI_Of_B_Symbols + no_SI_Of_C_Symbols + no_SI_Of_D_Symbols + no_SI_Of_F_Symbols;
             int noOfNon_SI_Students = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No").Count();
             int noOfNon_SI_Students_Passed = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No" && c.FinalMark >= 50).Count();
-            decimal non_si_student_Pass_Rate = Math.Round((decimal)noOfNon_SI_Students_Passed / (decimal)noOfNon_SI_Students * (decimal)100,2) == 0 ? 0 : Math.Round((decimal)noOfNon_SI_Students_Passed / (decimal)noOfNon_SI_Students * (decimal)100, 2);
-            decimal averageNon_SI_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No").Average(c => c.FinalMark),2);
+            decimal non_si_student_Pass_Rate = Math.Round((decimal)noOfNon_SI_Students_Passed / (decimal)noOfNon_SI_Students * (decimal)100, 2) == 0 ? 0 : Math.Round((decimal)noOfNon_SI_Students_Passed / (decimal)noOfNon_SI_Students * (decimal)100, 2);
+            decimal averageNon_SI_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No").Average(c => c.FinalMark), 2);
             int no_Non_SI_Of_A_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No" && c.FinalMark >= 75).Count();
             int no_Non_SI_Of_B_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No" && c.FinalMark >= 70 && c.FinalMark <= 74).Count();
             int no_Non_SI_Of_C_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No" && c.FinalMark >= 60 && c.FinalMark <= 69).Count();
@@ -315,7 +312,7 @@ namespace XLookupReportSystem.Admin
             //Generating Overall Table 1
             int noOfOverallStudents = noOfSI_Students + noOfNon_SI_Students;
             int noOfOverallStudentsPassed = noOfSI_Students_Passed + noOfNon_SI_Students_Passed;
-            decimal overall_Students_Pass_Rate = Math.Round((decimal) noOfOverallStudentsPassed / (decimal) noOfOverallStudents * (decimal)100, 2) == 0 ? 0 : Math.Round((decimal)noOfOverallStudentsPassed / (decimal)noOfOverallStudents * (decimal)100, 2);
+            decimal overall_Students_Pass_Rate = Math.Round((decimal)noOfOverallStudentsPassed / (decimal)noOfOverallStudents * (decimal)100, 2) == 0 ? 0 : Math.Round((decimal)noOfOverallStudentsPassed / (decimal)noOfOverallStudents * (decimal)100, 2);
             decimal averageOverall_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID).Average(c => c.FinalMark), 2);
 
             TableOneOverallController.AddNewTableOneOverall(noOfOverallStudents, noOfOverallStudentsPassed, overall_Students_Pass_Rate, averageOverall_Students_Pass_Rate, ProjID);
@@ -323,7 +320,7 @@ namespace XLookupReportSystem.Admin
             TableOneController.AddNewTableOne(noOfSI_Students, noOfSI_Students_Passed, si_Student_Pass_Rate, averageSI_Students_Pass_Rate, no_SI_Of_A_Symbols, no_SI_Of_B_Symbols, no_SI_Of_C_Symbols, no_SI_Of_D_Symbols, no_SI_Of_F_Symbols, total_SI_Students, noOfNon_SI_Students, noOfNon_SI_Students_Passed, non_si_student_Pass_Rate, averageNon_SI_Students_Pass_Rate, no_Non_SI_Of_A_Symbols, no_Non_SI_Of_B_Symbols, no_Non_SI_Of_C_Symbols, no_Non_SI_Of_D_Symbols, no_Non_SI_Of_F_Symbols, total_Non_SI_Students, ProjID);
 
             //Generating Table 3
-            foreach(ModuleData modData in db.ModuleDatas)
+            foreach (ModuleData modData in db.ModuleDatas)
             {
                 //Negative Term Decisions Beginning
                 //var dataBeg = db.NegativeTermDecisionBeginnings.SingleOrDefault(c => c.StudentNumber == modData.StudentNumber && c.Project_ID == ProjID);
@@ -357,7 +354,7 @@ namespace XLookupReportSystem.Admin
             }
             db.SaveChanges();
 
-            
+
             int no_of_risk_students_consulting_ADO_back_on_good_academic_standing = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.Code_Beg == 1 && c.Code_End == 0).Count();
             int no_of_consulting_risk_students_who_continued_to_be_at_risk = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.Code_Beg == 1 && c.Code_End == 1).Count();
             int no_of_student_who_were_at_risk_at_the_end_of_semester_1 = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.Code_End == 1).Count();
@@ -395,12 +392,12 @@ namespace XLookupReportSystem.Admin
             regAttendanceList.Clear();
             projRegList.Clear();
             regList.Clear();
-            
+
             ProjectController.AddProjectFiles(ProjID, fileBytes, fileBytesModule, fileBytesSupp, fileBytesRiskBeg, fileBytesRiskEnd);
-            
+
             Createbtn.Enabled = true;
             //Response.Redirect("~/Controllers/ExportHandler.ashx?projID="+ProjID);
-            Response.Redirect("~/Admin/ProjectView.aspx?projID=" + ProjID,false);
+            Response.Redirect("~/Admin/ProjectView.aspx?projID=" + ProjID, false);
 
 
         }
@@ -408,11 +405,11 @@ namespace XLookupReportSystem.Admin
         public int RiskCode(string riskCode)
         {
             int riskCodeNum = 0;
-            if(riskCode == "Green")
+            if (riskCode == "Green")
             {
                 riskCodeNum = 0;
             }
-            else if(riskCode == "RISK")
+            else if (riskCode == "RISK")
             {
                 riskCodeNum = 1;
             }

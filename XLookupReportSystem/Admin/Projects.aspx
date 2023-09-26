@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Projects.aspx.cs" Inherits="XLookupReportSystem.Admin.Projects"%>
+﻿<%@ Page Title="Projects" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Projects.aspx.cs" Inherits="XLookupReportSystem.Admin.Projects"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Blank Page</h1>
+            <h1>Projects</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="DashBoard.aspx">Home</a></li>
