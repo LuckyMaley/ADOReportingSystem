@@ -98,15 +98,22 @@
                                             </p>
                                         </asp:PlaceHolder>
                                         <div class="row g-3 needs-validation" novalidate="">
-                                            <div class="col-12">
+                                            <div class="col-12" style="visibility:hidden;display:none;">
                                                     <asp:Label runat="server" AssociatedControlID="ProjectName" CssClass="form-label">Project Name</asp:Label>
                                                     
-                                                        <asp:TextBox runat="server" ID="ProjectName" CssClass="form-control" required="" />
-                                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
-                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please enter the Project Name.</div>
+                                                        <asp:TextBox runat="server" ID="ProjectName" CssClass="form-control" required="" Enabled="false"  />
+                                                       <%-- <asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required."  />--%><div class="invalid-feedback">Please enter the Project Name.</div>
                                                    
                                             </div>
-                                            
+                                            <div class="col-12">
+                                                <asp:Label runat="server" AssociatedControlID="SelectModuleTxt" CssClass="form-label">Module Code</asp:Label>
+                                                <asp:TextBox runat="server" ID="SelectModuleTxt" CssClass="form-control" Placeholder="e.g. ISTN101" required="" OnTextChanged="SelectModuleTxt_TextChanged" />        
+                                                <%--<asp:DropDownList ID="SelectModuleTxt" CssClass="form-select" runat="server" required=""></asp:DropDownList>
+                                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please enter module code e.g ISTN101.</div>
+                                                 
+                                            </div>
                                             <div class="col-12">
                                                     <asp:Label runat="server" AssociatedControlID="SemesterCBTxt" CssClass="form-label">Select Semester</asp:Label>
                                                         <asp:DropDownList ID="SemesterCBTxt" CssClass="form-select" runat="server" required="">
@@ -116,6 +123,14 @@
                                                         <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
                                                             CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please select Semester.</div>
                                                    
+                                            </div>
+                                            <div class="col-12">
+                                                <asp:Label runat="server" AssociatedControlID="CampusCBTxt" CssClass="form-label">Select Campus</asp:Label>
+                                                <asp:DropDownList ID="CampusCBTxt" CssClass="form-control" runat="server" required="">
+                                                    <asp:ListItem>Westville</asp:ListItem>
+                                                    <asp:ListItem>Pietermaritzburg</asp:ListItem>
+                                                    <asp:ListItem>Howard</asp:ListItem>
+                                                </asp:DropDownList><div class="invalid-feedback">Please enter a valid campus!</div>
                                             </div>
                                             <div class="col-12">
                                                     <asp:Label runat="server" AssociatedControlID="SelectYearCBTxt" CssClass="form-label">Select Year</asp:Label>
@@ -129,14 +144,7 @@
                                                             CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please select year.</div>
                                                    
                                             </div>
-                                            <div class="col-12">
-                                                <asp:Label runat="server" AssociatedControlID="SelectModuleTxt" CssClass="form-label">Module Code</asp:Label>
-                                                <asp:TextBox runat="server" ID="SelectModuleTxt" CssClass="form-control" Placeholder="e.g. ISTN101" required="" />        
-                                                <%--<asp:DropDownList ID="SelectModuleTxt" CssClass="form-select" runat="server" required=""></asp:DropDownList>
-                                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
-                                                            CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please enter module code e.g ISTN101.</div>
-                                                 
-                                            </div>
+                                            
                                             <div class="col-12">
                                                     <asp:Label runat="server" AssociatedControlID="UploadRegister" CssClass="form-label">Upload Register</asp:Label>
                                                         <asp:FileUpload ID="UploadRegister" runat="server" CssClass="form-control"  required=""/>

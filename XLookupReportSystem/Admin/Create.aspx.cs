@@ -21,7 +21,7 @@ namespace XLookupReportSystem.Admin
         {
 
             //Createbtn.Enabled = false;
-            string ProjID = ProjectController.AddNewProject(UserController.getUserID(Context.User.Identity.Name), ProjectName.Text, SemesterCBTxt.Text, SelectYearCBTxt.Text, SelectModuleTxt.Text);
+            string ProjID = ProjectController.AddNewProject(UserController.getUserID(Context.User.Identity.Name), ProjectName.Text, SemesterCBTxt.Text, CampusCBTxt.Text, SelectYearCBTxt.Text, SelectModuleTxt.Text);
             List<Project_Register> projRegList = new List<Models.Project_Register>();
             List<Register> regList = new List<Register>();
             byte[] fileBytes = new byte[0];
@@ -434,6 +434,11 @@ namespace XLookupReportSystem.Admin
                 riskCodeNum = 4;
             }
             return riskCodeNum;
+        }
+
+        protected void SelectModuleTxt_TextChanged(object sender, EventArgs e)
+        {
+            ProjectName.Text = SelectModuleTxt.Text + "_" + DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.TimeOfDay.Hours.ToString() + DateTime.Now.TimeOfDay.Minutes.ToString() + DateTime.Now.TimeOfDay.Seconds.ToString() + DateTime.Now.TimeOfDay.Milliseconds.ToString();
         }
     }
 }

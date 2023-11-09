@@ -18,7 +18,9 @@ namespace XLookupReportSystem.Admin
             {
                 string projID = Request.QueryString["projID"];
                 XLookupReportingDB db = new Models.XLookupReportingDB();
+                
                 Label1.Text = db.Projects.SingleOrDefault(c => c.Project_ID == projID).ProjectName;
+                
             }
         }
 

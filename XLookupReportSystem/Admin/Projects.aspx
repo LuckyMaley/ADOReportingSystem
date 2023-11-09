@@ -45,7 +45,6 @@
 
          <section class="section">
             <div class="row">
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                <asp:ListView ID="listViewProjects" runat="server">
                          <EmptyDataTemplate>
                               <div id="NoRecords" runat="server">
@@ -56,7 +55,7 @@
                         <div class="col-lg-3">
                             <asp:CheckBox ID="chkItem" runat="server" />
 
-                        <a style="text-decoration:none;" href="ProjectView.aspx?Project_ID=<%#Eval("Project_ID") %>">
+                        <a style="text-decoration:none;" href="ProjectView.aspx?ProjID=<%#Eval("Project_ID") %>">
                          <div class="card">
                             <img src="../../Assets/img/card.jpg" class="card-img-top" alt="..." />
                             <div class="card-body">

@@ -31,5 +31,16 @@ namespace XLookupReportSystem.Controllers
             XLookupReportingDB db = new Models.XLookupReportingDB();
             return db.Users.SingleOrDefault(c => c.Email == email).User_ID;
         }
+
+        public static void UpdateUserPassword(string user, string pass)
+        {
+            XLookupReportingDB db = new Models.XLookupReportingDB();
+            var dbStaff = db.Users.Where(staffmember => staffmember.Email == user);
+            foreach (var row in dbStaff)
+            {
+                row.Password = pass;
+            }
+            db.SaveChanges();
+        }
     }
 }

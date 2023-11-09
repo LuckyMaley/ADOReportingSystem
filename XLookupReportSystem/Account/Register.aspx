@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title><%: Page.Title %> - XLookup Reporting System</title>
+    <title><%: Page.Title %> - ADO Reporting System</title>
     
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,16 +32,7 @@
 
   <!-- Main CSS File -->
   <link href="../Assets/css/style.css" rel="stylesheet" />
-        <!-- Google Tag Manager -->
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-1T24HD2682"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-1T24HD2682');
-    </script>
-    <!-- End Google Tag Manager -->
+        
 </head>
 <body>
     <form id="form1" runat="server">
@@ -54,7 +45,7 @@
                             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                                 <div class="d-flex justify-content-center py-4"><a href="index.html" class="logo d-flex align-items-center w-auto">
                                     <img src="../Assets/img/logo.png" alt=""/>
-                                    <span class="d-none d-lg-block">NiceAdmin</span> </a></div>
+                                    <span class="d-none d-lg-block">ADO Reporting System</span> </a></div>
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div class="pt-4 pb-2">
@@ -76,6 +67,14 @@
                                             <div class="col-12">
                                                 <asp:Label runat="server" AssociatedControlID="Email" CssClass="form-label">Email</asp:Label>
                                                 <asp:TextBox runat="server" ID="Email" TextMode="Email" CssClass="form-control" required="" /><div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                            </div>
+                                            <div class="col-12">
+                                                <asp:Label runat="server" AssociatedControlID="Campus" CssClass="form-label">Campus</asp:Label>
+                                                <asp:DropDownList ID="Campus" CssClass="form-control" runat="server">
+                                                    <asp:ListItem>Westville</asp:ListItem>
+                                                    <asp:ListItem>Pietermaritzburg</asp:ListItem>
+                                                    <asp:ListItem>Howard</asp:ListItem>
+                                                </asp:DropDownList><div class="invalid-feedback">Please enter a valid campus!</div>
                                             </div>
                                             <div class="col-12">
                                                 <asp:Label runat="server" AssociatedControlID="Password" CssClass="form-label">Password</asp:Label>

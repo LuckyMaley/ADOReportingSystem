@@ -10,7 +10,7 @@ namespace XLookupReportSystem.Controllers
 {
     public class StaffController
     {
-        public static void AddStaff(string user, string firstName, string lastName, string staffType, string email, string passWord)
+        public static void AddStaff(string user, string firstName, string lastName, string staffType, string email, string passWord, string campus)
         {
             using (var context = new XLookupReportingDB())
             {
@@ -20,6 +20,7 @@ namespace XLookupReportSystem.Controllers
                     Firstname = firstName,
                     Surname = lastName,
                     StaffType = staffType,
+                    Campus = campus,
                     EmailAdress = email,
                     createdDate = DateTime.Now,
                     modifiedDate = DateTime.Now
@@ -30,7 +31,7 @@ namespace XLookupReportSystem.Controllers
             }
         }
 
-        public static string AddNewStaff(string user, string firstName, string lastName, string staffType, string email, string passWord)
+        public static string AddNewStaff(string user, string firstName, string lastName, string staffType, string email, string passWord, string campus)
         {
             using (var context = new XLookupReportingDB())
             {
@@ -41,6 +42,7 @@ namespace XLookupReportSystem.Controllers
                     Surname = lastName,
                     StaffType = staffType,
                     EmailAdress = email,
+                    Campus = campus,
                     createdDate = DateTime.Now,
                     modifiedDate = DateTime.Now
 
@@ -69,7 +71,7 @@ namespace XLookupReportSystem.Controllers
                 IdentityResult result = manager.Create(user, userPass);
                 if (result.Succeeded)
                 {
-                    string staffID = StaffController.AddNewStaff(user.Id.ToString(), "Admin", "Owner", usertype, user.Email, userPass);
+                    string staffID = StaffController.AddNewStaff(user.Id.ToString(), "Admin", "Owner", usertype, user.Email, userPass, "Westville");
                     UserController.AddUser(user.Id.ToString(), user.Email, userPass, staffID);
                     var result1 = manager.AddToRole(user.Id, usertype);
                     string code = manager.GenerateEmailConfirmationToken(user.Id);
@@ -82,5 +84,33 @@ namespace XLookupReportSystem.Controllers
                 }
             }
         }
-    }
+
+        public static void UpdateStaffDetails(string user, string firstName, string lastName, string campus)
+        {
+            XLookupReportingDB db = new Models.XLookupReportingDB();
+            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAdress == user);
+            foreach(var member in dbStaff)
+            {
+                member.Firstname = firstName;
+                member.Surname = lastName;
+                member.Campus = campus;
+                member.modifiedDate = DateTime.Now;
+            }
+            db.SaveChanges();
+        }
+
+        public static void UpdateStaffImg(string user, byte[] imageStaff)
+        {
+            XLookupReportingDB db = new Models.XLookupReportingDB();
+            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAdress == user);
+            foreach(var row in dbStaff)
+            {
+                row.StaffImg = imageStaff;
+                row.modifiedDate = DateTime.Now;
+            }
+            db.SaveChanges();
+        }
+
+       
+            }
 }

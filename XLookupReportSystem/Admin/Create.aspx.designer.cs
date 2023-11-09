@@ -40,6 +40,15 @@ namespace XLookupReportSystem.Admin {
         protected global::System.Web.UI.WebControls.TextBox ProjectName;
         
         /// <summary>
+        /// SelectModuleTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox SelectModuleTxt;
+        
+        /// <summary>
         /// SemesterCBTxt control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace XLookupReportSystem.Admin {
         protected global::System.Web.UI.WebControls.DropDownList SemesterCBTxt;
         
         /// <summary>
+        /// CampusCBTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList CampusCBTxt;
+        
+        /// <summary>
         /// SelectYearCBTxt control.
         /// </summary>
         /// <remarks>
@@ -56,15 +74,6 @@ namespace XLookupReportSystem.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList SelectYearCBTxt;
-        
-        /// <summary>
-        /// SelectModuleTxt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SelectModuleTxt;
         
         /// <summary>
         /// UploadRegister control.

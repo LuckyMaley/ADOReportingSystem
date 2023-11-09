@@ -8,7 +8,7 @@ namespace XLookupReportSystem.Controllers
 {
     public class ProjectController
     {
-        public static string AddNewProject(string user, string projectName, string projectSemester, string projectYear, string moduleCode)
+        public static string AddNewProject(string user, string projectName, string projectSemester, string projcampus, string projectYear, string moduleCode)
         {
             using (var context = new XLookupReportingDB())
             {
@@ -18,6 +18,7 @@ namespace XLookupReportSystem.Controllers
                     ProjectName = projectName,
                     ProjectSemester = projectSemester,
                     ProjectYear = projectYear,
+                    ProjectCampus = projcampus,
                     ModuleCode = moduleCode,
                     createdDate = DateTime.Now,
                     modifiedDate = DateTime.Now,

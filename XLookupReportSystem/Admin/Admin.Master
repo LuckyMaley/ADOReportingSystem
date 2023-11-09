@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head runat="server">
-    <title><%: Page.Title %> - XLookup Reporting System</title>
+    <title><%: Page.Title %> - ADO Reporting System</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <meta charset="UTF-8" />
@@ -33,16 +33,7 @@
 
   <!-- Main CSS File -->
   <link href="../Assets/css/style.css" rel="stylesheet" />
-        <!-- Google Tag Manager -->
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-1T24HD2682"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-1T24HD2682');
-    </script>
-    <!-- End Google Tag Manager -->
+        
 </head>
 <body>
     <form id="form1" runat="server">
@@ -53,7 +44,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="DashBoard.aspx" class="logo d-flex align-items-center">
         <img src="../Assets/img/logo.png" alt="" />
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <span class="d-none d-lg-block">ADO Reporting System</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -293,6 +284,12 @@
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item"><a class="nav-link " href="DashBoard.aspx"><i class="bi bi-grid"></i><span>Dashboard</span> </a></li>
+                <li class="nav-item"><a class="nav-link collapsed" data-bs-target="#projects-nav" data-bs-toggle="collapse" href="#"><i class="bi bi-journal-text"></i><span>Projects</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+                    <ul id="projects-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li><a href="Create.aspx"><i class="bi bi-circle"></i><span>New Project</span> </a></li>
+                        <li><a href="Projects.aspx"><i class="bi bi-circle"></i><span>View Projects</span> </a></li>
+                    </ul>
+                </li>
                 <li class="nav-item"><a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"><i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i> </a>
                     <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li><a href="Components/Alerts.aspx"><i class="bi bi-circle"></i><span>Alerts</span> </a></li>

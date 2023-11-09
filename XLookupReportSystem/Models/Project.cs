@@ -20,6 +20,9 @@
         public string ProjectSemester { get; set; }
 
         [StringLength(50)]
+        public string ProjectCampus { get; set; }
+
+        [StringLength(50)]
         public string ProjectYear { get; set; }
 
         [StringLength(50)]
