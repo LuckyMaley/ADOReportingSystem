@@ -148,13 +148,13 @@ namespace XLookupReportSystem.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtSurname;
         
         /// <summary>
-        /// txtCampus control.
+        /// CampusCBTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCampus;
+        protected global::System.Web.UI.WebControls.DropDownList CampusCBTxt;
         
         /// <summary>
         /// btnEditProfile control.

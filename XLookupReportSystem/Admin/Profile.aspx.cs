@@ -61,10 +61,20 @@ namespace XLookupReportSystem.Admin
                 {
                     txtSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus != null)
+                
+                XLookupReportingDB dbstaffpic = new XLookupReportingDB();
+                var userRow1 = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                if (userRow1.Campus != null)
                 {
-                    txtCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus;
+                    for (int i = 0; i < CampusCBTxt.Items.Count; i++)
+                    {
+                        if (CampusCBTxt.Items[i].Text == userRow1.Campus)
+                        {
+                            CampusCBTxt.SelectedIndex = i;
+                        }
+                    }
                 }
+                
                 if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).EmailAdress != null)
                 {
                     LbEmailAddress.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).EmailAdress;
@@ -98,7 +108,7 @@ namespace XLookupReportSystem.Admin
         protected void btnEditProfile_Click(object sender, EventArgs e)
         {
 
-            StaffController.UpdateStaffDetails(Context.User.Identity.Name, TxtFirstName.Text, txtSurname.Text, txtCampus.Text);
+            StaffController.UpdateStaffDetails(Context.User.Identity.Name, TxtFirstName.Text, txtSurname.Text, CampusCBTxt.Text);
             XLookupReportingDB db = new XLookupReportingDB();
             username.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
 
@@ -152,6 +162,7 @@ namespace XLookupReportSystem.Admin
                 string img = Convert.ToBase64String(imageData, 0, imageData.Length);
                 ProfileImg.ImageUrl = "data:image/png;base64," + img;
                 profileEditImg.ImageUrl = "data:image/png;base64," + img;
+                LinkButtonRemoveImg.Visible = true;
             }
 
             // Access the Master Page
@@ -199,8 +210,7 @@ namespace XLookupReportSystem.Admin
                     }
                 }
             }
-
-            LinkButtonRemoveImg.Visible = true;
+            
             string script = "<script>triggerSpecificAnchorClick('" + "EditAnchor" + "');</script>";
             Page.ClientScript.RegisterStartupScript(this.GetType(), "SpecificAnchorClickScript", script);
            
@@ -326,6 +336,8 @@ namespace XLookupReportSystem.Admin
                     ErrorMessage.InnerText = "Nothing to remove";
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "SpecificAnchorClickScript", script);
                 }
+
+               
             }
         }
     }

@@ -12,6 +12,15 @@
                                 <li class="breadcrumb-item active">Create</li>
                             </ol>
                         </nav>
+            <div class="col-auto me-auto">
+                        <h1>Create</h1>
+                        
+                    </div></div>
+         <div class="row py-2 flex-wrap">
+             
+                <div class="col-12">
+        <div class="card">
+            <div class="card-body pt-4">
                                   <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                                             <p class="text-danger">
                                                 <asp:Literal runat="server" ID="FailureText" />
@@ -72,8 +81,18 @@
                                                                 save_btn.disabled = true;
                                                                 save_btn.value = "Please wait...";
                                                                 
-                                                                __doPostBack('<%= Createbtn.UniqueID %>', '');
                                                                 
+                                                                __doPostBack('<%= Createbtn.UniqueID %>', '');
+                                                                var fileUploadControlReg = document.getElementById('<%= UploadRegister.ClientID %>');
+                                                            var fileUploadControlModData = document.getElementById('<%= UploadModuleData.ClientID %>');
+                                                            var fileUploadControlSuppData = document.getElementById('<%= UploadSuppModuleData.ClientID %>');
+                                                            var fileUploadControlRiskCodeBeg = document.getElementById('<%= UploadRiskCodeBeg.ClientID %>');
+                                                            var fileUploadControlRiskCodeEnd = document.getElementById('<%= UploadRiskCodeEnd.ClientID %>');
+                                                            fileUploadControlReg.disabled = true;
+                                                            fileUploadControlModData.disabled = true;
+                                                            fileUploadControlSuppData.disabled = true;
+                                                            fileUploadControlRiskCodeBeg.disabled = true;
+                                                            fileUploadControlRiskCodeEnd.disabled = true;
                                                             }
 
                                                             //function hideLoadingSpinner() {
@@ -94,5 +113,7 @@
                                             </div>
                                         </div>
             </div>
+        </div>
+             </div>
                                 </main>
 </asp:Content>

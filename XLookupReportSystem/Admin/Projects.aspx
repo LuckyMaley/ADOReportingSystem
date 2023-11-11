@@ -2,7 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <main id="main" class="main">
+
+      <main id="main" class="main">
         <div class="pagetitle">
             <h1>Projects</h1>
             <nav>
@@ -40,9 +41,10 @@
                                      
                                  </div>
                                  <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                     
+                                              <button type="button" class="btn btn-secondary" id="closeModal"  data-bs-dismiss="modal">Close</button>
                                                 <div class="twoToneCenter">
-                                              <asp:Button ID="Combinebtn" CssClass="btn btn-primary" runat="server" Text="Combine" OnClick="Combinebtn_Click"  />
+                                              <asp:Button ID="Combinebtn" CssClass="btn btn-primary createbtn" runat="server" Text="Combine"  OnClick="Combinebtn_Click"  />
                                                 </div>
                                             </div>
                                 </div>
@@ -69,7 +71,7 @@
 
                         <a style="text-decoration:none;" href="ProjectView.aspx?ProjID=<%#Eval("Project_ID") %>">
                          <div class="card">
-                            <img src="../../Assets/img/card.jpg" class="card-img-top" alt="..." />
+                            <img src="../Assets/img/project-planning.png" class="card-img-top" alt="..." />
                             <div class="card-body">
                                 <h5 class="card-title"><%# Eval("ProjectName") %></h5>
                                 <p class="card-text">Semester <%# Eval("ProjectSemester") %> - <%# Eval("ProjectYear") %></p>

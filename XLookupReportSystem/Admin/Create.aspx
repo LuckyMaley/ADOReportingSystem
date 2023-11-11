@@ -13,6 +13,16 @@
                                 <li class="breadcrumb-item active">Create</li>
                             </ol>
                         </nav>
+            <div class="col-auto me-auto">
+                        <h1>Create</h1>
+                        
+                    </div>
+            </div>
+            <div class="row py-2 flex-wrap">
+                
+                <div class="col-12">
+        <div class="card">
+            <div class="card-body pt-4">
                                   <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                                             <p class="text-danger">
                                                 <asp:Literal runat="server" ID="FailureText" />
@@ -112,6 +122,8 @@
                                             </div>
                                         </div>
             </div>
+            </div>
+    </div></div>
                                 </main>
                                
 

@@ -457,7 +457,9 @@ namespace XLookupReportSystem.Admin
                 Context.Response.AddHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");
                 Context.Response.BinaryWrite(pck.GetAsByteArray());
                 Context.Response.End();
-            }
+                
+            
+        }
             else if (checkedItems.Count == 1)
             {
                 Label2.Text = "Please select more than 1 project to combine";

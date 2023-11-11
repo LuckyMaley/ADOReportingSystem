@@ -43,7 +43,15 @@ namespace XLookupReportSystem.Admin
                 SelectYearCBTxt.SelectedIndex = SelectYearCBTxt.Items.IndexOf(new ListItem(DateTime.Now.Year.ToString()));
 
                 int year = int.Parse(SelectYearCBTxt.Text);
-                SemesterCBTxt.SelectedIndex = 0;
+                if (DateTime.Now.Month < 8)
+                {
+                    SemesterCBTxt.SelectedIndex = 0;
+                }
+                else
+                {
+                    SemesterCBTxt.SelectedIndex = 1;
+                }
+                
                 if (SemesterCBTxt.SelectedIndex == 0)
                 {
                     riskbeglbl = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + (year - 1).ToString() + " Exams";
@@ -53,6 +61,18 @@ namespace XLookupReportSystem.Admin
                 {
                     riskbeglbl = "Upload Risk Codes for May-Jun " + SemesterCBTxt.Items[0].Text + " of " + SelectYearCBTxt.Text + " Exams";
                     riskendlbl = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + SelectYearCBTxt.Text + " Exams";
+                }
+                XLookupReportingDB dbstaffpic = new XLookupReportingDB();
+                var userRow = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                if (userRow.Campus != null)
+                {
+                    for(int i= 0; i < CampusCBTxt.Items.Count; i++)
+                    {
+                        if (CampusCBTxt.Items[i].Text == userRow.Campus)
+                        {
+                            CampusCBTxt.SelectedIndex = i;
+                        }
+                    }
                 }
             }
         }

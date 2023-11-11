@@ -48,6 +48,7 @@ namespace XLookupReportSystem.Admin
             byte[] fileBytesRiskEnd = new byte[0];
             if (UploadRegister.HasFile == true)
             {
+
                 //String contenttype = UploadRegister.PostedFile.ContentType;
 
                 //if (contenttype == "image/jpeg")

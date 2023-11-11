@@ -203,8 +203,14 @@ Copy code
                                                 <asp:TextBox ID="txtSurname" name="txtSurname" CssClass="form-control" runat="server"></asp:TextBox></div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="txtCampus" class="col-md-4 col-lg-3 col-form-label">Campus</label><div class="col-md-8 col-lg-9">
-                                                <asp:TextBox ID="txtCampus" name="txtCampus" CssClass="form-control" runat="server"></asp:TextBox> </div>
+                                            <label for="CampusCBTxt" class="col-md-4 col-lg-3 col-form-label">Campus</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <asp:DropDownList ID="CampusCBTxt" name="CampusCBTxt" CssClass="form-control" runat="server">
+                                                    <asp:ListItem>Westville</asp:ListItem>
+                                                    <asp:ListItem>Pietermaritzburg</asp:ListItem>
+                                                    <asp:ListItem>Howard</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
                                         </div>
                                        <%-- <div class="row mb-3">
                                             <label for="txtEmail" class="col-md-4 col-lg-3 col-form-label">Email</label><div class="col-md-8 col-lg-9">
