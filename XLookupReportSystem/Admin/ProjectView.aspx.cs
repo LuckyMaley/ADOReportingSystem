@@ -39,7 +39,14 @@ namespace XLookupReportSystem.Admin
 
         protected void CreateProjbtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Admin/Create.aspx", false);
+            Response.Redirect("~/Admin/Create.aspx");
+        }
+
+        protected void Deletebtn_Click(object sender, EventArgs e)
+        {
+            string projID = Request.QueryString["projID"];
+            ProjectController.RemoveProject(projID);
+            Response.Redirect("~/Admin/Projects.aspx");
         }
     }
 }

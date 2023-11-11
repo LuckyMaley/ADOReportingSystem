@@ -24,6 +24,35 @@
                          </div>
                          &nbsp;
                          <div class="">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModal">
+                            Delete
+                          </button>
+                         
+                         <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog modal-sm">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Create Combined Project</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>Are you sure you want to delete project?</p>
+                                     
+                                 </div>
+                                 <div class="modal-footer">
+                                     
+                                              <button type="button" class="btn btn-secondary" id="closeModal"  data-bs-dismiss="modal">Close</button>
+                                                <div class="twoToneCenter">
+                                              <asp:Button ID="Deletebtn" CssClass="btn btn-danger" runat="server" Text="Delete" OnClick="Deletebtn_Click"   />
+                                                </div>
+                                            </div>
+                                </div>
+                                
+                              </div>
+                            </div>
+                         </div>
+                         &nbsp;
+                         <div class="">
                             <asp:Button ID="Downloadbtn" CssClass="btn btn-success" runat="server" Text="Export" OnClick="Downloadbtn_Click"/>
                          </div>
                 </div>

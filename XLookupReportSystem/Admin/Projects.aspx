@@ -5,7 +5,7 @@
 
       <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Projects</h1>
+            
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="DashBoard.aspx">Home</a></li>
@@ -14,7 +14,7 @@
                 </ol>
             </nav>
             <div class=" row py-2 flex-wrap">
-                     <div class="col-auto me-auto">
+                     <div class="col-auto me-auto"><h1>Projects</h1>
                         <h1><asp:Label ID="Label1" runat="server" Text=""></asp:Label></h1>
                          <p><asp:Label ID="Label2" runat="server" Text=""></asp:Label></p>
                         
@@ -71,7 +71,7 @@
 
                         <a style="text-decoration:none;" href="ProjectView.aspx?ProjID=<%#Eval("Project_ID") %>">
                          <div class="card">
-                            <img src="../Assets/img/project-planning.png" class="card-img-top" alt="..." />
+                            <img src="../Assets/img/pmpmpm.jpg" class="card-img-top" alt="..." />
                             <div class="card-body">
                                 <h5 class="card-title"><%# Eval("ProjectName") %></h5>
                                 <p class="card-text">Semester <%# Eval("ProjectSemester") %> - <%# Eval("ProjectYear") %></p>

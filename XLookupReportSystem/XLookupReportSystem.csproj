@@ -222,6 +222,7 @@
     <Content Include="Admin\Create.aspx" />
     <Content Include="Admin\CreateProject.aspx" />
     <Content Include="Admin\DashBoard.aspx" />
+    <Content Include="Admin\DownloadOverallProject.aspx" />
     <Content Include="Admin\Error404.aspx" />
     <Content Include="Admin\FAQ.aspx" />
     <Content Include="Admin\Profile.aspx" />
@@ -244,6 +245,7 @@
     <Content Include="Assets\img\news-4.jpg" />
     <Content Include="Assets\img\news-5.jpg" />
     <Content Include="Assets\img\not-found.svg" />
+    <Content Include="Assets\img\pmpmpm.jpg" />
     <Content Include="Assets\img\product-1.jpg" />
     <Content Include="Assets\img\product-2.jpg" />
     <Content Include="Assets\img\product-3.jpg" />
@@ -780,6 +782,13 @@
     </Compile>
     <Compile Include="Admin\DashBoard.aspx.designer.cs">
       <DependentUpon>DashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DownloadOverallProject.aspx.cs">
+      <DependentUpon>DownloadOverallProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DownloadOverallProject.aspx.designer.cs">
+      <DependentUpon>DownloadOverallProject.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Error404.aspx.cs">
       <DependentUpon>Error404.aspx</DependentUpon>
