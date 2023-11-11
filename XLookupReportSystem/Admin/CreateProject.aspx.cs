@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using OfficeOpenXml;
+﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,87 +10,35 @@ using XLookupReportSystem.Models;
 
 namespace XLookupReportSystem.Admin
 {
-    public partial class DashBoard : System.Web.UI.Page
+    public partial class CreateProject : System.Web.UI.Page
     {
+        public static string userName1;
+        public static string projectname1;
+        public static string projectsemester1;
+        public static string projcampustxt1;
+        public static string projectyear1;
+        public static string moduleCode1;
+        public static string riskBeglbl1;
+        public static string riskEndlbl1;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                SelectYearCBTxt.Items.Clear();
-                Stack<string> DateStack = new Stack<string>();
-                int yearVal = int.Parse(DateTime.Now.Year.ToString());
-                for (int i = 0; i < 3; i++)
-                {
-                    DateStack.Push((yearVal - i).ToString());
-                }
-                while (DateStack.Count != 0)
-                {
-                    SelectYearCBTxt.Items.Add(DateStack.Peek());
-                    DateStack.Pop();
-                }
-                SelectYearCBTxt.SelectedIndex = SelectYearCBTxt.Items.IndexOf(new ListItem(DateTime.Now.Year.ToString()));
-
-                int year = int.Parse(SelectYearCBTxt.Text);
-                SemesterCBTxt.SelectedIndex = 0;
-                if (SemesterCBTxt.SelectedIndex == 0)
-                {
-                    riskbeglb.Text = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + (year - 1).ToString() + " Exams";
-                    riskendlb.Text = "Upload Risk Codes for May-Jun " + SemesterCBTxt.Items[0].Text + " of " + SelectYearCBTxt.Text + " Exams";
-                }
-                else
-                {
-                    riskbeglb.Text = "Upload Risk Codes for May-Jun " + SemesterCBTxt.Items[0].Text + " of " + SelectYearCBTxt.Text + " Exams";
-                    riskendlb.Text = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + SelectYearCBTxt.Text + " Exams";
-                }
-
-                XLookupReportingDB db = new XLookupReportingDB();
-                username.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
-
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var role = manager.GetRoles(db.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
-                foreach (var roleUser in role)
-                {
-                    usertype.Text = roleUser;
-                }
-                var userRow = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
-                if (userRow.StaffImg != null)
-                {
-                    byte[] imageData = userRow.StaffImg;
-                    string img = Convert.ToBase64String(imageData, 0, imageData.Length);
-                    DashboardImg.ImageUrl = "data:image/png;base64," + img;
-                }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname != null)
-                {
-                    lbFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname;
-                }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname != null)
-                {
-                    lbSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
-                }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus != null)
-                {
-                    lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus;
-                }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).EmailAdress != null)
-                {
-                    LbEmailAddress.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).EmailAdress;
-                }
-                var userid = UserController.getUserID(Context.User.Identity.Name);
-                var Projectlist = ProjectController.GetProjects(userid);
-                var projOrderedList = Projectlist.OrderByDescending(c => c.createdDate).Take(5);
-                listViewProjects.DataSource = projOrderedList;
-                listViewProjects.DataBind();
-            }
-            else
-            {
-            }
+            userName1=Create.userName;
+            projectname1 = Create.projectname;
+            projectsemester1 = Create.projectsemester;
+            projcampustxt1 = Create.projcampustxt;
+            projectyear1 = Create.projectyear;
+            moduleCode1 = Create.moduleCode;
+            riskBeglbl1 = Create.riskBeglbl;
+            riskEndlbl1 = Create.riskEndlbl;
+            riskbeglb.Text = riskBeglbl1;
+            riskendlb.Text = riskEndlbl1;
         }
 
         protected void Createbtn_Click(object sender, EventArgs e)
         {
-
+            int countUpload = 0;
             //Createbtn.Enabled = false;
-            string ProjID = ProjectController.AddNewProject(UserController.getUserID(Context.User.Identity.Name), ProjectName.Text, SemesterCBTxt.Text, CampusCBTxt.Text, SelectYearCBTxt.Text, SelectModuleTxt.Text);
+            string ProjID = ProjectController.AddNewProject(UserController.getUserID(Context.User.Identity.Name), projectname1, projectsemester1, projcampustxt1, projectyear1, moduleCode1);
             List<Project_Register> projRegList = new List<Models.Project_Register>();
             List<Register> regList = new List<Register>();
             byte[] fileBytes = new byte[0];
@@ -126,22 +71,37 @@ namespace XLookupReportSystem.Admin
                         for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                         {
                             string studNum = "";
-                            for(int colIterator = 1; colIterator <= noOfCol; colIterator++)
+                            for (int colIterator = 1; colIterator <= noOfCol; colIterator++)
                             {
-                                if (worksheet.Cells[1, colIterator].Value.ToString().Contains("STUDENT NUMBER") || worksheet.Cells[1, colIterator].Value.ToString().Contains("Student number") || worksheet.Cells[1, colIterator].Value.ToString().Contains("Student no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("stu no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("stud no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("student no"))
+                                if (worksheet.Cells[1, colIterator].Value != null)
                                 {
-                                    studNum = worksheet.Cells[rowIterator, colIterator].Value.ToString();
+                                    if (worksheet.Cells[1, colIterator].Value.ToString().Contains("STUDENT NUMBER") || worksheet.Cells[1, colIterator].Value.ToString().Contains("Student number") || worksheet.Cells[1, colIterator].Value.ToString().Contains("Student no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("stu no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("stud no") || worksheet.Cells[1, colIterator].Value.ToString().Contains("student no"))
+                                    {
+                                        studNum = worksheet.Cells[rowIterator, colIterator].Value.ToString();
+                                    }
+                                }else
+                                {
+                                    ErrorMessage.Visible = true;
+                                    FailureText.Text = "Pleae make sure the file has a student number column \t";
+                                    return;
                                 }
                             }
                             //RegisterController.AddNewRegister(projRegID, worksheet.Cells[rowIterator, 1].Value.ToString(), ProjID);
-                           var regID = RegisterController.AddNewRegisterList(projRegID, studNum, ProjID, ref regList);
+                            var regID = RegisterController.AddNewRegisterList(projRegID, studNum, ProjID, ref regList);
                         }
                     }
                 }
             }
+            else
+            {
+                ErrorMessage.Visible = true;
+                FailureText.Text = "No Register uploaded, \t";
+                countUpload++;
+            }
             //Inserting Module Data and supp data
             if (UploadSuppModuleData.HasFile == true)
             {
+
                 int UploadModulelength = UploadModuleData.PostedFile.ContentLength;
                 fileBytesModule = new byte[UploadModulelength];
                 var dataModule = UploadModuleData.PostedFile.InputStream.Read(fileBytesModule, 0, Convert.ToInt32(UploadModuleData.PostedFile.ContentLength));
@@ -164,7 +124,8 @@ namespace XLookupReportSystem.Admin
                         {
                             examMark = 0;
                         }
-                        else {
+                        else
+                        {
                             var s = worksheet.Cells[rowIterator, 4].Value;
                             examMark = decimal.Parse(worksheet.Cells[rowIterator, 4].Value.ToString());
                         }
@@ -178,7 +139,7 @@ namespace XLookupReportSystem.Admin
                             for (int rowIterator1 = 2; rowIterator1 <= noOfRows; rowIterator1++)
                             {
                                 decimal suppMark = 0;
-                                if (currentsheet.Cells[rowIterator1, 4].Value == null || currentsheet.Cells[rowIterator1,4].Value.ToString() == "")
+                                if (currentsheet.Cells[rowIterator1, 4].Value == null || currentsheet.Cells[rowIterator1, 4].Value.ToString() == "")
                                 {
                                     suppMark = 0;
                                 }
@@ -198,30 +159,39 @@ namespace XLookupReportSystem.Admin
             }
             else
             {
-                int UploadModulelength = UploadModuleData.PostedFile.ContentLength;
-                fileBytesModule = new byte[UploadModulelength];
-                var dataModule = UploadModuleData.PostedFile.InputStream.Read(fileBytesModule, 0, Convert.ToInt32(UploadModuleData.PostedFile.ContentLength));
-
-                using (var package = new ExcelPackage(UploadModuleData.PostedFile.InputStream))
+                if (UploadModuleData.HasFile)
                 {
-                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-                    var worksheet = package.Workbook.Worksheets.First();
+                    int UploadModulelength = UploadModuleData.PostedFile.ContentLength;
+                    fileBytesModule = new byte[UploadModulelength];
+                    var dataModule = UploadModuleData.PostedFile.InputStream.Read(fileBytesModule, 0, Convert.ToInt32(UploadModuleData.PostedFile.ContentLength));
 
-                    var noOfCol = worksheet.Dimension.End.Column;
-                    var noOfRow = worksheet.Dimension.End.Row;
-                    for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
+                    using (var package = new ExcelPackage(UploadModuleData.PostedFile.InputStream))
                     {
-                        decimal examMark = 0;
-                        if (worksheet.Cells[rowIterator, 4].Value == null || worksheet.Cells[rowIterator, 4].Value.ToString() == "")
+                        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                        var worksheet = package.Workbook.Worksheets.First();
+
+                        var noOfCol = worksheet.Dimension.End.Column;
+                        var noOfRow = worksheet.Dimension.End.Row;
+                        for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                         {
-                            examMark = 0;
+                            decimal examMark = 0;
+                            if (worksheet.Cells[rowIterator, 4].Value == null || worksheet.Cells[rowIterator, 4].Value.ToString() == "")
+                            {
+                                examMark = 0;
+                            }
+                            else
+                            {
+                                examMark = decimal.Parse(worksheet.Cells[rowIterator, 4].Value.ToString());
+                            }
+                            string moduledataID = ModuleDataController.AddNewModuleData(worksheet.Cells[rowIterator, 1].Value.ToString(), worksheet.Cells[rowIterator, 2].Value.ToString(), worksheet.Cells[rowIterator, 3].Value.ToString(), examMark, ProjID);
                         }
-                        else
-                        {
-                            examMark = decimal.Parse(worksheet.Cells[rowIterator, 4].Value.ToString());
-                        }
-                        string moduledataID = ModuleDataController.AddNewModuleData(worksheet.Cells[rowIterator, 1].Value.ToString(), worksheet.Cells[rowIterator, 2].Value.ToString(), worksheet.Cells[rowIterator, 3].Value.ToString(), examMark, ProjID);
                     }
+                }
+                else
+                {
+                    ErrorMessage.Visible = true;
+                    FailureText.Text += "No Module Data uploaded, \t";
+                    countUpload++;
                 }
             }
             List<NegativeTermDecisionsBeginning> negDecisionsBeg = new List<NegativeTermDecisionsBeginning>();
@@ -250,7 +220,7 @@ namespace XLookupReportSystem.Admin
                             for (int rowIterator = 8; rowIterator <= noOfRow; rowIterator++)
                             {
                                 var studentnum = "";
-                                if ( worksheet.Cells[rowIterator, 3].Value == null || worksheet.Cells[rowIterator, 3].Value.ToString() == "")
+                                if (worksheet.Cells[rowIterator, 3].Value == null || worksheet.Cells[rowIterator, 3].Value.ToString() == "")
                                 {
                                     studentnum = worksheet.Cells[rowIterator - 1, 3].Value.ToString();
                                 }
@@ -265,7 +235,13 @@ namespace XLookupReportSystem.Admin
                     }
                 }
             }
-            
+            else
+            {
+                ErrorMessage.Visible = true;
+                FailureText.Text += "No Risk Codes Beginning uploaded, \t";
+                countUpload++;
+            }
+
             List<NegativeTermDecisionsEnd> negDecisionsEnd = new List<NegativeTermDecisionsEnd>();
             if (UploadRiskCodeEnd.HasFile == true)
             {
@@ -292,7 +268,7 @@ namespace XLookupReportSystem.Admin
                             for (int rowIterator = 8; rowIterator <= noOfRow; rowIterator++)
                             {
                                 var studentnum = "";
-                                if (worksheet.Cells[rowIterator, 3].Value == null || worksheet.Cells[rowIterator, 3].Value.ToString()=="")
+                                if (worksheet.Cells[rowIterator, 3].Value == null || worksheet.Cells[rowIterator, 3].Value.ToString() == "")
                                 {
                                     studentnum = worksheet.Cells[rowIterator - 1, 3].Value.ToString();
                                 }
@@ -306,6 +282,17 @@ namespace XLookupReportSystem.Admin
                         }
                     }
                 }
+            }
+            else
+            {
+                ErrorMessage.Visible = true;
+                FailureText.Text += "No Risk Codes End uploaded ";
+                countUpload++;
+            }
+
+            if(countUpload != 0)
+            {
+                return;
             }
 
             //Generating the Register Attandance data
@@ -328,14 +315,14 @@ namespace XLookupReportSystem.Admin
                 if (studentAttendance > 0)
                 {
                     md.SI_Student = "Yes";
-                    
+
                 }
                 else
                 {
                     md.SI_Student = "No";
-                   
+
                 }
-            
+
             }
             db.SaveChanges();
 
@@ -361,8 +348,8 @@ namespace XLookupReportSystem.Admin
             //Generating Table 1 data
             int noOfSI_Students = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes").Count();
             int noOfSI_Students_Passed = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.FinalMark >= 50).Count();
-            decimal si_Student_Pass_Rate = Math.Round((decimal)noOfSI_Students_Passed / (decimal)noOfSI_Students * (decimal)100,2) == 0 ? 0: Math.Round((decimal)noOfSI_Students_Passed / (decimal)noOfSI_Students * (decimal)100, 2);
-            decimal averageSI_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes").Average(c => c.FinalMark),2);
+            decimal si_Student_Pass_Rate = noOfSI_Students == 0 || Math.Round((decimal)noOfSI_Students_Passed / (decimal)noOfSI_Students * (decimal)100, 2) == 0 ? 0 : Math.Round((decimal)noOfSI_Students_Passed / (decimal)noOfSI_Students * (decimal)100, 2);
+            decimal averageSI_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes").Average(c => c.FinalMark), 2);
             int no_SI_Of_A_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.FinalMark >= 75).Count();
             int no_SI_Of_B_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.FinalMark >= 70 && c.FinalMark <= 74).Count();
             int no_SI_Of_C_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.FinalMark >= 60 && c.FinalMark <= 69).Count();
@@ -371,8 +358,8 @@ namespace XLookupReportSystem.Admin
             int total_SI_Students = no_SI_Of_A_Symbols + no_SI_Of_B_Symbols + no_SI_Of_C_Symbols + no_SI_Of_D_Symbols + no_SI_Of_F_Symbols;
             int noOfNon_SI_Students = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No").Count();
             int noOfNon_SI_Students_Passed = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No" && c.FinalMark >= 50).Count();
-            decimal non_si_student_Pass_Rate = Math.Round((decimal)noOfNon_SI_Students_Passed / (decimal)noOfNon_SI_Students * (decimal)100,2) == 0 ? 0 : Math.Round((decimal)noOfNon_SI_Students_Passed / (decimal)noOfNon_SI_Students * (decimal)100, 2);
-            decimal averageNon_SI_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No").Average(c => c.FinalMark),2);
+            decimal non_si_student_Pass_Rate = noOfNon_SI_Students == 0 || Math.Round((decimal)noOfNon_SI_Students_Passed / (decimal)noOfNon_SI_Students * (decimal)100, 2) == 0 ? 0 : Math.Round((decimal)noOfNon_SI_Students_Passed / (decimal)noOfNon_SI_Students * (decimal)100, 2);
+            decimal averageNon_SI_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No").Average(c => c.FinalMark), 2);
             int no_Non_SI_Of_A_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No" && c.FinalMark >= 75).Count();
             int no_Non_SI_Of_B_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No" && c.FinalMark >= 70 && c.FinalMark <= 74).Count();
             int no_Non_SI_Of_C_Symbols = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "No" && c.FinalMark >= 60 && c.FinalMark <= 69).Count();
@@ -383,7 +370,7 @@ namespace XLookupReportSystem.Admin
             //Generating Overall Table 1
             int noOfOverallStudents = noOfSI_Students + noOfNon_SI_Students;
             int noOfOverallStudentsPassed = noOfSI_Students_Passed + noOfNon_SI_Students_Passed;
-            decimal overall_Students_Pass_Rate = Math.Round((decimal) noOfOverallStudentsPassed / (decimal) noOfOverallStudents * (decimal)100, 2) == 0 ? 0 : Math.Round((decimal)noOfOverallStudentsPassed / (decimal)noOfOverallStudents * (decimal)100, 2);
+            decimal overall_Students_Pass_Rate = noOfOverallStudents == 0 || Math.Round((decimal)noOfOverallStudentsPassed / (decimal)noOfOverallStudents * (decimal)100, 2) == 0 ? 0 : Math.Round((decimal)noOfOverallStudentsPassed / (decimal)noOfOverallStudents * (decimal)100, 2);
             decimal averageOverall_Students_Pass_Rate = Math.Round(db.ModuleDatas.Where(c => c.Project_ID == ProjID).Average(c => c.FinalMark), 2);
 
             TableOneOverallController.AddNewTableOneOverall(noOfOverallStudents, noOfOverallStudentsPassed, overall_Students_Pass_Rate, averageOverall_Students_Pass_Rate, ProjID);
@@ -391,7 +378,7 @@ namespace XLookupReportSystem.Admin
             TableOneController.AddNewTableOne(noOfSI_Students, noOfSI_Students_Passed, si_Student_Pass_Rate, averageSI_Students_Pass_Rate, no_SI_Of_A_Symbols, no_SI_Of_B_Symbols, no_SI_Of_C_Symbols, no_SI_Of_D_Symbols, no_SI_Of_F_Symbols, total_SI_Students, noOfNon_SI_Students, noOfNon_SI_Students_Passed, non_si_student_Pass_Rate, averageNon_SI_Students_Pass_Rate, no_Non_SI_Of_A_Symbols, no_Non_SI_Of_B_Symbols, no_Non_SI_Of_C_Symbols, no_Non_SI_Of_D_Symbols, no_Non_SI_Of_F_Symbols, total_Non_SI_Students, ProjID);
 
             //Generating Table 3
-            foreach(ModuleData modData in db.ModuleDatas)
+            foreach (ModuleData modData in db.ModuleDatas)
             {
                 //Negative Term Decisions Beginning
                 //var dataBeg = db.NegativeTermDecisionBeginnings.SingleOrDefault(c => c.StudentNumber == modData.StudentNumber && c.Project_ID == ProjID);
@@ -425,7 +412,7 @@ namespace XLookupReportSystem.Admin
             }
             db.SaveChanges();
 
-            
+
             int no_of_risk_students_consulting_ADO_back_on_good_academic_standing = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.Code_Beg == 1 && c.Code_End == 0).Count();
             int no_of_consulting_risk_students_who_continued_to_be_at_risk = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.Code_Beg == 1 && c.Code_End == 1).Count();
             int no_of_student_who_were_at_risk_at_the_end_of_semester_1 = db.ModuleDatas.Where(c => c.Project_ID == ProjID && c.SI_Student == "Yes" && c.Code_End == 1).Count();
@@ -463,12 +450,12 @@ namespace XLookupReportSystem.Admin
             regAttendanceList.Clear();
             projRegList.Clear();
             regList.Clear();
-            
+
             ProjectController.AddProjectFiles(ProjID, fileBytes, fileBytesModule, fileBytesSupp, fileBytesRiskBeg, fileBytesRiskEnd);
-            
+
             Createbtn.Enabled = true;
             //Response.Redirect("~/Controllers/ExportHandler.ashx?projID="+ProjID);
-            Response.Redirect("~/Admin/ProjectView.aspx?projID=" + ProjID,false);
+            Response.Redirect("~/Admin/ProjectView.aspx?projID=" + ProjID, false);
 
 
         }
@@ -476,11 +463,11 @@ namespace XLookupReportSystem.Admin
         public int RiskCode(string riskCode)
         {
             int riskCodeNum = 0;
-            if(riskCode == "Green")
+            if (riskCode == "Green")
             {
                 riskCodeNum = 0;
             }
-            else if(riskCode == "RISK")
+            else if (riskCode == "RISK")
             {
                 riskCodeNum = 1;
             }
@@ -505,49 +492,6 @@ namespace XLookupReportSystem.Admin
                 riskCodeNum = 4;
             }
             return riskCodeNum;
-        }
-
-        protected void SelectModuleTxt_TextChanged(object sender, EventArgs e)
-        {
-            Random randomGenerator = new Random();
-            randomGenerator.Next(1, DateTime.Now.Year);
-            ProjectName.Text = SelectModuleTxt.Text + "_" + DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString()+ DateTime.Now.TimeOfDay.Hours.ToString() + DateTime.Now.TimeOfDay.Minutes.ToString() + DateTime.Now.TimeOfDay.Seconds.ToString() + DateTime.Now.TimeOfDay.Milliseconds.ToString();
-        }
-
-        protected void SemesterCBTxt_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int year = int.Parse(SelectYearCBTxt.Text);
-            if (SemesterCBTxt.SelectedIndex == 0)
-            {
-                riskbeglb.Text = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + (year - 1).ToString() + " Exams";
-                riskendlb.Text = "Upload Risk Codes for May-Jun " + SemesterCBTxt.Items[0].Text + " of " + SelectYearCBTxt.Text + " Exams";
-            }
-            else
-            {
-                riskbeglb.Text = "Upload Risk Codes for May-Jun " + SemesterCBTxt.Items[0].Text + " of " + SelectYearCBTxt.Text + " Exams";
-                riskendlb.Text = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + SelectYearCBTxt.Text + " Exams";
-            }
-        }
-
-        protected void CampusCBTxt_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int year = int.Parse(SelectYearCBTxt.Text);
-            if (SemesterCBTxt.SelectedIndex == 0)
-            {
-                riskbeglb.Text = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + (year - 1).ToString() + " Exams";
-                riskendlb.Text = "Upload Risk Codes for May-Jun " + SemesterCBTxt.Items[0].Text + " of " + SelectYearCBTxt.Text + " Exams";
-            }
-            else
-            {
-                riskbeglb.Text = "Upload Risk Codes for May-Jun " + SemesterCBTxt.Items[0].Text + " of " + SelectYearCBTxt.Text + " Exams";
-                riskendlb.Text = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + SelectYearCBTxt.Text + " Exams";
-            }
-            
-        }
-        
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Admin/Create.aspx");
         }
     }
 }

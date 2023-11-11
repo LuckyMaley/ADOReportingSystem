@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <script>
+    <script>
        // Function to trigger click event for the specific anchor
        function triggerSpecificAnchorClick(anchorId) {
            var anchor = document.getElementById(anchorId);
@@ -89,7 +89,7 @@ Copy code
                 <div class="col-xl-4">
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                            <asp:Image ID="ProfileImg" CssClass="rounded-circle" ImageUrl="../Assets/img/profile-img.jpg" AlternateText="Profile" runat="server" /><h2>
+                            <asp:Image ID="ProfileImg" CssClass="rounded-circle" ImageUrl="../Assets/img/defaultImg.png" style="height:120px;width:120px;" AlternateText="Profile" runat="server" /><h2>
                                 <asp:Label ID="username" runat="server" Text=""></asp:Label></h2>
                             <h3><asp:Label ID="usertype" runat="server" Text=""></asp:Label></h3>
 <%--                            <div class="social-links mt-2"><a href="#" class="twitter"><i class="bi bi-twitter"></i></a><a href="#" class="facebook"><i class="bi bi-facebook"></i></a><a href="#" class="instagram"><i class="bi bi-instagram"></i></a><a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a></div>--%>
@@ -113,7 +113,7 @@ Copy code
                                     <a class="nav-link " id="ChangePassAnchor"  data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" href="?tab=profile-change-password"  tabindex="-1" role="tab">Change Password</a>
                                 </li>
                             </ul>
-                            <div class="tab-content pt-2">
+                            <div class="tab-content pt-2" style="min-height:400px">
                                 <div class="tab-pane fade show active profile-overview" id="profile-overview" role="tabpanel">
                                     <h5 class="card-title">Profile Details</h5>
                                     <div class="row">
@@ -130,6 +130,10 @@ Copy code
                                         <div class="col-lg-3 col-md-4 label">Campus</div>
                                         <div class="col-lg-9 col-md-8"><asp:Label ID="lbCampus" runat="server" Text=""></asp:Label></div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Email</div>
+                                        <div class="col-lg-9 col-md-8"><asp:Label ID="LbEmailAddress" runat="server" Text=""></asp:Label></div>
+                                    </div>
                                     
                                 </div>
                                 <div class="tab-pane fade profile-edit pt-3 " id="profile-edit" role="tabpanel">
@@ -139,8 +143,8 @@ Copy code
                                         </div>
                                         <script>
                                             
-                                            const realFileBtn = document.getElementById("<%:realFile.ClientID%>");
-                                            const customBtn = document.getElementById("custom-button");
+                                            const realFileBtn = document.getElementById("<%:realFileUpload.ClientID%>");
+                                            const customBtn = document.getElementById("<%:customButton.ClientID%>");
                                             const customTxt = document.getElementById("custom-text");
 
                                             customBtn.addEventListener("click", function () {
@@ -158,13 +162,13 @@ Copy code
                                             });
 
                                             function updateButtonText() {
-                                                var fileInput = document.getElementById("<%:realFile.ClientID%>");
+                                                var fileInput = document.getElementById("<%:realFileUpload.ClientID%>");
                                                 var textSpan = document.getElementById("textSpan");
 
                                                 if (fileInput.files.length > 0) {
                                                     textSpan.innerText = "File Selected: " + fileInput.files[0].name;
                                                 } else {
-                                                    textSpan.innerText = "Choose a File";
+                                                    textSpan.innerText = "No File Selected yet";
                                                 }
                                             }
 
@@ -174,15 +178,17 @@ Copy code
                                             
 
                                             <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label><div class="col-md-8 col-lg-9">
-                                                <asp:Image ID="profileEditImg" ImageUrl="../Assets/img/profile-img.jpg" AlternateText="Profile" runat="server" CssClass="rounded-circle" /><div class="pt-2">
+                                                <asp:Image ID="profileEditImg" ImageUrl="../Assets/img/defaultImg.png" style="height:120px;width:120px;" AlternateText="Profile" runat="server" CssClass="rounded-circle" />
+                                                <div class="pt-2">
                                                     <div class="custom-file-upload-button" style="width: 400px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis; ">
-                                                <button id="custom-button" class="btn btn-primary btn-sm">Upload File</button>
-                                                <input type="file" name="fileInput" id="realFile" runat="server" onchange="updateButtonText();" />
+                                                <button id="customButton" runat="server" class="btn btn-primary btn-sm"><i class="bi bi-upload"></i> Upload Image</button>
+                                                <asp:FileUpload runat="server" name="fileInput" ID="realFileUpload" onchange="updateButtonText();" />
                                                         <div></div>
                                                 <span id="textSpan" style="display:flex">No file chosen, yet.</span><%--<i class="bi bi-upload"></i>--%>
                                             </div>
                                                     <br />
-                                                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a></div>
+                                                    <asp:LinkButton ID="LinkButtonRemoveImg" CssClass="btn btn-danger btn-sm" title="Remove my profile image" runat="server" OnClick="LinkButtonRemoveImg_Click"><i class="bi bi-trash"></i> Remove Image</asp:LinkButton>
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -200,10 +206,10 @@ Copy code
                                             <label for="txtCampus" class="col-md-4 col-lg-3 col-form-label">Campus</label><div class="col-md-8 col-lg-9">
                                                 <asp:TextBox ID="txtCampus" name="txtCampus" CssClass="form-control" runat="server"></asp:TextBox> </div>
                                         </div>
-                                        <div class="row mb-3">
+                                       <%-- <div class="row mb-3">
                                             <label for="txtEmail" class="col-md-4 col-lg-3 col-form-label">Email</label><div class="col-md-8 col-lg-9">
                                                  <asp:TextBox ID="txtEmail" name="txtEmail" CssClass="form-control" runat="server" ReadOnly="True"></asp:TextBox></div>
-                                        </div>
+                                        </div>--%>
                                         
                                         <%--<div class="row mb-3">
                                             <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label><div class="col-md-8 col-lg-9">

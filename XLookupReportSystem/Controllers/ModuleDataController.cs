@@ -57,5 +57,12 @@ namespace XLookupReportSystem.Controllers
                 
             }
         }
+
+        public static List<ModuleData> GetModuleData(string id)
+        {
+            var _db = new XLookupReportingDB();
+            var moduledata = _db.ModuleDatas.Where(c => c.Project_ID == id).ToList();
+            return moduledata;
+        }
     }
 }

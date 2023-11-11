@@ -12,11 +12,20 @@
                     <li class="breadcrumb-item active">Projects</li>
                 </ol>
             </nav>
-        </div>
-          <div class="section">
-                     <div class="col-auto d-flex align-items-center">
-                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
-                            Combine
+            <div class=" row py-2 flex-wrap">
+                     <div class="col-auto me-auto">
+                        <h1><asp:Label ID="Label1" runat="server" Text=""></asp:Label></h1>
+                         <p><asp:Label ID="Label2" runat="server" Text=""></asp:Label></p>
+                        
+                    </div>
+                     <div class="col-auto py-2 d-flex align-items-center">
+                         <div class="">
+                            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">New Project</asp:LinkButton>
+                         </div>
+                         &nbsp;
+                         <div class="">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+                            Combine Projects
                           </button>
                          
                          <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true" style="display: none;">
@@ -40,8 +49,11 @@
                                 
                               </div>
                             </div>
-                          </div>
-                     </div>
+                         </div>
+                </div>
+            </div>
+        </div>
+          
 
          <section class="section">
             <div class="row">

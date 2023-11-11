@@ -20,7 +20,14 @@ namespace XLookupReportSystem.Admin
                 XLookupReportingDB db = new Models.XLookupReportingDB();
                 
                 Label1.Text = db.Projects.SingleOrDefault(c => c.Project_ID == projID).ProjectName;
-                
+                var moduleDataList = ModuleDataController.GetModuleData(projID);
+                Studentslb.Text = moduleDataList.Count.ToString();
+                SIStudentlb.Text = moduleDataList.Where(c => c.SI_Student == "Yes").Count().ToString();
+                NonSIStudentlb.Text = moduleDataList.Where(c => c.SI_Student == "No").Count().ToString();
+                listViewProjects.DataSource = moduleDataList;
+                listViewProjects.DataBind();
+                listView1.DataSource = moduleDataList;
+                listView1.DataBind();
             }
         }
 

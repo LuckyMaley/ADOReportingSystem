@@ -49,7 +49,7 @@ namespace XLookupReportSystem.Controllers
         public static List<Project> GetProjects(string id)
         {
             var _db = new XLookupReportingDB();
-            var projects = _db.Projects.Where(c => c.User_ID == id).ToList();
+            var projects = _db.Projects.Where(c => c.User_ID == id).OrderByDescending(c => c.createdDate).ToList();
             return projects;
         }
     }

@@ -76,6 +76,15 @@ namespace XLookupReportSystem.Admin {
         protected global::System.Web.UI.WebControls.Label lbCampus;
         
         /// <summary>
+        /// LbEmailAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbEmailAddress;
+        
+        /// <summary>
         /// ErrorMessage control.
         /// </summary>
         /// <remarks>
@@ -94,13 +103,31 @@ namespace XLookupReportSystem.Admin {
         protected global::System.Web.UI.WebControls.Image profileEditImg;
         
         /// <summary>
-        /// realFile control.
+        /// customButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile realFile;
+        protected global::System.Web.UI.HtmlControls.HtmlButton customButton;
+        
+        /// <summary>
+        /// realFileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload realFileUpload;
+        
+        /// <summary>
+        /// LinkButtonRemoveImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButtonRemoveImg;
         
         /// <summary>
         /// TxtFirstName control.
@@ -128,15 +155,6 @@ namespace XLookupReportSystem.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCampus;
-        
-        /// <summary>
-        /// txtEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
         /// btnEditProfile control.

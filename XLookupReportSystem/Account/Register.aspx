@@ -14,8 +14,8 @@
   <meta content="" name="keywords" />
 
   <!-- Favicons -->
-  <link href="../Assets/img/favicon.png" rel="icon" />
-  <link href="../Assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+  <link href="../Assets/img/ADOLogoblue.png" rel="icon" />
+  <link href="../Assets/img/ADOLogoblue.png" rel="apple-touch-icon" />
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect" />
@@ -44,7 +44,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                                 <div class="d-flex justify-content-center py-4"><a href="index.html" class="logo d-flex align-items-center w-auto">
-                                    <img src="../Assets/img/logo.png" alt=""/>
+                                    <img src="../Assets/img/ADOLogoblue.png" alt=""/>
                                     <span class="d-none d-lg-block">ADO Reporting System</span> </a></div>
                                 <div class="card mb-3">
                                     <div class="card-body">

@@ -76,51 +76,6 @@ namespace XLookupReportSystem.Admin {
         protected global::System.Web.UI.WebControls.DropDownList SelectYearCBTxt;
         
         /// <summary>
-        /// UploadRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload UploadRegister;
-        
-        /// <summary>
-        /// UploadModuleData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload UploadModuleData;
-        
-        /// <summary>
-        /// UploadSuppModuleData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload UploadSuppModuleData;
-        
-        /// <summary>
-        /// UploadRiskCodeBeg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload UploadRiskCodeBeg;
-        
-        /// <summary>
-        /// UploadRiskCodeEnd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload UploadRiskCodeEnd;
-        
-        /// <summary>
         /// Createbtn control.
         /// </summary>
         /// <remarks>

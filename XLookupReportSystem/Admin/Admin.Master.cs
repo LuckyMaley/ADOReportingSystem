@@ -30,10 +30,38 @@ namespace XLookupReportSystem.Admin
                     {
                         userRoleLB.Text = roleUser;
                     }
+                    
+                    var userRow = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                    if (userRow.StaffImg != null)
+                    {
+                        byte[] imageData = userRow.StaffImg;
+                        string img = Convert.ToBase64String(imageData, 0, imageData.Length);
+                        profileMasterImg.ImageUrl = "data:image/png;base64," + img;
+                    }
                 }
                 else
                 {
                     Response.Redirect("~/Account/Login.aspx",false);
+                }
+            }else
+            {
+                Label usernametb = (Label)LoginViewAdmin.FindControl("UsernameLoggedIn");
+                Label userRoleLB = (Label)LoginViewAdmin.FindControl("UserRolelb");
+                XLookupReportingDB db2 = new XLookupReportingDB();
+                usernametb.Text = db2.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db2.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                UserLoggedIn.Text = usernametb.Text;
+                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var role = manager.GetRoles(db2.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
+                foreach (var roleUser in role)
+                {
+                    userRoleLB.Text = roleUser;
+                }
+                var userRow = db2.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                if (userRow.StaffImg != null)
+                {
+                    byte[] imageData = userRow.StaffImg;
+                    string img = Convert.ToBase64String(imageData, 0, imageData.Length);
+                    profileMasterImg.ImageUrl = "data:image/png;base64," + img;
                 }
             }
         }

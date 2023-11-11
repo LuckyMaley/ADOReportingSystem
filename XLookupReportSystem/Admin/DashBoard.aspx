@@ -64,8 +64,9 @@
 
     </style>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <main id="main" class="main">
             <div class="pagetitle">
                 <nav>
@@ -80,11 +81,20 @@
                         
                     </div>
                      <div class="col-auto d-flex align-items-center">
-                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
-                            New Project
-                          </button>
+                         <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">New Project</asp:LinkButton>
                          
-                         <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true" style="display: none;">
+                         <%--<button type="button" id="NewProjButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+                            New Project
+                          </button>--%>
+                         
+                         <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+                             <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="SemesterCBTxt" EventName="SelectedIndexChanged" />
+                                <asp:AsyncPostBackTrigger ControlID="SelectYearCBTxt" EventName="SelectedIndexChanged" />
+                            </Triggers>
+                            <ContentTemplate>
+                               
+                         <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true"  style="display:none;">
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -116,7 +126,7 @@
                                             </div>
                                             <div class="col-12">
                                                     <asp:Label runat="server" AssociatedControlID="SemesterCBTxt" CssClass="form-label">Select Semester</asp:Label>
-                                                        <asp:DropDownList ID="SemesterCBTxt" CssClass="form-select" runat="server" required="">
+                                                        <asp:DropDownList ID="SemesterCBTxt" CssClass="form-select" runat="server" required="" AutoPostBack="True" OnSelectedIndexChanged="SemesterCBTxt_SelectedIndexChanged">
                                                             <asp:ListItem Value="1">Semester 1</asp:ListItem>
                                                             <asp:ListItem Value="2">Semester 2</asp:ListItem>
                                                     </asp:DropDownList>
@@ -126,7 +136,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <asp:Label runat="server" AssociatedControlID="CampusCBTxt" CssClass="form-label">Select Campus</asp:Label>
-                                                <asp:DropDownList ID="CampusCBTxt" CssClass="form-control" runat="server" required="">
+                                                <asp:DropDownList ID="CampusCBTxt" CssClass="form-control" runat="server" required=""  OnSelectedIndexChanged="CampusCBTxt_SelectedIndexChanged">
                                                     <asp:ListItem>Westville</asp:ListItem>
                                                     <asp:ListItem>Pietermaritzburg</asp:ListItem>
                                                     <asp:ListItem>Howard</asp:ListItem>
@@ -134,7 +144,7 @@
                                             </div>
                                             <div class="col-12">
                                                     <asp:Label runat="server" AssociatedControlID="SelectYearCBTxt" CssClass="form-label">Select Year</asp:Label>
-                                                        <asp:DropDownList ID="SelectYearCBTxt" CssClass="form-select" runat="server" required="">
+                                                        <asp:DropDownList ID="SelectYearCBTxt" CssClass="form-select" AutoPostBack="True" runat="server" required="">
                                                             <asp:ListItem>2021</asp:ListItem>
                                                             <asp:ListItem>2022</asp:ListItem>
                                                             <asp:ListItem Selected="True">2023</asp:ListItem>
@@ -167,14 +177,14 @@
                                                    
                                             </div>
                                             <div class="col-12">
-                                                    <asp:Label runat="server" AssociatedControlID="UploadRiskCodeBeg" CssClass="form-label">Upload Risk Codes S2 2022</asp:Label>
+                                                    <asp:Label runat="server" ID="riskbeglb" AssociatedControlID="UploadRiskCodeBeg" CssClass="form-label">Upload Risk Codes S2 2022</asp:Label>
                                                         <asp:FileUpload ID="UploadRiskCodeBeg" runat="server" CssClass="form-control"  required=""/>
                                                         <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
                                                             CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please upload the risk code beginning data.</div>
                                                    
                                             </div>
                                             <div class="col-12">
-                                                    <asp:Label runat="server" AssociatedControlID="UploadRiskCodeEnd" CssClass="form-label">Upload Risk Codes S1 2023</asp:Label>
+                                                    <asp:Label runat="server" ID="riskendlb" AssociatedControlID="UploadRiskCodeEnd" CssClass="form-label">Upload Risk Codes S1 2023</asp:Label>
                                                         <asp:FileUpload ID="UploadRiskCodeEnd" runat="server" CssClass="form-control"  required=""/>
                                                         <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
                                                             CssClass="text-danger" ErrorMessage="The email field is required." />--%><div class="invalid-feedback">Please upload the risk code end data.</div>
@@ -225,11 +235,135 @@
                             </div>
                           </div>
                      </div>
+                                </ContentTemplate>
+                             
+                        </asp:UpdatePanel>
+
                 </div>
             </div>
                 </div>
             <section class="section dashboard">
-                <div class="row">
+                <div class="row" style="min-height: 300px;">
+                <div class="col-lg-6">
+                    <div class="card" style="min-height: 300px;">
+                        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                            <asp:Image ID="DashboardImg" CssClass="rounded-circle" ImageUrl="../Assets/img/defaultImg.png" style="height:120px;width:120px;" AlternateText="Profile" runat="server" /><h2>
+                                <asp:Label ID="username" runat="server" Text=""></asp:Label></h2>
+                            <h3><asp:Label ID="usertype" runat="server" Text=""></asp:Label></h3>
+                             <div class="profile-card__edit"><a href="Profile.aspx" class="btn btn-secondary btn-sm">Edit Profile</a></div>
+<%--                            <div class="social-links mt-2"><a href="#" class="twitter"><i class="bi bi-twitter"></i></a><a href="#" class="facebook"><i class="bi bi-facebook"></i></a><a href="#" class="instagram"><i class="bi bi-instagram"></i></a><a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a></div>--%>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-6">
+                    <div class="card" style="min-height: 300px;">
+                        <div class="card-body  pt-2">
+                                <h5 class="card-title">Profile Details</h5>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label  pt-2">First Name</div>
+                                        <div class="col-lg-9 col-md-8  pt-2">
+                                            <asp:Label ID="lbFirstName" runat="server" Text=""></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label  pt-2">Surname</div>
+                                        <div class="col-lg-9 col-md-8  pt-2"><asp:Label ID="lbSurname" runat="server" Text=""></asp:Label></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label  pt-2">Campus</div>
+                                        <div class="col-lg-9 col-md-8 pt-2"><asp:Label ID="lbCampus" runat="server"  Text=""></asp:Label></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label  pt-2">Email</div>
+                                        <div class="col-lg-9 col-md-8  pt-2"><asp:Label ID="LbEmailAddress" runat="server" Text=""></asp:Label></div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="row">
+                   <div class="col-12">
+                                <div class="card recent-sales overflow-auto">
+                                   <%-- <div class="filter"><a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                            <li class="dropdown-header text-start">
+                                                <h6>Filter</h6>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">Today</a></li>
+                                            <li><a class="dropdown-item" href="#">This Month</a></li>
+                                            <li><a class="dropdown-item" href="#">This Year</a></li>
+                                        </ul>
+                                    </div>--%>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Recent Projects <%--<span>| Today</span>--%></h5>
+                                        <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                                            <%--<div class="dataTable-top">
+                                                <div class="dataTable-dropdown">
+                                                    <label>
+                                                        <select class="dataTable-selector">
+                                                            <option value="5">5</option>
+                                                            <option value="10" selected="">10</option>
+                                                            <option value="15">15</option>
+                                                            <option value="20">20</option>
+                                                            <option value="25">25</option>
+                                                        </select>
+                                                        entries per page</label></div>
+                                                <div class="dataTable-search">
+                                                    <input class="dataTable-input" placeholder="Search..." type="text"/></div>
+                                            </div>--%>
+                                            <div class="dataTable-container">
+                                                <table class="table table-borderless datatable dataTable-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" <%--data-sortable=""--%> style="width: 10.9116%;"><a href="#" <%--class="dataTable-sorter"--%>></a></th>
+                                                            <th scope="col" <%--data-sortable=""--%> style="width: 24.0331%;"><a href="#" <%--class="dataTable-sorter"--%>>Project Name</a></th>
+                                                            <th scope="col" <%--data-sortable=""--%> style="width: 30.1934%;"><a href="#" <%--class="dataTable-sorter"--%>>Module Code</a></th>
+                                                            <th scope="col" <%--data-sortable=""--%> style="width: 19.80663%;"><a href="#" <%--class="dataTable-sorter"--%>>Semester</a></th>
+                                                            <th scope="col" <%--data-sortable=""--%> style="width: 15.0552%;"><a href="#" <%--class="dataTable-sorter"--%>>Year</a></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <asp:ListView ID="listViewProjects" runat="server">
+                                                             <EmptyDataTemplate>
+                                                                 <tr>
+                                                                     <td>
+                                                                 <div >
+                                                                  <div id="NoRecords" class="align-items-center" runat="server">
+                                                                    No records are available.
+                                                                  </div>
+                                                                 </div>
+                                                                     </td>
+                                                                 </tr>
+                                                             </EmptyDataTemplate>
+                                                        <ItemTemplate>
+                                                        <tr>
+                                                            <th scope="row"><a  style="text-decoration:none;color:Highlight" href="ProjectView.aspx?ProjID=<%#Eval("Project_ID") %>">Select</a></th>
+                                                            <td><%# Eval("ProjectName") %></td>
+                                                            <td><%# Eval("ModuleCode") %></td>
+                                                            <td>Semester <%# Eval("ProjectSemester") %> </td>
+                                                            <td><%# Eval("ProjectYear") %></td>
+                                                        </tr>
+                                                            </ItemTemplate>
+                       
+                                                           </asp:ListView>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="dataTable-bottom">
+                                                <div class="dataTable-info"><a href="Projects.aspx">View more projects</a></div>
+                                                <nav class="dataTable-pagination">
+                                                    <ul class="dataTable-pagination-list"></ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+</div>
+                <%--<div class="row">
                     <div class="col-lg-8">
                         <div class="row">
                             <div class="col-xxl-4 col-md-6">
@@ -759,7 +893,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--%>
             </section>
         </main>
         <!-- End #main -->

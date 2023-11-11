@@ -89,7 +89,7 @@ namespace XLookupReportSystem.Controllers
         {
             XLookupReportingDB db = new Models.XLookupReportingDB();
             var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAdress == user);
-            foreach(var member in dbStaff)
+            foreach (var member in dbStaff)
             {
                 member.Firstname = firstName;
                 member.Surname = lastName;
@@ -103,7 +103,7 @@ namespace XLookupReportSystem.Controllers
         {
             XLookupReportingDB db = new Models.XLookupReportingDB();
             var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAdress == user);
-            foreach(var row in dbStaff)
+            foreach (var row in dbStaff)
             {
                 row.StaffImg = imageStaff;
                 row.modifiedDate = DateTime.Now;
@@ -111,6 +111,18 @@ namespace XLookupReportSystem.Controllers
             db.SaveChanges();
         }
 
-       
+        public static void RemoveStaffImg(string user)
+        {
+            XLookupReportingDB db = new Models.XLookupReportingDB();
+            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAdress == user);
+            foreach (var row in dbStaff)
+            {
+                
+                row.StaffImg = null;
+                row.modifiedDate = DateTime.Now;
             }
+            db.SaveChanges();
+        }
+
+    }
 }
