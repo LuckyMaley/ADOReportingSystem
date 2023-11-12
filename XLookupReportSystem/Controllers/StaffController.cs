@@ -21,7 +21,7 @@ namespace XLookupReportSystem.Controllers
                     Surname = lastName,
                     StaffType = staffType,
                     Campus = campus,
-                    EmailAdress = email,
+                    EmailAddress = email,
                     createdDate = DateTime.Now,
                     modifiedDate = DateTime.Now
 
@@ -41,7 +41,7 @@ namespace XLookupReportSystem.Controllers
                     Firstname = firstName,
                     Surname = lastName,
                     StaffType = staffType,
-                    EmailAdress = email,
+                    EmailAddress = email,
                     Campus = campus,
                     createdDate = DateTime.Now,
                     modifiedDate = DateTime.Now
@@ -88,7 +88,7 @@ namespace XLookupReportSystem.Controllers
         public static void UpdateStaffDetails(string user, string firstName, string lastName, string campus)
         {
             XLookupReportingDB db = new Models.XLookupReportingDB();
-            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAdress == user);
+            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAddress == user);
             foreach (var member in dbStaff)
             {
                 member.Firstname = firstName;
@@ -99,10 +99,25 @@ namespace XLookupReportSystem.Controllers
             db.SaveChanges();
         }
 
+        public static void UpdateStaffDetailsRole(string user, string firstName, string lastName, string campus, string role)
+        {
+            XLookupReportingDB db = new Models.XLookupReportingDB();
+            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAddress == user);
+            foreach (var member in dbStaff)
+            {
+                member.Firstname = firstName;
+                member.Surname = lastName;
+                member.Campus = campus;
+                member.StaffType = role;
+                member.modifiedDate = DateTime.Now;
+            }
+            db.SaveChanges();
+        }
+
         public static void UpdateStaffImg(string user, byte[] imageStaff)
         {
             XLookupReportingDB db = new Models.XLookupReportingDB();
-            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAdress == user);
+            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAddress == user);
             foreach (var row in dbStaff)
             {
                 row.StaffImg = imageStaff;
@@ -114,7 +129,7 @@ namespace XLookupReportSystem.Controllers
         public static void RemoveStaffImg(string user)
         {
             XLookupReportingDB db = new Models.XLookupReportingDB();
-            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAdress == user);
+            var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAddress == user);
             foreach (var row in dbStaff)
             {
                 
@@ -123,6 +138,13 @@ namespace XLookupReportSystem.Controllers
             }
             db.SaveChanges();
         }
+
+        public static List<Staff> GetStaff()
+        {
+            XLookupReportingDB db = new Models.XLookupReportingDB();
+            var staff = db.Staffs.Where(c => c.EmailAddress != "ADOLeader@gmail.com").ToList();
+            return staff;
+        } 
 
     }
 }

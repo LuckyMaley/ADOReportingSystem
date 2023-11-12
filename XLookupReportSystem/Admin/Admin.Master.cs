@@ -19,10 +19,15 @@ namespace XLookupReportSystem.Admin
             {
                 if (Context.User.Identity.IsAuthenticated)
                 {
+                    XLookupReportingDB db = new XLookupReportingDB();
+                    string roleUserStaff = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).StaffType;
+                    if (roleUserStaff== "Member")
+                    {
+                        usersLink.Attributes["style"] = "display:none;";
+                    } 
                     Label usernametb = (Label)LoginViewAdmin.FindControl("UsernameLoggedIn");
                     Label userRoleLB = (Label)LoginViewAdmin.FindControl("UserRolelb");
-                    XLookupReportingDB db = new XLookupReportingDB();
-                    usernametb.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                    usernametb.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
                     UserLoggedIn.Text = usernametb.Text;
                     var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                     var role = manager.GetRoles(db.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
@@ -31,7 +36,7 @@ namespace XLookupReportSystem.Admin
                         userRoleLB.Text = roleUser;
                     }
                     
-                    var userRow = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                    var userRow = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                     if (userRow.StaffImg != null)
                     {
                         byte[] imageData = userRow.StaffImg;
@@ -48,7 +53,7 @@ namespace XLookupReportSystem.Admin
                 Label usernametb = (Label)LoginViewAdmin.FindControl("UsernameLoggedIn");
                 Label userRoleLB = (Label)LoginViewAdmin.FindControl("UserRolelb");
                 XLookupReportingDB db2 = new XLookupReportingDB();
-                usernametb.Text = db2.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db2.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                usernametb.Text = db2.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname + " " + db2.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
                 UserLoggedIn.Text = usernametb.Text;
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var role = manager.GetRoles(db2.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
@@ -56,7 +61,7 @@ namespace XLookupReportSystem.Admin
                 {
                     userRoleLB.Text = roleUser;
                 }
-                var userRow = db2.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                var userRow = db2.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                 if (userRow.StaffImg != null)
                 {
                     byte[] imageData = userRow.StaffImg;

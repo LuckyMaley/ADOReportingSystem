@@ -43,7 +43,7 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-                                <div class="d-flex justify-content-center py-4"><a href="index.html" class="logo d-flex align-items-center w-auto">
+                                <div class="d-flex justify-content-center py-4"><a href="#" class="logo d-flex align-items-center w-auto">
                                     <img src="../Assets/img/ADOLogoblue.png" alt=""/>
                                     <span class="d-none d-lg-block">ADO Reporting System</span> </a></div>
                                 <div class="card mb-3">
@@ -93,12 +93,12 @@
                                                 <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
                                                     CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." />
                                             </div>
-                                            <div class="col-12">
+                                            <%--<div class="col-12">
                                                 <div class="form-check">
                                                     <input class="form-check-input" runat="server" name="terms" type="checkbox" value="" id="acceptTerms" required="" />
                                                     <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label><div class="invalid-feedback">You must agree before submitting.</div>
                                                 </div>
-                                            </div>
+                                            </div>--%>
                                             <div class="col-12">
                                                  <asp:Button runat="server" OnClick="CreateUser_Click" Text="Create Account" CssClass="btn btn-primary w-100" /></div>
                                             <div class="col-12">

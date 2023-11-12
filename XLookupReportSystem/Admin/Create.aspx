@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" EnableViewState="true">
    
-<main id="main" class="main">
+    <main id="main" class="main">
         
         <div class="pagetitle">
                 <nav>

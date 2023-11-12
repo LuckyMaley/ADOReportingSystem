@@ -11,8 +11,7 @@
            }
        }
     </script>
-    l
-Copy code
+    
 <style>
    /* Style for the container div */
     .custom-file-upload-button {
@@ -75,7 +74,7 @@ Copy code
    
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Profile</h1>
+            
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="DashBoard.aspx">Home</a></li>
@@ -83,6 +82,7 @@ Copy code
                     <li class="breadcrumb-item active">Profile</li>
                 </ol>
             </nav>
+            <h1>Profile</h1>
         </div>
         <section class="section profile">
             <div class="row">
@@ -139,7 +139,7 @@ Copy code
                                 <div class="tab-pane fade profile-edit pt-3 " id="profile-edit" role="tabpanel">
                                     <div>
                                         <div class="row mb-3">
-                                            <label for="txtFirstName" runat="server" id="ErrorMessage" visible="false" class="form-label"></label>
+                                            <label  runat="server" id="ErrorMessage" visible="false" class="form-label"></label>
                                         </div>
                                         <script>
                                             

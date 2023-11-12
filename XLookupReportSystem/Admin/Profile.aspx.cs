@@ -21,7 +21,7 @@ namespace XLookupReportSystem.Admin
             if (!IsPostBack)
             {
                 XLookupReportingDB db = new XLookupReportingDB();
-                username.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                username.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
                 
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var role = manager.GetRoles(db.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
@@ -29,7 +29,7 @@ namespace XLookupReportSystem.Admin
                 {
                     usertype.Text = roleUser;
                 }
-                var userRow = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                var userRow = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                 if (userRow.StaffImg != null)
                 {
                     byte[] imageData = userRow.StaffImg;
@@ -41,29 +41,29 @@ namespace XLookupReportSystem.Admin
                 {
                     LinkButtonRemoveImg.Visible = false;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname != null)
                 {
-                    lbFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname;
+                    lbFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname != null)
                 {
-                    lbSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                    lbSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus != null)
                 {
-                    lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus;
+                    lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname != null)
                 {
-                    TxtFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname;
+                    TxtFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname != null)
                 {
-                    txtSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                    txtSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
                 }
                 
                 XLookupReportingDB dbstaffpic = new XLookupReportingDB();
-                var userRow1 = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                var userRow1 = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                 if (userRow1.Campus != null)
                 {
                     for (int i = 0; i < CampusCBTxt.Items.Count; i++)
@@ -75,9 +75,9 @@ namespace XLookupReportSystem.Admin
                     }
                 }
                 
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).EmailAdress != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).EmailAddress != null)
                 {
-                    LbEmailAddress.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).EmailAdress;
+                    LbEmailAddress.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).EmailAddress;
                 }
                 
                 string selectedTab = Request.QueryString["tab"];
@@ -110,7 +110,7 @@ namespace XLookupReportSystem.Admin
 
             StaffController.UpdateStaffDetails(Context.User.Identity.Name, TxtFirstName.Text, txtSurname.Text, CampusCBTxt.Text);
             XLookupReportingDB db = new XLookupReportingDB();
-            username.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+            username.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
 
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var role = manager.GetRoles(db.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
@@ -121,17 +121,17 @@ namespace XLookupReportSystem.Admin
             
             ErrorMessage.InnerText = "Details Updated Successfully";
             ErrorMessage.Visible = true;
-            if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname != null)
+            if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname != null)
             {
-                lbFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname;
+                lbFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname;
             }
-            if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname != null)
+            if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname != null)
             {
-                lbSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                lbSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
             }
-            if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus != null)
+            if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus != null)
             {
-                lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus;
+                lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus;
             }
 
             if (realFileUpload.HasFile)
@@ -155,7 +155,7 @@ namespace XLookupReportSystem.Admin
                 }
             }
             XLookupReportingDB dbstaffpic = new XLookupReportingDB();
-            var userRow = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+            var userRow = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
             if (userRow.StaffImg != null)
             {
                 byte[] imageData = userRow.StaffImg;
@@ -180,7 +180,7 @@ namespace XLookupReportSystem.Admin
                    
                     XLookupReportingDB db2 = new XLookupReportingDB();
                   
-                    var userRow2 = db2.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                    var userRow2 = db2.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                     if (userRow2.StaffImg != null)
                     {
                         byte[] imageData = userRow2.StaffImg;
@@ -200,7 +200,7 @@ namespace XLookupReportSystem.Admin
                     Label userRoleLB = (Label)loginView.FindControl("UserRolelb");
 
                     XLookupReportingDB db3 = new XLookupReportingDB();
-                    usernametb.Text = db3.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db3.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                    usernametb.Text = db3.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname + " " + db3.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
                     userLoggedInLB.Text = usernametb.Text;
                     var manager1 = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                     var role1 = manager1.GetRoles(db3.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
@@ -287,12 +287,12 @@ namespace XLookupReportSystem.Admin
         {
             string script = "<script>triggerSpecificAnchorClick('" + "EditAnchor" + "');</script>";
             XLookupReportingDB db = new Models.XLookupReportingDB();
-            var userRowRemove = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+            var userRowRemove = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
             if (userRowRemove.StaffImg != null)
             {
                 StaffController.RemoveStaffImg(Context.User.Identity.Name);
                 XLookupReportingDB dbstaffpic = new XLookupReportingDB();
-                var userRow = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                var userRow = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                 if (userRow.StaffImg != null)
                 {
                     byte[] imageData = userRow.StaffImg;
@@ -316,7 +316,7 @@ namespace XLookupReportSystem.Admin
 
                         XLookupReportingDB db2 = new XLookupReportingDB();
 
-                        var userRow2 = db2.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                        var userRow2 = db2.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                         if (userRow2.StaffImg != null)
                         {
                             byte[] imageData = userRow2.StaffImg;

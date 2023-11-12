@@ -47,7 +47,7 @@ namespace XLookupReportSystem.Admin
                 }
 
                 XLookupReportingDB db = new XLookupReportingDB();
-                username.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                username.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
 
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var role = manager.GetRoles(db.Users.SingleOrDefault(c => c.Email == Context.User.Identity.Name).User_ID);
@@ -55,28 +55,28 @@ namespace XLookupReportSystem.Admin
                 {
                     usertype.Text = roleUser;
                 }
-                var userRow = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                var userRow = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                 if (userRow.StaffImg != null)
                 {
                     byte[] imageData = userRow.StaffImg;
                     string img = Convert.ToBase64String(imageData, 0, imageData.Length);
                     DashboardImg.ImageUrl = "data:image/png;base64," + img;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname != null)
                 {
-                    lbFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Firstname;
+                    lbFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname != null)
                 {
-                    lbSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Surname;
+                    lbSurname.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus != null)
                 {
-                    lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).Campus;
+                    lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus;
                 }
-                if (db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).EmailAdress != null)
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).EmailAddress != null)
                 {
-                    LbEmailAddress.Text = db.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name).EmailAdress;
+                    LbEmailAddress.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).EmailAddress;
                 }
                 var userid = UserController.getUserID(Context.User.Identity.Name);
                 var Projectlist = ProjectController.GetProjects(userid);

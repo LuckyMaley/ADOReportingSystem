@@ -27,7 +27,11 @@
                                             </p>
                                         </asp:PlaceHolder>
                                         
-                                            
+                                            <div class="col-12 mb-3">
+                                                    <span class="form-label">Project Name:</span> <asp:Label runat="server" AssociatedControlID="" ID="ProjectNamelb" CssClass="form-label"></asp:Label>
+                                                        
+                                                   &nbsp;
+                                            </div>
                                             <div class="col-12">
                                                     <asp:Label runat="server" AssociatedControlID="UploadRegister" CssClass="form-label">Upload Register</asp:Label>
                                                         <asp:FileUpload ID="UploadRegister" runat="server" CssClass="form-control"  />

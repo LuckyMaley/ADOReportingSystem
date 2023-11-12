@@ -32,6 +32,7 @@ namespace XLookupReportSystem.Admin
             riskEndlbl1 = Create.riskEndlbl;
             riskbeglb.Text = riskBeglbl1;
             riskendlb.Text = riskEndlbl1;
+            ProjectNamelb.Text = projectname1;
         }
 
         protected void Createbtn_Click(object sender, EventArgs e)

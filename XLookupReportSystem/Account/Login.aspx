@@ -90,9 +90,9 @@
                                                             <label class="form-check-label" for="RememberMe">Remember me?</label>
                                                         </div>         
                                                     </div>
-                                                    <div class="col-auto d-flex align-items-center">
-                                                        <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" ViewStateMode="Disabled">Forgot your password?</asp:HyperLink>
-                                                    </div>
+                                                    <%--<div class="col-auto d-flex align-items-center">
+                                                        <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" >Forgot your password?</asp:HyperLink>
+                                                    </div>--%>
                                                 </div>
                                                  
                                             </div>

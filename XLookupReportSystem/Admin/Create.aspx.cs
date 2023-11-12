@@ -63,7 +63,7 @@ namespace XLookupReportSystem.Admin
                     riskendlbl = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + SelectYearCBTxt.Text + " Exams";
                 }
                 XLookupReportingDB dbstaffpic = new XLookupReportingDB();
-                var userRow = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAdress == Context.User.Identity.Name);
+                var userRow = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                 if (userRow.Campus != null)
                 {
                     for(int i= 0; i < CampusCBTxt.Items.Count; i++)

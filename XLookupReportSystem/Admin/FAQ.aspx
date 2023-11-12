@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Frequently Asked Questions</h1>
+            
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="DashBoard.aspx">Home</a></li>
@@ -12,6 +12,7 @@
                     <li class="breadcrumb-item active">Frequently Asked Questions</li>
                 </ol>
             </nav>
+            <h1>Frequently Asked Questions</h1>
         </div>
         <section class="section faq">
             <div class="row">

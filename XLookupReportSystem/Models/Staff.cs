@@ -23,7 +23,7 @@ namespace XLookupReportSystem.Models
         public string StaffType { get; set; }
 
         [StringLength(50)]
-        public string EmailAdress { get; set; }
+        public string EmailAddress { get; set; }
 
         [Column(TypeName = "text")]
         public string Campus { get; set; }
