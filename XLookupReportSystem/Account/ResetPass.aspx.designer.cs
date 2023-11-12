@@ -7,19 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace XLookupReportSystem.Admin {
+namespace XLookupReportSystem.Account {
     
     
-    public partial class EditUser {
+    public partial class ResetPass {
         
         /// <summary>
-        /// Deletebtn control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Deletebtn;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// ErrorMessage control.
@@ -28,96 +46,60 @@ namespace XLookupReportSystem.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrorMessage;
+        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
         
         /// <summary>
-        /// TxtFirstName control.
+        /// FailureText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtFirstName;
+        protected global::System.Web.UI.WebControls.Literal FailureText;
         
         /// <summary>
-        /// txtSurname control.
+        /// Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSurname;
+        protected global::System.Web.UI.WebControls.TextBox Email;
         
         /// <summary>
-        /// CampusCBTxt control.
+        /// Password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CampusCBTxt;
+        protected global::System.Web.UI.WebControls.TextBox Password;
         
         /// <summary>
-        /// txtEmail control.
+        /// ConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
         
         /// <summary>
-        /// RoleList control.
+        /// Loginbtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList RoleList;
+        protected global::System.Web.UI.WebControls.Button Loginbtn;
         
         /// <summary>
-        /// btnEditProfile control.
+        /// hideSpinnerFlag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditProfile;
-        
-        /// <summary>
-        /// ErrorMessagePass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrorMessagePass;
-        
-        /// <summary>
-        /// txtNewPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewPassword;
-        
-        /// <summary>
-        /// txtRenewPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRenewPassword;
-        
-        /// <summary>
-        /// ProfileChangePassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ProfileChangePassword;
+        protected global::System.Web.UI.WebControls.HiddenField hideSpinnerFlag;
     }
 }

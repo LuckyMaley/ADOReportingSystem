@@ -10,7 +10,7 @@
 namespace XLookupReportSystem.Account {
     
     
-    public partial class Login {
+    public partial class ForgotPassword1 {
         
         /// <summary>
         /// form1 control.
@@ -40,6 +40,15 @@ namespace XLookupReportSystem.Account {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// loginForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder loginForm;
+        
+        /// <summary>
         /// ErrorMessage control.
         /// </summary>
         /// <remarks>
@@ -67,57 +76,12 @@ namespace XLookupReportSystem.Account {
         protected global::System.Web.UI.WebControls.TextBox Email;
         
         /// <summary>
-        /// Password control.
+        /// DisplayEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
-        
-        /// <summary>
-        /// RememberMe control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox RememberMe;
-        
-        /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-        
-        /// <summary>
-        /// Loginbtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Loginbtn;
-        
-        /// <summary>
-        /// hideSpinnerFlag control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hideSpinnerFlag;
-        
-        /// <summary>
-        /// RegisterHyperLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink RegisterHyperLink;
+        protected global::System.Web.UI.WebControls.PlaceHolder DisplayEmail;
     }
 }

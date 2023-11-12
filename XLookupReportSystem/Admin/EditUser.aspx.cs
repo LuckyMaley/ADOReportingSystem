@@ -137,9 +137,12 @@ namespace XLookupReportSystem.Admin
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "SpecificAnchorClickScript", script);
                     return;
                 }
-                var result = manager.ChangePassword(user.Id, txtCurrentPassword.Text, txtNewPassword.Text);
+                
+                var result = manager.RemovePassword(user.Id);
+                    
                 if (result.Succeeded)
                 {
+                    manager.AddPassword(user.Id, txtNewPassword.Text);
                     UserController.UpdateUserPassword(dbusers.Users.SingleOrDefault(c => c.Staff_ID == staffid).Email, txtNewPassword.Text);
                     ErrorMessagePass.InnerText = "Password Changed Successfully";
                     ErrorMessagePass.Visible = true;

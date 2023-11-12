@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Login" Language="C#" AutoEventWireup="true" EnableViewState="true" CodeBehind="Login.aspx.cs" Inherits="XLookupReportSystem.Account.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResetPass.aspx.cs" Inherits="XLookupReportSystem.Account.ResetPass" %>
 
 <!DOCTYPE html>
 
@@ -41,9 +41,7 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-    <Triggers>
-        <asp:PostBackTrigger ControlID="Loginbtn" />
-    </Triggers>
+    
     <ContentTemplate>
         <main>
             <div class="container">
@@ -57,14 +55,15 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div class="pt-4 pb-2">
-                                            <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                            <p class="text-center small">Enter your username &amp; password to login</p>
+                                            <h5 class="card-title text-center pb-0 fs-4">Reset your password</h5>
+                                            <p class="text-center small">Enter your username &amp; new password</p>
                                         </div>
-                                        <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                                        <asp:PlaceHolder runat="server" ID="ErrorMessage" >
                                             <p class="text-danger">
                                                 <asp:Literal runat="server" ID="FailureText" />
                                             </p>
                                         </asp:PlaceHolder>
+                                        <asp:ValidationSummary runat="server" CssClass="text-danger" />
                                         <div class="row g-3 needs-validation" novalidate="">
                                             <div class="col-12">
                                                     <asp:Label runat="server" AssociatedControlID="Email" CssClass="form-label">Email</asp:Label>
@@ -82,22 +81,16 @@
                                                     <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="The password field is required." />--%><div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-12">
-                                                
-                                                    <div class=" row py-2 flex-wrap">
-                                                    <div class="col-auto me-auto">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" runat="server" type="checkbox" name="remember" value="true" id="RememberMe" />
-                                                            <label class="form-check-label" for="RememberMe">Remember me?</label>
-                                                        </div>         
-                                                    </div>
-                                                    <div class="col-auto d-flex align-items-center">
-                                                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Forgot your password?</asp:LinkButton>
-                                                    </div>
-                                                </div>
-                                                 
+                                                <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="form-label">Confirm password</asp:Label>
+                                                <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" required=""/>
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                                <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
+                                                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required." />--%>
+                                                <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
+                                                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." />
                                             </div>
                                             <div class="col-12">
-                                                <asp:Button runat="server" ID="Loginbtn" OnClick="LogIn" Text="Log in" CssClass="btn btn-primary w-100 loginbtn" UseSubmitBehavior="true"/>
+                                                <asp:Button runat="server" ID="Loginbtn" OnClick="Reset_Click" Text="Reset Password" CssClass="btn btn-primary w-100 loginbtn" UseSubmitBehavior="true"/>
                                                 <div class="spinner" id="loadingSpinner"></div>
                                                     <asp:HiddenField ID="hideSpinnerFlag" runat="server" />
                                                     <script type="text/javascript">
@@ -131,14 +124,12 @@
 
                                                     </script>
                                             </div>
-                                            <div class="col-12">
-                                                <p class="small mb-0">Don't have account? <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Create an account</asp:HyperLink>
-                                                </p>
-                                            </div>
+                                            
                                         </div>
                                     </div>
+                                   
                                 </div>
-                                <div class="credits">Designed by <a href="#">TechMan Solutions</a>.</div>
+                                 <div class="credits align-content-center">Designed by <a href="#">TechMan Solutions</a>.</div>
                             </div>
                         </div>
                     </div>

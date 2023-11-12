@@ -89,6 +89,12 @@ namespace XLookupReportSystem
             return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
         }
 
+        public static string GetResetPassRedirectUrl(string code, HttpRequest request)
+        {
+            var absoluteUri = "/Account/ResetPass?" + CodeKey + "=" + HttpUtility.UrlEncode(code);
+            return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
+        }
+
         public static string GetUserConfirmationRedirectUrl(string code, string userId, HttpRequest request)
         {
             var absoluteUri = "/Account/Confirm?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey + "=" + HttpUtility.UrlEncode(userId);
