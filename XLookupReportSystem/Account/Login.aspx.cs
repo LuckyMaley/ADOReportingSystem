@@ -21,6 +21,12 @@ namespace XLookupReportSystem.Account
             if (!String.IsNullOrEmpty(returnUrl))
             {
                 RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
+
+            }
+            XLookupReportingDB db = new XLookupReportingDB();
+            if (db.Users.Count() == 0)
+            {
+                StaffController.DefaultStaff(Context.GetOwinContext().GetUserManager<ApplicationUserManager>());
             }
         }
 

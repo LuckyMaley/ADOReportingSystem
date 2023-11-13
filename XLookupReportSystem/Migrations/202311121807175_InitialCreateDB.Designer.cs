@@ -7,13 +7,13 @@ namespace XLookupReportSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate9 : IMigrationMetadata
+    public sealed partial class InitialCreateDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate9));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreateDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202311091149265_InitialCreate9"; }
+            get { return "202311121807175_InitialCreateDB"; }
         }
         
         string IMigrationMetadata.Source

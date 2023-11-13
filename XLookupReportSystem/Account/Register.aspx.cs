@@ -15,7 +15,11 @@ namespace XLookupReportSystem.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            XLookupReportingDB db = new XLookupReportingDB();
+            if (db.Users.Count() == 0)
+            {
+                StaffController.DefaultStaff(Context.GetOwinContext().GetUserManager<ApplicationUserManager>());
+            }
         }
 
         protected void CreateUser_Click(object sender, EventArgs e)

@@ -233,6 +233,7 @@
     <Content Include="Admin\DashBoard.aspx" />
     <Content Include="Admin\DownloadOverallProject.aspx" />
     <Content Include="Admin\EditUser.aspx" />
+    <Content Include="Admin\Error.aspx" />
     <Content Include="Admin\Error404.aspx" />
     <Content Include="Admin\FAQ.aspx" />
     <Content Include="Admin\Profile.aspx" />
@@ -408,6 +409,10 @@
     <Content Include="Assets\vendor\remixicon\remixicon.woff" />
     <Content Include="Assets\vendor\remixicon\remixicon.woff2" />
     <Content Include="Controllers\ExportHandler.ashx" />
+    <Content Include="Admin\Admin.Mobile.Master" />
+    <Content Include="Admin\Components\Components.Mobile.Master" />
+    <None Include="Properties\PublishProfiles\ADOReportingSystem - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ADOReportingSystem - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Migrations\Adding Migrations.txt" />
     <Content Include="Scripts\bootstrap.js" />
@@ -611,6 +616,13 @@
     </Compile>
     <Compile Include="Admin\Components\Accordion.aspx.designer.cs">
       <DependentUpon>Accordion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Components\Components.Mobile.Master.cs">
+      <DependentUpon>Components.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Components\Components.Mobile.Master.designer.cs">
+      <DependentUpon>Components.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Admin\Components\Alerts.aspx.cs">
       <DependentUpon>Alerts.aspx</DependentUpon>
@@ -836,6 +848,13 @@
     <Compile Include="Admin\EditUser.aspx.designer.cs">
       <DependentUpon>EditUser.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Error404.aspx.cs">
       <DependentUpon>Error404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -870,6 +889,13 @@
     </Compile>
     <Compile Include="Admin\ProjectView.aspx.designer.cs">
       <DependentUpon>ProjectView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Admin.Mobile.Master.cs">
+      <DependentUpon>Admin.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Admin.Mobile.Master.designer.cs">
+      <DependentUpon>Admin.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Admin\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
@@ -926,65 +952,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202308241714294_InitialCreate.cs" />
-    <Compile Include="Migrations\202308241714294_InitialCreate.Designer.cs">
-      <DependentUpon>202308241714294_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308291147502_InitialCreate1.cs" />
-    <Compile Include="Migrations\202308291147502_InitialCreate1.Designer.cs">
-      <DependentUpon>202308291147502_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308291211049_InitialCreate2.cs" />
-    <Compile Include="Migrations\202308291211049_InitialCreate2.Designer.cs">
-      <DependentUpon>202308291211049_InitialCreate2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308291216001_InitialCreate21.cs" />
-    <Compile Include="Migrations\202308291216001_InitialCreate21.Designer.cs">
-      <DependentUpon>202308291216001_InitialCreate21.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308291223389_InitialCreate22.cs" />
-    <Compile Include="Migrations\202308291223389_InitialCreate22.Designer.cs">
-      <DependentUpon>202308291223389_InitialCreate22.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308291255336_InitialCreate23.cs" />
-    <Compile Include="Migrations\202308291255336_InitialCreate23.Designer.cs">
-      <DependentUpon>202308291255336_InitialCreate23.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308291436217_InitialCreate24.cs" />
-    <Compile Include="Migrations\202308291436217_InitialCreate24.Designer.cs">
-      <DependentUpon>202308291436217_InitialCreate24.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308301333400_InitialCreate3.cs" />
-    <Compile Include="Migrations\202308301333400_InitialCreate3.Designer.cs">
-      <DependentUpon>202308301333400_InitialCreate3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308301339248_InitialCreate4.cs" />
-    <Compile Include="Migrations\202308301339248_InitialCreate4.Designer.cs">
-      <DependentUpon>202308301339248_InitialCreate4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308301938534_InitialCreate5.cs" />
-    <Compile Include="Migrations\202308301938534_InitialCreate5.Designer.cs">
-      <DependentUpon>202308301938534_InitialCreate5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308302252472_InitialCreate6.cs" />
-    <Compile Include="Migrations\202308302252472_InitialCreate6.Designer.cs">
-      <DependentUpon>202308302252472_InitialCreate6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202309011651109_InitialCreate7.cs" />
-    <Compile Include="Migrations\202309011651109_InitialCreate7.Designer.cs">
-      <DependentUpon>202309011651109_InitialCreate7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202309251732344_InitialCreate8.cs" />
-    <Compile Include="Migrations\202309251732344_InitialCreate8.Designer.cs">
-      <DependentUpon>202309251732344_InitialCreate8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311091149265_InitialCreate9.cs" />
-    <Compile Include="Migrations\202311091149265_InitialCreate9.Designer.cs">
-      <DependentUpon>202311091149265_InitialCreate9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311121212185_InitialCreate10.cs" />
-    <Compile Include="Migrations\202311121212185_InitialCreate10.Designer.cs">
-      <DependentUpon>202311121212185_InitialCreate10.cs</DependentUpon>
+    <Compile Include="Migrations\202311121807175_InitialCreateDB.cs" />
+    <Compile Include="Migrations\202311121807175_InitialCreateDB.Designer.cs">
+      <DependentUpon>202311121807175_InitialCreateDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1032,50 +1002,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202308241714294_InitialCreate.resx">
-      <DependentUpon>202308241714294_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308291147502_InitialCreate1.resx">
-      <DependentUpon>202308291147502_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308291211049_InitialCreate2.resx">
-      <DependentUpon>202308291211049_InitialCreate2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308291216001_InitialCreate21.resx">
-      <DependentUpon>202308291216001_InitialCreate21.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308291223389_InitialCreate22.resx">
-      <DependentUpon>202308291223389_InitialCreate22.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308291255336_InitialCreate23.resx">
-      <DependentUpon>202308291255336_InitialCreate23.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308291436217_InitialCreate24.resx">
-      <DependentUpon>202308291436217_InitialCreate24.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308301333400_InitialCreate3.resx">
-      <DependentUpon>202308301333400_InitialCreate3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308301339248_InitialCreate4.resx">
-      <DependentUpon>202308301339248_InitialCreate4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308301938534_InitialCreate5.resx">
-      <DependentUpon>202308301938534_InitialCreate5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308302252472_InitialCreate6.resx">
-      <DependentUpon>202308302252472_InitialCreate6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202309011651109_InitialCreate7.resx">
-      <DependentUpon>202309011651109_InitialCreate7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202309251732344_InitialCreate8.resx">
-      <DependentUpon>202309251732344_InitialCreate8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311091149265_InitialCreate9.resx">
-      <DependentUpon>202311091149265_InitialCreate9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311121212185_InitialCreate10.resx">
-      <DependentUpon>202311121212185_InitialCreate10.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311121807175_InitialCreateDB.resx">
+      <DependentUpon>202311121807175_InitialCreateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

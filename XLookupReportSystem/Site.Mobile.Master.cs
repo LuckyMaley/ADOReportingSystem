@@ -11,7 +11,11 @@ namespace XLookupReportSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.Browser.IsMobileDevice)
+            {
+                // Redirect to the desktop version
+                Response.Redirect("~/Admin.Mobile.master");
+            }
         }
     }
 }

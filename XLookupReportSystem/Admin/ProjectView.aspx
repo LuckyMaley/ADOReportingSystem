@@ -43,7 +43,39 @@
                                      
                                               <button type="button" class="btn btn-secondary" id="closeModal"  data-bs-dismiss="modal">Close</button>
                                                 <div class="twoToneCenter">
-                                              <asp:Button ID="Deletebtn" CssClass="btn btn-danger" runat="server" Text="Delete" OnClick="Deletebtn_Click"   />
+                                              <asp:Button ID="Deletebtn" CssClass="btn btn-danger deletebtn" runat="server" Text="Delete" OnClick="Deletebtn_Click"   />
+                                                    <div class="spinner" id="loadingSpinner"></div>
+                                                    <asp:HiddenField ID="hideSpinnerFlag" runat="server" />
+                                                    <script type="text/javascript">
+                                                        save_btn = document.querySelector(".deletebtn");
+                                                        save_btn.onclick = function showLoadingSpinner() {
+                                                            
+                                                            console.log("showLoadingSpinner called");
+                                                                // Show the loading spinner
+                                                                //document.getElementById("loadingSpinner").style.display = "block";
+
+                                                                // Optionally, disable the button to prevent multiple clicks
+                                                                save_btn.disabled = true;
+                                                                save_btn.value = "Please wait...";
+                                                                 __doPostBack('<%= Deletebtn.UniqueID %>', '');
+                                                            }
+
+                                                            function hideLoadingSpinner() {
+                                                                var hideSpinnerFlag = document.getElementById("hideSpinnerFlag").value;
+                                                                //console.log("hideLoadingSpinner called");
+                                                                if (hideSpinnerFlag === "true") {
+                                                                    // Hide the loading spinner
+                                                                    document.getElementById("loadingSpinner").style.display = "none";
+                                                                }
+
+                                                                // Re-enable the button
+                                                                save_btn.disabled = false;
+
+                                                                return true;
+                                                            }
+
+
+                                                    </script>
                                                 </div>
                                             </div>
                                 </div>

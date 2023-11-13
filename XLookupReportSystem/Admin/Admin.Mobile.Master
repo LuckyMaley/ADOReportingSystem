@@ -1,4 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="XLookupReportSystem.Admin.Admin" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/Admin/Admin.Mobile.Master.cs" Inherits="XLookupReportSystem.Admin.Admin_Mobile" %>
+<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
 
 <!DOCTYPE html>
 
@@ -414,6 +415,7 @@
     <div class="credits">
       Designed by <a href="#">TechMan Solutions</a>.
     </div>
+      <friendlyUrls:ViewSwitcher runat="server" />
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bx bx-up-arrow-alt"></i></a>

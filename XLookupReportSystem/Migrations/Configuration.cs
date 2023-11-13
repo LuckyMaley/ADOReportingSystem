@@ -10,7 +10,6 @@ namespace XLookupReportSystem.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "XLookupReportSystem.Models.XLookupReportingDB";
         }
 
         protected override void Seed(XLookupReportSystem.Models.XLookupReportingDB context)

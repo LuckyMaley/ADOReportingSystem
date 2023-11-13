@@ -104,7 +104,7 @@
                                                         save_btn = document.querySelector(".loginbtn");
                                                         save_btn.onclick = function showLoadingSpinner() {
                                                             
-                                                            console.log("showLoadingSpinner called");
+                                                            //console.log("showLoadingSpinner called");
                                                                 // Show the loading spinner
                                                                 //document.getElementById("loadingSpinner").style.display = "block";
 
