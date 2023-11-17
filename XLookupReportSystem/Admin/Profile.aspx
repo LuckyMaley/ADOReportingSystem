@@ -101,16 +101,16 @@
                         <div class="card-body pt-3">
                             <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link active " id="overviewAnchor"  data-bs-toggle="tab" runat="server" data-bs-target="#profile-overview" aria-selected="true" href="?tab=profile-overview"  role="tab">Overview</a>
+                                    <a class="nav-link active " id="overviewAnchor"  data-bs-toggle="tab" runat="server" data-bs-target="#profile-overview" aria-selected="true"  role="tab">Overview</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link " id="EditAnchor"  data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1" href="?tab=profile-edit"   role="tab">Edit Profile</a>
+                                    <a class="nav-link " id="EditAnchor"  data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1"   role="tab">Edit Profile</a>
                                 </li>
                                 <%--<li class="nav-item" role="presentation">
                                     <button class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#profile-settings" aria-selected="false" tabindex="-1" role="tab">Settings</button>
                                     </li>--%>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link " id="ChangePassAnchor"  data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" href="?tab=profile-change-password"  tabindex="-1" role="tab">Change Password</a>
+                                    <a class="nav-link " id="ChangePassAnchor"  data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" tabindex="-1" role="tab">Change Password</a>
                                 </li>
                             </ul>
                             <div class="tab-content pt-2" style="min-height:400px">
@@ -164,7 +164,7 @@
                                             function updateButtonText() {
                                                 var fileInput = document.getElementById("<%:realFileUpload.ClientID%>");
                                                 var textSpan = document.getElementById("textSpan");
-
+                                                __doPostBack('<%= customButton.UniqueID %>', '');
                                                 if (fileInput.files.length > 0) {
                                                     textSpan.innerText = "File Selected: " + fileInput.files[0].name;
                                                 } else {
@@ -181,13 +181,13 @@
                                                 <asp:Image ID="profileEditImg" ImageUrl="../Assets/img/defaultImg.png" style="height:120px;width:120px;" AlternateText="Profile" runat="server" CssClass="rounded-circle" />
                                                 <div class="pt-2">
                                                     <div class="custom-file-upload-button" style="width: 400px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis; ">
-                                                <button id="customButton" runat="server" class="btn btn-primary btn-sm"><i class="bi bi-upload"></i> Upload Image</button>
+                                                <asp:LinkButton ID="customButton" CssClass="btn btn-primary btn-sm" runat="server" OnClick="customButton_Click"><i class="bx bx-upload"></i> Upload Image</asp:LinkButton>
                                                 <asp:FileUpload runat="server" name="fileInput" ID="realFileUpload" onchange="updateButtonText();" />
                                                         <div></div>
-                                                <span id="textSpan" style="display:flex">No file chosen, yet.</span><%--<i class="bi bi-upload"></i>--%>
+                                                <span id="textSpan" style="display:none">No file chosen, yet.</span><%--<i class="bi bi-upload"></i>--%>
                                             </div>
                                                     <br />
-                                                    <asp:LinkButton ID="LinkButtonRemoveImg" CssClass="btn btn-danger btn-sm" title="Remove my profile image" runat="server" OnClick="LinkButtonRemoveImg_Click"><i class="bi bi-trash"></i> Remove Image</asp:LinkButton>
+                                                    <asp:LinkButton ID="LinkButtonRemoveImg" CssClass="btn btn-danger btn-sm" title="Remove my profile image" runat="server" OnClick="LinkButtonRemoveImg_Click"><i class="bx bx-trash"></i> Remove Image</asp:LinkButton>
                                                     </div>
                                             </div>
                                         </div>

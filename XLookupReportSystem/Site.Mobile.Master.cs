@@ -13,8 +13,8 @@ namespace XLookupReportSystem
         {
             if (Request.Browser.IsMobileDevice)
             {
-                // Redirect to the desktop version
-                Response.Redirect("~/Admin.Mobile.master");
+                // Redirect to the Login page
+                Response.Redirect("~/Account/Login");
             }
         }
     }

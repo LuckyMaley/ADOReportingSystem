@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="XLookupReportSystem.Account.ForgotPassword1" %>
+﻿<%@ Page Title="Forgot Password" Language="C#" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="XLookupReportSystem.Account.ForgotPassword1" %>
 
 <!DOCTYPE html>
 
@@ -78,7 +78,37 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div>
-                                                        <asp:Button runat="server" OnClick="Forgot" Text="Email Link" CssClass="btn btn-primary w-100" />
+                                                        <asp:Button runat="server" ID="ForgotBtn" OnClick="Forgot" Text="Email Link" CssClass="btn btn-primary w-100 forgotbtn" />
+                                                        <%--<script type="text/javascript">
+                                                        save_btn = document.querySelector(".forgotbtn");
+                                                        save_btn.onclick = function showLoadingSpinner() {
+                                                            
+                                                            //console.log("showLoadingSpinner called");
+                                                                // Show the loading spinner
+                                                                //document.getElementById("loadingSpinner").style.display = "block";
+
+                                                                // Optionally, disable the button to prevent multiple clicks
+                                                                save_btn.disabled = true;
+                                                                save_btn.value = "Please wait...";
+                                                                 __doPostBack('<%= ForgotBtn.UniqueID %>', '');
+                                                            }
+
+                                                            function hideLoadingSpinner() {
+                                                                var hideSpinnerFlag = document.getElementById("hideSpinnerFlag").value;
+                                                                console.log("hideLoadingSpinner called");
+                                                                if (hideSpinnerFlag === "true") {
+                                                                    // Hide the loading spinner
+                                                                    document.getElementById("loadingSpinner").style.display = "none";
+                                                                }
+
+                                                                // Re-enable the button
+                                                                save_btn.disabled = false;
+
+                                                                return true;
+                                                            }
+
+
+                                                    </script>--%>
                                                     </div>
                                                 </div>
                                             </div>
@@ -91,6 +121,7 @@
                                     </div>
                             </div>
                                 </div>
+                                <a href="Login.aspx">Back to Login</a>
                                 <div class="credits">Designed by <a href="#">TechMan Solutions</a>.</div>
                         </div>
                         

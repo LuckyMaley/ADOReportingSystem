@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Confirmation.aspx.cs" Inherits="XLookupReportSystem.Account.Confirmation" %>
+﻿<%@ Page Title="Confirmation" Language="C#" AutoEventWireup="true" CodeBehind="Confirmation.aspx.cs" Inherits="XLookupReportSystem.Account.Confirmation" %>
 
 <!DOCTYPE html>
 

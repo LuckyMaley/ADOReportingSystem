@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/Admin/Components/Components.Mobile.Master.cs" Inherits="XLookupReportSystem..Admin.Components.Components_Mobile" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/Admin/Components/Components.Mobile.Master.cs" Inherits="XLookupReportSystem.Admin.Components.Components_Mobile" %>
 <%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
 <!DOCTYPE html>
 

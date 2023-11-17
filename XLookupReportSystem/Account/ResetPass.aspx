@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResetPass.aspx.cs" Inherits="XLookupReportSystem.Account.ResetPass" %>
+﻿<%@ Page Title="Reset Password"  Language="C#" AutoEventWireup="true" CodeBehind="ResetPass.aspx.cs" Inherits="XLookupReportSystem.Account.ResetPass" %>
 
 <!DOCTYPE html>
 

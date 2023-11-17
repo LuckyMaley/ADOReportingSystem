@@ -293,12 +293,85 @@ namespace XLookupReportSystem.Admin
                 StaffController.RemoveStaffImg(Context.User.Identity.Name);
                 XLookupReportingDB dbstaffpic = new XLookupReportingDB();
                 var userRow = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
+                if (userRow.StaffImg == null)
+                {
+                   // byte[] imageData = userRow.StaffImg;
+                    //string img = Convert.ToBase64String(imageData, 0, imageData.Length);
+                    ProfileImg.ImageUrl = "~/Assets/img/defaultImg.png";
+                    profileEditImg.ImageUrl = "~/Assets/img/defaultImg.png";
+                }
+
+                // Access the Master Page
+                MasterPage master = this.Master as MasterPage;
+
+
+                if (master != null)
+                {
+                    // Find the control within the Master Page
+                    Image myControl = Master.FindControl("profileMasterImg") as Image;
+
+                    if (myControl != null)
+                    {
+                        // Perform actions with the found control
+
+                        XLookupReportingDB db2 = new XLookupReportingDB();
+
+                        var userRow2 = db2.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
+                        if (userRow2.StaffImg == null)
+                        {
+                         //   byte[] imageData = userRow2.StaffImg;
+                           // string img = Convert.ToBase64String(imageData, 0, imageData.Length);
+                            myControl.ImageUrl = "~/Assets/img/defaultImg.png";
+                        }
+
+                    }
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "SpecificAnchorClickScript", script);
+                    //Response.Redirect("~/Admin/Profile.aspx");
+                    
+                    
+
+                }
+                else
+                {
+                    ErrorMessage.InnerText = "Nothing to remove";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "SpecificAnchorClickScript", script);
+                }
+
+               
+            }
+        }
+
+        protected void customButton_Click(object sender, EventArgs e)
+        {
+            if (realFileUpload.HasFile)
+            {
+                int length = realFileUpload.PostedFile.ContentLength;
+                byte[] pic = new byte[length];
+                realFileUpload.PostedFile.InputStream.Read(pic, 0, length);
+                FileInfo fi = new FileInfo(realFileUpload.PostedFile.FileName);
+                StaffController.UpdateStaffImg(Context.User.Identity.Name, pic);
+
+                // Get File Name  
+                string justFileName = fi.Name;
+                // Get file extension   
+                string extn = fi.Extension;
+                // File Exists ?  
+                bool exists = fi.Exists;
+                if (fi.Exists)
+                {
+                    // Get file size  
+                    long size = fi.Length;
+                }
+
+                XLookupReportingDB dbstaffpic = new XLookupReportingDB();
+                var userRow = dbstaffpic.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name);
                 if (userRow.StaffImg != null)
                 {
                     byte[] imageData = userRow.StaffImg;
                     string img = Convert.ToBase64String(imageData, 0, imageData.Length);
-                    ProfileImg.ImageUrl = "~/Assets/img/defaultImg.png";
-                    profileEditImg.ImageUrl = "~/Assets/img/defaultImg.png";
+                    ProfileImg.ImageUrl = "data:image/png;base64," + img;
+                    profileEditImg.ImageUrl = "data:image/png;base64," + img;
+                    LinkButtonRemoveImg.Visible = true;
                 }
 
                 // Access the Master Page
@@ -321,24 +394,15 @@ namespace XLookupReportSystem.Admin
                         {
                             byte[] imageData = userRow2.StaffImg;
                             string img = Convert.ToBase64String(imageData, 0, imageData.Length);
-                            myControl.ImageUrl = "~/Assets/img/defaultImg.png";
+                            myControl.ImageUrl = "data:image/png;base64," + img;
                         }
 
                     }
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "SpecificAnchorClickScript", script);
-                    Response.Redirect("~/Admin/Profile.aspx");
-                    
-                    
-
                 }
-                else
-                {
-                    ErrorMessage.InnerText = "Nothing to remove";
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "SpecificAnchorClickScript", script);
-                }
-
-               
             }
+            string script = "<script>triggerSpecificAnchorClick('" + "EditAnchor" + "');</script>";
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "SpecificAnchorClickScript", script);
+
         }
     }
 }

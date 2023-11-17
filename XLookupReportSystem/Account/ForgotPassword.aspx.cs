@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+//using Outlook = Microsoft.Office.Interop.Outlook;
+using Outlook = NetOffice.OutlookApi;
 using XLookupReportSystem.Controllers;
 using XLookupReportSystem.Models;
 
@@ -21,6 +23,7 @@ namespace XLookupReportSystem.Account
         {
             if (IsValid)
             {
+               
                 // Validate the user's email address
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 ApplicationUser user = manager.FindByName(Email.Text);
@@ -34,7 +37,8 @@ namespace XLookupReportSystem.Account
                 // Send email with the code and the redirect to reset password page
                 string code = manager.GeneratePasswordResetToken(user.Id);
                 string callbackUrl = IdentityHelper.GetResetPassRedirectUrl(code, Request);
-                bool result = EmailController.EmailSendForgot(Email.Text, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+                bool result = EmailController.EmailSendForgot(Email.Text, "Reset Password", "Please reset your password by clicking <a href=\'" + callbackUrl + "\"'here</a>.");
+             
                 if (result == false)
                 {
                     FailureText.Text = "An error occurred";
