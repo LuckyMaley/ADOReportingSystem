@@ -80,6 +80,17 @@ namespace XLookupReportSystem.Admin
         protected void Createbtn_Click(object sender, EventArgs e)
         {
             if (SelectModuleTxt.Text !="") {
+                int year = int.Parse(SelectYearCBTxt.Text);
+                if (SemesterCBTxt.SelectedIndex == 0)
+                {
+                    riskbeglbl = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + (year - 1).ToString() + " Exams";
+                    riskendlbl = "Upload Risk Codes for May-Jun " + SemesterCBTxt.Items[0].Text + " of " + SelectYearCBTxt.Text + " Exams";
+                }
+                else
+                {
+                    riskbeglbl = "Upload Risk Codes for May-Jun " + SemesterCBTxt.Items[0].Text + " of " + SelectYearCBTxt.Text + " Exams";
+                    riskendlbl = "Upload Risk Codes for Nov-Dec " + SemesterCBTxt.Items[1].Text + " of " + SelectYearCBTxt.Text + " Exams";
+                }
                 userName = Context.User.Identity.Name;
                 projectname = ProjectName.Text;
                 projectsemester = SemesterCBTxt.Text;

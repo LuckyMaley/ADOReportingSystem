@@ -299,6 +299,7 @@ namespace XLookupReportSystem.Admin
                     //string img = Convert.ToBase64String(imageData, 0, imageData.Length);
                     ProfileImg.ImageUrl = "~/Assets/img/defaultImg.png";
                     profileEditImg.ImageUrl = "~/Assets/img/defaultImg.png";
+                    LinkButtonRemoveImg.Visible = false;
                 }
 
                 // Access the Master Page
@@ -338,6 +339,11 @@ namespace XLookupReportSystem.Admin
                 }
 
                
+            }
+            else
+            {
+                ErrorMessage.InnerText = "Nothing to remove";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "SpecificAnchorClickScript", script);
             }
         }
 

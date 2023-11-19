@@ -49,7 +49,7 @@
                                             
                                             <div class="col-12">
                                                     <asp:Label runat="server" AssociatedControlID="SemesterCBTxt" CssClass="form-label">Select Semester</asp:Label>
-                                                        <asp:DropDownList ID="SemesterCBTxt" CssClass="form-select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="SemesterCBTxt_SelectedIndexChanged">
+                                                        <asp:DropDownList ID="SemesterCBTxt" CssClass="form-select" runat="server" AutoPostBack="false" OnSelectedIndexChanged="SemesterCBTxt_SelectedIndexChanged">
                                                             <asp:ListItem Value="1">Semester 1</asp:ListItem>
                                                             <asp:ListItem Value="2">Semester 2</asp:ListItem>
                                                     </asp:DropDownList>
@@ -60,7 +60,7 @@
 
                                             <div class="col-12">
                                                 <asp:Label runat="server" AssociatedControlID="CampusCBTxt" CssClass="form-label">Select Campus</asp:Label>
-                                                <asp:DropDownList ID="CampusCBTxt" CssClass="form-control" runat="server">
+                                                <asp:DropDownList ID="CampusCBTxt" CssClass="form-control" AutoPostBack="false" runat="server">
                                                     <asp:ListItem>Westville</asp:ListItem>
                                                     <asp:ListItem>Pietermaritzburg</asp:ListItem>
                                                     <asp:ListItem>Howard</asp:ListItem>
@@ -70,8 +70,8 @@
                                             </div>
 
                                             <div class="col-12">
-                                                    <asp:Label runat="server" AssociatedControlID="SelectYearCBTxt" AutoPostBack="true" CssClass="form-label">Select Year</asp:Label>
-                                                        <asp:DropDownList ID="SelectYearCBTxt" CssClass="form-select" runat="server"  OnSelectedIndexChanged="SelectYearCBTxt_SelectedIndexChanged">
+                                                    <asp:Label runat="server" AssociatedControlID="SelectYearCBTxt"  CssClass="form-label">Select Year</asp:Label>
+                                                        <asp:DropDownList ID="SelectYearCBTxt" CssClass="form-select" AutoPostBack="False" runat="server"  OnSelectedIndexChanged="SelectYearCBTxt_SelectedIndexChanged">
                                                             <asp:ListItem>2021</asp:ListItem>
                                                             <asp:ListItem>2022</asp:ListItem>
                                                             <asp:ListItem Selected="True">2023</asp:ListItem>

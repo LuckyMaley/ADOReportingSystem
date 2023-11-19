@@ -17,5 +17,19 @@ namespace XLookupReportSystem
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+
+            if (exception is HttpRequestValidationException)
+            {
+                // Handle the exception as needed
+                Response.Redirect("~/Admin/NoInternetConnection.aspx");
+            }
+
+            // Handle other exceptions or let them propagate
+        }
+
     }
 }

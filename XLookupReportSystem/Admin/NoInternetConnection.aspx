@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Error" Language="C#" AutoEventWireup="true" CodeBehind="Error.aspx.cs" Inherits="XLookupReportSystem.Admin.Error" %>
+﻿<%@ Page Title="No Internet Connection" Language="C#" AutoEventWireup="true" CodeBehind="NoInternetConnection.aspx.cs" Inherits="XLookupReportSystem.Admin.NoInternetConnection" %>
 
 <!DOCTYPE html>
 
@@ -41,7 +41,7 @@
             <div class="container">
                 <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
                     <h1>Error</h1>
-                    <h2>An error has occured either from your side or the server side. Please try again</h2>
+                    <h2>Please check that you are connected to the internet</h2>
                     <a class="btn" href="../Account/Login.aspx">Back to home</a>
                     <img src="../Assets/img/not-found.svg" class="img-fluid py-5" alt="Error Occured" /><div class="credits">Designed by <a href="#">TechMan Solutions</a>.</div>
                 </section>
@@ -63,4 +63,5 @@
     </form>
 </body>
 </html>
+
 
