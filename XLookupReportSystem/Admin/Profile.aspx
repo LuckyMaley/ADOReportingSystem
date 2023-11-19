@@ -101,16 +101,16 @@
                         <div class="card-body pt-3">
                             <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link active " id="overviewAnchor"  data-bs-toggle="tab" runat="server" data-bs-target="#profile-overview" aria-selected="true"  role="tab">Overview</a>
+                                    <button class="nav-link active " id="overviewAnchor"  data-bs-toggle="tab" runat="server" data-bs-target="#profile-overview" aria-selected="true"  role="tab">Overview</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link " id="EditAnchor"  data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1"   role="tab">Edit Profile</a>
+                                    <button class="nav-link " id="EditAnchor"  data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1"   role="tab">Edit Profile</button>
                                 </li>
                                 <%--<li class="nav-item" role="presentation">
                                     <button class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#profile-settings" aria-selected="false" tabindex="-1" role="tab">Settings</button>
                                     </li>--%>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link " id="ChangePassAnchor"  data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" tabindex="-1" role="tab">Change Password</a>
+                                    <button class="nav-link " id="ChangePassAnchor"  data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" tabindex="-1" role="tab">Change Password</button>
                                 </li>
                             </ul>
                             <div class="tab-content pt-2" style="min-height:400px">
