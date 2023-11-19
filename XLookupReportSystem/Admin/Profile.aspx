@@ -101,16 +101,16 @@
                         <div class="card-body pt-3">
                             <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active " id="overviewAnchor"  data-bs-toggle="tab" runat="server" data-bs-target="#profile-overview" aria-selected="true"  role="tab">Overview</button>
+                                    <a class="nav-link active " id="overviewAnchor"  data-bs-toggle="tab" runat="server" data-bs-target="#profile-overview" aria-selected="true" role="tab">Overview</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link " id="EditAnchor"  data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1"   role="tab">Edit Profile</button>
+                                    <a class="nav-link " id="EditAnchor"  data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1" role="tab">Edit Profile</a>
                                 </li>
                                 <%--<li class="nav-item" role="presentation">
                                     <button class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#profile-settings" aria-selected="false" tabindex="-1" role="tab">Settings</button>
                                     </li>--%>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link " id="ChangePassAnchor"  data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" tabindex="-1" role="tab">Change Password</button>
+                                    <a class="nav-link " id="ChangePassAnchor"  data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" tabindex="-1" role="tab">Change Password</a>
                                 </li>
                             </ul>
                             <div class="tab-content pt-2" style="min-height:400px">
@@ -129,6 +129,10 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Campus</div>
                                         <div class="col-lg-9 col-md-8"><asp:Label ID="lbCampus" runat="server" Text=""></asp:Label></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Discipline</div>
+                                        <div class="col-lg-9 col-md-8"><asp:Label ID="lbDiscipline" runat="server" Text=""></asp:Label></div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Email</div>
@@ -209,6 +213,20 @@
                                                     <asp:ListItem>Westville</asp:ListItem>
                                                     <asp:ListItem>Pietermaritzburg</asp:ListItem>
                                                     <asp:ListItem>Howard</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                         <div class="row mb-3">
+                                            <label for="DisciplineCBTxt" class="col-md-4 col-lg-3 col-form-label">Discipline</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <asp:DropDownList ID="DisciplineCBTxt" name="DisciplineCBTxt" CssClass="form-control" runat="server">
+                                                    <asp:ListItem>IS&T</asp:ListItem>
+                                                    <asp:ListItem>LAW</asp:ListItem>
+                                                    <asp:ListItem>Accounting</asp:ListItem>
+                                                    <asp:ListItem>Finance</asp:ListItem>
+                                                    <asp:ListItem>Economics</asp:ListItem>
+                                                    <asp:ListItem>Management</asp:ListItem>
+                                                    <asp:ListItem>Governance</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>

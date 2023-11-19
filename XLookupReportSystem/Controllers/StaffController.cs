@@ -10,7 +10,7 @@ namespace XLookupReportSystem.Controllers
 {
     public class StaffController
     {
-        public static void AddStaff(string user, string firstName, string lastName, string staffType, string email, string passWord, string campus)
+        public static void AddStaff(string user, string firstName, string lastName, string staffType, string email, string passWord, string campus, string discipline)
         {
             using (var context = new XLookupReportingDB())
             {
@@ -21,6 +21,7 @@ namespace XLookupReportSystem.Controllers
                     Surname = lastName,
                     StaffType = staffType,
                     Campus = campus,
+                    Discipline = discipline,
                     EmailAddress = email,
                     createdDate = DateTime.Now,
                     modifiedDate = DateTime.Now
@@ -31,7 +32,7 @@ namespace XLookupReportSystem.Controllers
             }
         }
 
-        public static string AddNewStaff(string user, string firstName, string lastName, string staffType, string email, string passWord, string campus)
+        public static string AddNewStaff(string user, string firstName, string lastName, string staffType, string email, string passWord, string campus, string discipline)
         {
             using (var context = new XLookupReportingDB())
             {
@@ -41,6 +42,7 @@ namespace XLookupReportSystem.Controllers
                     Firstname = firstName,
                     Surname = lastName,
                     StaffType = staffType,
+                    Discipline = discipline,
                     EmailAddress = email,
                     Campus = campus,
                     createdDate = DateTime.Now,
@@ -71,7 +73,7 @@ namespace XLookupReportSystem.Controllers
                 IdentityResult result = manager.Create(user, userPass);
                 if (result.Succeeded)
                 {
-                    string staffID = StaffController.AddNewStaff(user.Id.ToString(), "Admin", "Owner", usertype, user.Email, userPass, "Westville");
+                    string staffID = StaffController.AddNewStaff(user.Id.ToString(), "Admin", "Owner", usertype, user.Email, userPass, "Westville", "IS&T");
                     UserController.AddUser(user.Id.ToString(), user.Email, userPass, staffID);
                     var result1 = manager.AddToRole(user.Id, usertype);
                     string code = manager.GenerateEmailConfirmationToken(user.Id);
@@ -85,7 +87,7 @@ namespace XLookupReportSystem.Controllers
             }
         }
 
-        public static void UpdateStaffDetails(string user, string firstName, string lastName, string campus)
+        public static void UpdateStaffDetails(string user, string firstName, string lastName, string campus, string discipline)
         {
             XLookupReportingDB db = new Models.XLookupReportingDB();
             var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAddress == user);
@@ -94,12 +96,13 @@ namespace XLookupReportSystem.Controllers
                 member.Firstname = firstName;
                 member.Surname = lastName;
                 member.Campus = campus;
+                member.Discipline = discipline;
                 member.modifiedDate = DateTime.Now;
             }
             db.SaveChanges();
         }
 
-        public static void UpdateStaffDetailsRole(string user, string firstName, string lastName, string campus, string role)
+        public static void UpdateStaffDetailsRole(string user, string firstName, string lastName, string campus, string role, string discipline)
         {
             XLookupReportingDB db = new Models.XLookupReportingDB();
             var dbStaff = db.Staffs.Where(staffmember => staffmember.EmailAddress == user);
@@ -108,6 +111,7 @@ namespace XLookupReportSystem.Controllers
                 member.Firstname = firstName;
                 member.Surname = lastName;
                 member.Campus = campus;
+                member.Discipline = discipline;
                 member.StaffType = role;
                 member.modifiedDate = DateTime.Now;
             }

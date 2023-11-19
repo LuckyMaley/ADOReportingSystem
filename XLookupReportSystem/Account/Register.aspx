@@ -65,10 +65,6 @@
                                                 <asp:TextBox runat="server" ID="Surnametxt" CssClass="form-control" required="" /><div class="invalid-feedback">Please, enter your Surname!</div>
                                             </div>
                                             <div class="col-12">
-                                                <asp:Label runat="server" AssociatedControlID="Email" CssClass="form-label">Email</asp:Label>
-                                                <asp:TextBox runat="server" ID="Email" TextMode="Email" CssClass="form-control" required="" /><div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                                            </div>
-                                            <div class="col-12">
                                                 <asp:Label runat="server" AssociatedControlID="Campus" CssClass="form-label">Campus</asp:Label>
                                                 <asp:DropDownList ID="Campus" CssClass="form-control" runat="server">
                                                     <asp:ListItem>Westville</asp:ListItem>
@@ -76,6 +72,23 @@
                                                     <asp:ListItem>Howard</asp:ListItem>
                                                 </asp:DropDownList><div class="invalid-feedback">Please enter a valid campus!</div>
                                             </div>
+                                            <div class="col-12">
+                                                <asp:Label runat="server" AssociatedControlID="Discipline" CssClass="form-label">Discipline</asp:Label>
+                                                <asp:DropDownList ID="Discipline" CssClass="form-control" runat="server">
+                                                    <asp:ListItem>IS&T</asp:ListItem>
+                                                    <asp:ListItem>LAW</asp:ListItem>
+                                                    <asp:ListItem>Accounting</asp:ListItem>
+                                                    <asp:ListItem>Finance</asp:ListItem>
+                                                    <asp:ListItem>Economics</asp:ListItem>
+                                                    <asp:ListItem>Management</asp:ListItem>
+                                                    <asp:ListItem>Governance</asp:ListItem>
+                                                </asp:DropDownList><div class="invalid-feedback">Please enter a valid campus!</div>
+                                            </div>
+                                            <div class="col-12">
+                                                <asp:Label runat="server" AssociatedControlID="Email" CssClass="form-label">Email</asp:Label>
+                                                <asp:TextBox runat="server" ID="Email" TextMode="Email" CssClass="form-control" required="" /><div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                            </div>
+                                            
                                             <div class="col-12">
                                                 <asp:Label runat="server" AssociatedControlID="Password" CssClass="form-label">Password</asp:Label>
                                                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" required="" />

@@ -63,6 +63,17 @@ namespace XLookupReportSystem.Admin
                     }
                 }
 
+                if (userRow1.Discipline != null)
+                {
+                    for (int i = 0; i < DisciplineCBTxt.Items.Count; i++)
+                    {
+                        if (DisciplineCBTxt.Items[i].Text == userRow1.Discipline)
+                        {
+                            DisciplineCBTxt.SelectedIndex = i;
+                        }
+                    }
+                }
+
                 if (db.Staffs.SingleOrDefault(c => c.Staff_ID == staffid).EmailAddress != null)
                 {
                     txtEmail.Text = db.Staffs.SingleOrDefault(c => c.Staff_ID == staffid).EmailAddress;
@@ -74,7 +85,7 @@ namespace XLookupReportSystem.Admin
         {
             string staffid = Request.QueryString["id"];
             XLookupReportingDB db = new XLookupReportingDB();
-            StaffController.UpdateStaffDetailsRole(db.Users.SingleOrDefault(c => c.Staff_ID == staffid).Email, TxtFirstName.Text, txtSurname.Text, CampusCBTxt.Text, RoleList.Text);
+            StaffController.UpdateStaffDetailsRole(db.Users.SingleOrDefault(c => c.Staff_ID == staffid).Email, TxtFirstName.Text, txtSurname.Text, CampusCBTxt.Text, RoleList.Text,DisciplineCBTxt.Text);
 
             XLookupReportingDB db1 = new XLookupReportingDB();
             string roleUser = db1.Staffs.SingleOrDefault(c => c.Staff_ID == staffid).StaffType;
@@ -106,6 +117,17 @@ namespace XLookupReportSystem.Admin
                     if (CampusCBTxt.Items[i].Text == userRow1.Campus)
                     {
                         CampusCBTxt.SelectedIndex = i;
+                    }
+                }
+            }
+
+            if (userRow1.Discipline != null)
+            {
+                for (int i = 0; i < DisciplineCBTxt.Items.Count; i++)
+                {
+                    if (DisciplineCBTxt.Items[i].Text == userRow1.Discipline)
+                    {
+                        DisciplineCBTxt.SelectedIndex = i;
                     }
                 }
             }

@@ -46,7 +46,7 @@ namespace XLookupReportSystem.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton overviewAnchor;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor overviewAnchor;
         
         /// <summary>
         /// lbFirstName control.
@@ -74,6 +74,15 @@ namespace XLookupReportSystem.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbCampus;
+        
+        /// <summary>
+        /// lbDiscipline control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDiscipline;
         
         /// <summary>
         /// LbEmailAddress control.
@@ -155,6 +164,15 @@ namespace XLookupReportSystem.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList CampusCBTxt;
+        
+        /// <summary>
+        /// DisciplineCBTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DisciplineCBTxt;
         
         /// <summary>
         /// btnEditProfile control.

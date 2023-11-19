@@ -1000,6 +1000,10 @@
     <Compile Include="Migrations\202311121807175_InitialCreateDB.Designer.cs">
       <DependentUpon>202311121807175_InitialCreateDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311192313450_InitialCreate.cs" />
+    <Compile Include="Migrations\202311192313450_InitialCreate.Designer.cs">
+      <DependentUpon>202311192313450_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ModuleData.cs" />
@@ -1048,6 +1052,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202311121807175_InitialCreateDB.resx">
       <DependentUpon>202311121807175_InitialCreateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311192313450_InitialCreate.resx">
+      <DependentUpon>202311192313450_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

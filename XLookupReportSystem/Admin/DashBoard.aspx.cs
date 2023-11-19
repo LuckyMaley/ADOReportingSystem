@@ -48,6 +48,10 @@ namespace XLookupReportSystem.Admin
                 {
                     lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus;
                 }
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Discipline != null)
+                {
+                    lbDiscipline.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Discipline;
+                }
                 if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).EmailAddress != null)
                 {
                     LbEmailAddress.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).EmailAddress;

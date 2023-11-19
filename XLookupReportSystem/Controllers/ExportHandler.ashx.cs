@@ -18,8 +18,46 @@ namespace XLookupReportSystem.Controllers
             string projID = context.Request.QueryString["projID"];
             XLookupReportingDB db = new Models.XLookupReportingDB();
             List<TableOne> TableOneList = db.TableOnes.Where(x => x.Project_ID == projID).ToList();
-
+            List<ModuleData> ModuleDataList = db.ModuleDatas.Where(x => x.Project_ID == projID).ToList();
             ExcelPackage pck = new ExcelPackage();
+            ExcelWorksheet wsClass = pck.Workbook.Worksheets.Add("Classlist");
+
+            wsClass.Cells["A1"].Value = "Student Number";
+            wsClass.Cells["B1"].Value = "Firstname";
+            wsClass.Cells["C1"].Value = "Surname";
+            wsClass.Cells["D1"].Value = "SI Student";
+            wsClass.Cells["E1"].Value = "ITS Final Mark";
+            wsClass.Cells["F1"].Value = "Supp Mark";
+            wsClass.Cells["G1"].Value = "Final Mark";
+            wsClass.Cells["H1"].Value = "Term Decision Beginning";
+            wsClass.Cells["I1"].Value = "Risk Code Beginning";
+            wsClass.Cells["J1"].Value = "Term Decision End";
+            wsClass.Cells["K1"].Value = "Risk Code End";
+            wsClass.Cells["A1:K1"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+            wsClass.Cells["A1:K1"].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.DarkBlue);
+            wsClass.Cells["A1:K1"].Style.Font.Color.SetColor(System.Drawing.Color.White);
+
+            for(int i = 0; i< ModuleDataList.Count; i++)
+            {
+                wsClass.Cells["A"+(2 +i).ToString()].Value = Convert.ToDecimal(ModuleDataList[i].StudentNumber);
+                wsClass.Cells["A" + (2 + i).ToString()].Style.Numberformat.Format = "0";
+                wsClass.Cells["B" + (2 + i).ToString()].Value = ModuleDataList[i].FirstName;
+                wsClass.Cells["C" + (2 + i).ToString()].Value = ModuleDataList[i].Surname;
+                wsClass.Cells["D" + (2 + i).ToString()].Value = ModuleDataList[i].SI_Student;
+                wsClass.Cells["E" + (2 + i).ToString()].Value = Convert.ToDecimal(ModuleDataList[i].ITSMainExamfinalMark);
+                wsClass.Cells["E" + (2 + i).ToString()].Style.Numberformat.Format = "0.00";
+                wsClass.Cells["F" + (2 + i).ToString()].Value = Convert.ToDecimal(ModuleDataList[i].SuppMark);
+                wsClass.Cells["F" + (2 + i).ToString()].Style.Numberformat.Format = "0.00";
+                wsClass.Cells["G" + (2 + i).ToString()].Value = Convert.ToDecimal(ModuleDataList[i].FinalMark);
+                wsClass.Cells["G" + (2 + i).ToString()].Style.Numberformat.Format = "0.00";
+                wsClass.Cells["H" + (2 + i).ToString()].Value = ModuleDataList[i].Risk_Code_Beg;
+                wsClass.Cells["I" + (2 + i).ToString()].Value = Convert.ToDecimal(ModuleDataList[i].Code_Beg);
+                wsClass.Cells["I" + (2 + i).ToString()].Style.Numberformat.Format = "0";
+                wsClass.Cells["J" + (2 + i).ToString()].Value = ModuleDataList[i].Risk_Code_End;
+                wsClass.Cells["K" + (2 + i).ToString()].Value = Convert.ToDecimal(ModuleDataList[i].Code_End);
+                wsClass.Cells["K" + (2 + i).ToString()].Style.Numberformat.Format = "0";
+            }
+
             ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Table 1");
 
             ws.Cells["A6"].Value = "75-100%";
@@ -173,6 +211,7 @@ namespace XLookupReportSystem.Controllers
                 wsTableThree.Cells["F22"].Value = termsEnd.PROB.ToString();
                 wsTableThree.Cells["F23"].Value = termsEnd.XNFA.ToString();
             }
+             
 
             //worksheet one
             foreach (var cell in ws.Cells["C1:C2"])

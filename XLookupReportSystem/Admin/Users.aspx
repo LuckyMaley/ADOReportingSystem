@@ -58,10 +58,11 @@
                                                     <thead>
                                                         <tr>
                                                             <th scope="col" <%--data-sortable=""--%> style="width: 10.9116%;"><a href="#" <%--class="dataTable-sorter"--%>></a></th>
-                                                            <th scope="col" <%--data-sortable=""--%> style="width: 24.0331%;"><a href="#" <%--class="dataTable-sorter"--%>>Firstname</a></th>
+                                                            <th scope="col" <%--data-sortable=""--%> style="width: 10.0331%;"><a href="#" <%--class="dataTable-sorter"--%>>Firstname</a></th>
                                                             <th scope="col" <%--data-sortable=""--%> style="width: 15.1934%;"><a href="#" <%--class="dataTable-sorter"--%>>Surname</a></th>
                                                             <th scope="col" <%--data-sortable=""--%> style="width: 19.80663%;"><a href="#" <%--class="dataTable-sorter"--%>>Email</a></th>
                                                             <th scope="col" <%--data-sortable=""--%> style="width: 15.0552%;"><a href="#" <%--class="dataTable-sorter"--%>>Campus</a></th>
+                                                            <th scope="col" <%--data-sortable=""--%> style="width: 14.0552%;"><a href="#" <%--class="dataTable-sorter"--%>>Discipline</a></th>
                                                             <th scope="col" <%--data-sortable=""--%> style="width: 15%;"><a href="#" <%--class="dataTable-sorter"--%>>Role</a></th>
                                                         </tr>
                                                     </thead>
@@ -85,6 +86,7 @@
                                                             <td><%# Eval("Surname") %></td>
                                                             <td><%# Eval("EmailAddress") %> </td>
                                                             <td><%# Eval("Campus") %> </td>
+                                                            <td><%# Eval("Discipline") %> </td>
                                                             <td><%# Eval("StaffType") %></td>
                                                         </tr>
                                                             </ItemTemplate>

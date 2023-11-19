@@ -42,6 +42,20 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
+                                            <label for="DisciplineCBTxt" class="col-md-4 col-lg-3 col-form-label">Discipline</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <asp:DropDownList ID="DisciplineCBTxt" name="DisciplineCBTxt" CssClass="form-control" runat="server">
+                                                    <asp:ListItem>IS&T</asp:ListItem>
+                                                    <asp:ListItem>LAW</asp:ListItem>
+                                                    <asp:ListItem>Accounting</asp:ListItem>
+                                                    <asp:ListItem>Finance</asp:ListItem>
+                                                    <asp:ListItem>Economics</asp:ListItem>
+                                                    <asp:ListItem>Management</asp:ListItem>
+                                                    <asp:ListItem>Governance</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
                                             <label for="txtEmail" class="col-md-4 col-lg-3 col-form-label">Email</label><div class="col-md-8 col-lg-9">
                                                  <asp:TextBox ID="txtEmail" name="txtEmail" CssClass="form-control" runat="server" ></asp:TextBox></div>
                                         </div>

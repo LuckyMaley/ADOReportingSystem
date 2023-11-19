@@ -422,6 +422,39 @@ namespace XLookupReportSystem.Admin
             if (checkedItemsList.Count > 1)
             {
                 ExcelPackage pck = new ExcelPackage();
+
+                ExcelWorksheet wsClass = pck.Workbook.Worksheets.Add("Modules");
+                XLookupReportingDB db = new Models.XLookupReportingDB();
+                
+                wsClass.Cells["A1"].Value = "Module Code";
+                wsClass.Cells["B1"].Value = "Campus";
+                wsClass.Cells["C1"].Value = "Semester";
+                wsClass.Cells["D1"].Value = "Year";
+                wsClass.Cells["A1:D1"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                wsClass.Cells["A1:D1"].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.DarkBlue);
+                wsClass.Cells["A1:D1"].Style.Font.Color.SetColor(System.Drawing.Color.White);
+                Stack<Project> stackProj = new Stack<Project>();
+                List<Project> projectList = new List<Models.Project>();
+                foreach (var projID in checkedItemsList)
+                {
+                    stackProj.Push(db.Projects.SingleOrDefault(x => x.Project_ID == projID));
+                }
+                while (stackProj.Count != 0)
+                {
+                    projectList.Add(stackProj.Pop());
+                }
+                projectList.Sort((c,x) => c.ModuleCode.CompareTo(x.ModuleCode));
+                for (int i = 0; i < projectList.Count; i++)
+                {
+                    wsClass.Cells["A" + (2 + i).ToString()].Value = projectList[i].ModuleCode;
+                    wsClass.Cells["B" + (2 + i).ToString()].Value = projectList[i].ProjectCampus;
+                    wsClass.Cells["C" + (2 + i).ToString()].Value = Convert.ToDecimal(projectList[i].ProjectSemester);
+                    wsClass.Cells["C" + (2 + i).ToString()].Style.Numberformat.Format = "0";
+                    wsClass.Cells["D" + (2 + i).ToString()].Value = Convert.ToDecimal(projectList[i].ProjectYear);
+                    wsClass.Cells["D" + (2 + i).ToString()].Style.Numberformat.Format = "0";
+                        
+                }
+
                 ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Table 1 Overall");
 
                 ws.Cells["A6"].Value = "75-100%";
@@ -458,7 +491,7 @@ namespace XLookupReportSystem.Admin
                 ws.Cells["A17"].Value = "No of overall students who passed";
                 ws.Cells["A18"].Value = "% Pass rate";
                 ws.Cells["A19"].Value = "Average overall % pass rate";
-                XLookupReportingDB db = new Models.XLookupReportingDB();
+                
 
                 int NoOfSI_StudentsItem = 0;
                 int NoOfSI_Students_PassedItem = 0;

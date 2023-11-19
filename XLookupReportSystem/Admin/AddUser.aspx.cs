@@ -33,7 +33,7 @@ namespace XLookupReportSystem.Admin
                 if (result.Succeeded)
                 {
                     var result1 = manager.AddToRole(user.Id, RoleList.Text);
-                    string staffID = StaffController.AddNewStaff(user.Id, TxtFirstName.Text, txtSurname.Text, RoleList.Text, txtEmail.Text, txtNewPassword.Text, CampusCBTxt.Text);
+                    string staffID = StaffController.AddNewStaff(user.Id, TxtFirstName.Text, txtSurname.Text, RoleList.Text, txtEmail.Text, txtNewPassword.Text, CampusCBTxt.Text, DisciplineCBTxt.Text);
                     UserController.AddUser(user.Id, txtEmail.Text, txtNewPassword.Text, staffID);
                     Response.Redirect("~/Admin/Users.aspx");
                 }

@@ -119,6 +119,10 @@
                                         <div class="col-lg-9 col-md-8 pt-2"><asp:Label ID="lbCampus" runat="server"  Text=""></asp:Label></div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-lg-3 col-md-4 label pt-2">Discipline</div>
+                                        <div class="col-lg-9 col-md-8 pt-2"><asp:Label ID="lbDiscipline" runat="server" Text=""></asp:Label></div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-3 col-md-4 label  pt-2">Email</div>
                                         <div class="col-lg-9 col-md-8  pt-2"><asp:Label ID="LbEmailAddress" runat="server" Text=""></asp:Label></div>
                                     </div>

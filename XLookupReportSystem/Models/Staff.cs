@@ -23,6 +23,9 @@ namespace XLookupReportSystem.Models
         public string StaffType { get; set; }
 
         [StringLength(50)]
+        public string Discipline { get; set; }
+
+        [StringLength(50)]
         public string EmailAddress { get; set; }
 
         [Column(TypeName = "text")]

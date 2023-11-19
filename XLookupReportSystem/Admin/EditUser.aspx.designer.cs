@@ -58,6 +58,15 @@ namespace XLookupReportSystem.Admin {
         protected global::System.Web.UI.WebControls.DropDownList CampusCBTxt;
         
         /// <summary>
+        /// DisciplineCBTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DisciplineCBTxt;
+        
+        /// <summary>
         /// txtEmail control.
         /// </summary>
         /// <remarks>

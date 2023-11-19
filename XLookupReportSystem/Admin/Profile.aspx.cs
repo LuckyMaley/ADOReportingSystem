@@ -53,6 +53,10 @@ namespace XLookupReportSystem.Admin
                 {
                     lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus;
                 }
+                if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Discipline != null)
+                {
+                    lbDiscipline.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Discipline;
+                }
                 if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname != null)
                 {
                     TxtFirstName.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname;
@@ -74,7 +78,18 @@ namespace XLookupReportSystem.Admin
                         }
                     }
                 }
-                
+
+                if (userRow1.Discipline != null)
+                {
+                    for (int i = 0; i < DisciplineCBTxt.Items.Count; i++)
+                    {
+                        if (DisciplineCBTxt.Items[i].Text == userRow1.Discipline)
+                        {
+                            DisciplineCBTxt.SelectedIndex = i;
+                        }
+                    }
+                }
+
                 if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).EmailAddress != null)
                 {
                     LbEmailAddress.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).EmailAddress;
@@ -108,7 +123,7 @@ namespace XLookupReportSystem.Admin
         protected void btnEditProfile_Click(object sender, EventArgs e)
         {
 
-            StaffController.UpdateStaffDetails(Context.User.Identity.Name, TxtFirstName.Text, txtSurname.Text, CampusCBTxt.Text);
+            StaffController.UpdateStaffDetails(Context.User.Identity.Name, TxtFirstName.Text, txtSurname.Text, CampusCBTxt.Text,DisciplineCBTxt.Text);
             XLookupReportingDB db = new XLookupReportingDB();
             username.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Firstname + " " + db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Surname;
 
@@ -132,6 +147,11 @@ namespace XLookupReportSystem.Admin
             if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus != null)
             {
                 lbCampus.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Campus;
+            }
+
+            if (db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Discipline != null)
+            {
+                lbDiscipline.Text = db.Staffs.SingleOrDefault(c => c.EmailAddress == Context.User.Identity.Name).Discipline;
             }
 
             if (realFileUpload.HasFile)
