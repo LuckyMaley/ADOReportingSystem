@@ -5,5 +5,5 @@ The ADORS automates the traditional method of generating Xlookup tables for ADO 
 The system is developed using an Asp.net web forms web app in the C# programming language. The Asp.net website also uses the Entity Framework code-first approach to connect and perform CRUD (Create, Read, Update, Delete) operations to the SQL database.
 
 Link to the website:
-[ADORS web system](https://adoreportingsystem.azurewebsites.net/)
+[Click here](https://adoreportingsystem.azurewebsites.net/)
 
