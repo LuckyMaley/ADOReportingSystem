@@ -7,3 +7,6 @@ The system is developed using an Asp.net web forms web app in the C# programming
 Link to the website:
 [Click here](https://adoreportingsystem.azurewebsites.net/)
 
+# Guidelines
+
+![Static Badge](https://img.shields.io/badge/Visual%20Studio-2015-green) ![Static Badge](https://img.shields.io/badge/.Net%20Framework-4.5.2-blue)
