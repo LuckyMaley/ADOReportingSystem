@@ -9,4 +9,4 @@ Link to the website:
 
 # Guidelines
 
-![Static Badge](https://img.shields.io/badge/Visual%20Studio-2015-green) ![Static Badge](https://img.shields.io/badge/.Net%20Framework-4.5.2-blue)
+![Static Badge](https://img.shields.io/badge/Visual%20Studio-2015%20or%20later-green) ![Static Badge](https://img.shields.io/badge/.Net%20Framework-4.5.2-blue)
