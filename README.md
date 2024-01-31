@@ -36,14 +36,15 @@ Link to the website:
 ![Screenshot (4028)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/1be619ee-1b8b-4465-9d95-3c5856ea9a27)
 - Console manager should open up now you want to start some commands so that our database tables can get migrated to your database automatically (in other words, the commands will make the application create the database tables automatically).
 ![Screenshot (4031)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/f2b90fef-29b5-4bc8-99bd-85fa96483ef5)
-- Before typing any commands, go to the Solutions Explorer and look for the Configurations folder. Make sure to delete any files that are numbered on this folder before you can start doing migrations.
-![Screenshot (4032)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/56971166-65ae-4372-be5d-3f2a2f966245)
+- Before typing any commands, go to the Solutions Explorer and look for the Migrations folder. Make sure to delete any files that are numbered in this folder before you can start doing migrations.
+![Screenshot (4032)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/3b0d3568-5d66-42f7-b512-ed5d770564f6)
+
 - Now type the following command on the NuGet package manager console
-```Enable-Migrations -ContextTypeName XLookupReportSystem.Models.XLookupReportingDB -Force```
+  > ```Enable-Migrations -ContextTypeName XLookupReportSystem.Models.XLookupReportingDB -Force```
 - After migrations have been enabled, type this below:
-```Add-Migration InitialCreate```
+  > ```Add-Migration InitialCreate```
 - Then type this:
-```Update-Database```
+  >```Update-Database```
 - Now the database tables should be added to your database 
 > You must update the database with application data every time you update the tables so the db and app are in sync
 # Screenshots
