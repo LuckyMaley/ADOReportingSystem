@@ -13,6 +13,26 @@ Link to the website:
 
 ### Project Structure
 
+- The project consists of a main ASP.NET project that uses the Entity Framework to interact with the SQL Database.
+> **Note:** An Azure SQL Cloud Database can also be implemented on this project.
+
+- The project consists of private pages and users must have an account to use the system.
+
+# Config
+
+- To open the project solution just double click on [XLookupReportSystem.sln](/XLookupReportSystem.sln) 
+
+- (re)build application
+> (re)building the application will install the required ASP.NET packages from NuGet
+![Screenshot (4026)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/d7cc9b20-5c24-48db-8de0-551a29b53365)
+
+
+- Database Setup
+  > **NOTE:** If you want to change the connection string to a live or production-ready database just go to the [web.config](/XLookupReportSystem/web.config) 
+  file and change the existing one to your database. Example of connection string below:
+> ```<add name="Database1ConnectionString" connectionString="Data Source= DatabaseServerName; Integrated Security=true;Initial Catalog= YourDatabaseName; uid=YourUserName; Password=yourpassword; " providerName="System.Data.SqlClient" />```
+
+
 
 # Screenshots
 
