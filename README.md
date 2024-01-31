@@ -32,7 +32,15 @@ Link to the website:
   file and change the existing one to your database. Example of connection string below:
 > ```<add name="XLookupReportingDB" connectionString="Data Source= DatabaseServerName; Integrated Security=true;Initial Catalog= YourDatabaseName; uid=YourUserName; Password=yourpassword; " providerName="System.Data.SqlClient" />```
 
-- After changing the connection string you need to open up the Nuget package manager console. Go to ```Tools > Nuget Package Manager > Package Manager Console``` 
+- After changing the connection string you need to the Models folder and look for the [IdentityModels.cs](/XLookupReportSystem/Models/IdentityModels.cs) file
+- Makes sure that the string in this method is the same as the name of your connection string name e.g. "XLookupReportingDB".
+- ```
+public ApplicationDbContext()
+            : base("XLookupReportingDB", throwIfV1Schema: false)
+        {
+        }
+  ```
+- open up the Nuget package manager console. Go to ```Tools > Nuget Package Manager > Package Manager Console``` 
 ![Screenshot (4028)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/1be619ee-1b8b-4465-9d95-3c5856ea9a27)
 - Console manager should open up now you want to start some commands so that our database tables can get migrated to your database automatically (in other words, the commands will make the application create the database tables automatically).
 ![Screenshot (4031)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/f2b90fef-29b5-4bc8-99bd-85fa96483ef5)
