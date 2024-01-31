@@ -17,6 +17,9 @@ Link to the website:
 > **Note:** An Azure SQL Cloud Database can also be implemented on this project.
 
 - The project consists of private pages and users must have an account to use the system.
+- Users have two roles, namely, member and owner.
+- The Default user is an owner and the rest that register from the register page are members.
+- The owner can change the role of users.
 
 # Config
 
@@ -32,8 +35,8 @@ Link to the website:
   file and change the existing one to your database. Example of connection string below:
 > ```<add name="XLookupReportingDB" connectionString="Data Source= DatabaseServerName; Integrated Security=true;Initial Catalog= YourDatabaseName; uid=YourUserName; Password=yourpassword; " providerName="System.Data.SqlClient" />```
 
-- After changing the connection string you need to the Models folder and look for the [IdentityModels.cs](/XLookupReportSystem/Models/IdentityModels.cs) file
-- Makes sure that the string in this method is the same as the name of your connection string name e.g. "XLookupReportingDB".
+- After changing the connection string you need to go to the Models folder and look for the [IdentityModels.cs](/XLookupReportSystem/Models/IdentityModels.cs) file
+- Make sure that the string in this method is the same as the name of your connection string, e.g. "XLookupReportingDB".
 ```
 public ApplicationDbContext()
             : base("XLookupReportingDB", throwIfV1Schema: false)
@@ -54,7 +57,17 @@ public ApplicationDbContext()
 - Then type this:
   > ```Update-Database```
 - Now the database tables should be added to your database 
-> You must update the database with application data every time you update the tables so the db and app are in sync
+> You must update the database with application data every time you update the tables so the db and app are in sync.
+
+- After the commands have been implemented successfully, you need to run the application and it will create a default user who is an owner when you register a member. You can see the details and change the credentials of your default user by going to the [StaffController](/XLookupReportSystem/Controllers/StaffController.cs) you will see the defaultStaff method.
+- All registered users from the main website are members, and owners can change their roles accordingly. 
+
+# Some noticeable improvements for future work 
+
+- The forgot password feature can be improved using the GMAIL API to send an email to users who forgot their password.
+- The system can be improved to include analytics in the form of a dashboard for the individual users and owners. As well as overall analytics.
+- The help system can be more detailed to cater to all types of users new or novice.
+
 # Screenshots
 
 - Welcome to the ADO Reporting System Screenshot Guide section. This section provides a comprehensive guideline on using the ADO Reporting System.
