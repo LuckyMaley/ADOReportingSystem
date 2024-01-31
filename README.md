@@ -13,6 +13,7 @@ Link to the website:
 
 ### Project Structure
 
+[Profile](/#Profile)
 
 # Screenshots
 
