@@ -28,7 +28,8 @@ Link to the website:
 
 - (re)build application
 > (re)building the application will install the required ASP.NET packages from NuGet
-![Screenshot (4026)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/d7cc9b20-5c24-48db-8de0-551a29b53365)
+![Screenshot (4033)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/802ab587-283f-4a62-8bdc-f5c8ff5a6cdd)
+
 
 
 ### Database Setup
