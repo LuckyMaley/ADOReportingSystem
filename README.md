@@ -19,7 +19,7 @@ Link to the website:
 - Welcome to the ADO Reporting System Screenshot Guide section. This section provides a comprehensive guideline on using the ADO Reporting System.
  ### Contents
 
-1. [Accessing System](/#Accessing-System)
+1. /[#Accessing-System](/README.md#accessing-system)
  - [Logging in]
  - Logging out
 
