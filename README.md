@@ -34,7 +34,7 @@ Link to the website:
 
 - After changing the connection string you need to the Models folder and look for the [IdentityModels.cs](/XLookupReportSystem/Models/IdentityModels.cs) file
 - Makes sure that the string in this method is the same as the name of your connection string name e.g. "XLookupReportingDB".
-- ```
+```
 public ApplicationDbContext()
             : base("XLookupReportingDB", throwIfV1Schema: false)
         {
