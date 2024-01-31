@@ -28,7 +28,7 @@ Link to the website:
 
 
 ### Database Setup
-- > **NOTE:** If you want to change the connection string to a live or production-ready database just go to the [web.config](/XLookupReportSystem/web.config) 
+- > **NOTE:** If you want to change the connection string to a live or production-ready database just go to the [web.config](/XLookupReportSystem/Web.config) 
   file and change the existing one to your database. Example of connection string below:
 > ```<add name="XLookupReportingDB" connectionString="Data Source= DatabaseServerName; Integrated Security=true;Initial Catalog= YourDatabaseName; uid=YourUserName; Password=yourpassword; " providerName="System.Data.SqlClient" />```
 
