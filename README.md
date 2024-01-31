@@ -20,21 +20,21 @@ Link to the website:
  ### Contents
 
 1. [Accessing System](/README.md#accessing-system)
- - [Logging in](/README.md#Logging-in)
- - [Logging out](/README.md#logging-out)
+   - [Logging in](/README.md#logging-in)
+   - [Logging out](/README.md#logging-out)
 
-2. Profile
- - Edit Profile
+2. [Profile](/README.md#profile)
+   - [Edit Profile](/README.md#edit-profile)
 
-3. Users
- - Add User
- - Edit User
- - Deleting Users
+3. [Users](/README.md#users)
+   - [Add User](/README.md#add-user)
+   - [Edit User](/README.md#edit-user)
+   - [Deleting Users](/README.md#delete-users)
 
-4. Projects
- - Create Project
- - View Project
- -Combine Project
+4. [Projects](/README.md#projects)
+   - [Create Project](/README.md#create-project)
+   - [View Project](/README.md#view-project)
+   - [Combine Project](/README.md#combine-project)
 
 
 
