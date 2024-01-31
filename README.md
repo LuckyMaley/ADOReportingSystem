@@ -59,7 +59,7 @@ public ApplicationDbContext()
 - Now the database tables should be added to your database 
 > You must update the database with application data every time you update the tables so the db and app are in sync.
 
-- After the commands have been implemented successfully, you need to run the application and it will create a default user who is an owner when you register a member. You can see the details and change the credentials of your default user by going to the [StaffController](/XLookupReportSystem/Controllers/StaffController.cs) you will see the defaultStaff method.
+- After the commands have been implemented successfully, you need to run the application and it will create a default user who is an owner when you register a member. You can see the details and change the credentials of your default user by going to the [StaffController.cs](/XLookupReportSystem/Controllers/StaffController.cs) file in the Controllers folder and you will see the defaultStaff method.
 - All registered users from the main website are members, and owners can change their roles accordingly. 
 
 # Some noticeable improvements for future work 
