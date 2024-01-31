@@ -13,7 +13,7 @@ Link to the website:
 
 ### Project Structure
 
-- The project consists of a main ASP.NET project that uses the Entity Framework to interact with the SQL Database.
+- The project consists of a main ASP.NET project that uses the Entity Framework Code First Approach to interact with the SQL Database.
 > **Note:** An Azure SQL Cloud Database can also be implemented on this project.
 
 - The project consists of private pages and users must have an account to use the system.
@@ -27,13 +27,25 @@ Link to the website:
 ![Screenshot (4026)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/d7cc9b20-5c24-48db-8de0-551a29b53365)
 
 
-- Database Setup
-  > **NOTE:** If you want to change the connection string to a live or production-ready database just go to the [web.config](/XLookupReportSystem/web.config) 
+### Database Setup
+- > **NOTE:** If you want to change the connection string to a live or production-ready database just go to the [web.config](/XLookupReportSystem/web.config) 
   file and change the existing one to your database. Example of connection string below:
-> ```<add name="Database1ConnectionString" connectionString="Data Source= DatabaseServerName; Integrated Security=true;Initial Catalog= YourDatabaseName; uid=YourUserName; Password=yourpassword; " providerName="System.Data.SqlClient" />```
+> ```<add name="XLookupReportingDB" connectionString="Data Source= DatabaseServerName; Integrated Security=true;Initial Catalog= YourDatabaseName; uid=YourUserName; Password=yourpassword; " providerName="System.Data.SqlClient" />```
 
-
-
+- After changing the connection string you need to open up the Nuget package manager console. Go to ```Tools > Nuget Package Manager > Package Manager Console``` 
+![Screenshot (4028)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/1be619ee-1b8b-4465-9d95-3c5856ea9a27)
+- Console manager should open up now you want to start some commands so that our database tables can get migrated to your database automatically (in other words, the commands will make the application create the database tables automatically).
+![Screenshot (4031)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/f2b90fef-29b5-4bc8-99bd-85fa96483ef5)
+- Before typing any commands, go to the Solutions Explorer and look for the Configurations folder. Make sure to delete any files that are numbered on this folder before you can start doing migrations.
+![Screenshot (4032)](https://github.com/LuckyMaley/ADOReportingSystem/assets/58641501/56971166-65ae-4372-be5d-3f2a2f966245)
+- Now type the following command on the NuGet package manager console
+```Enable-Migrations -ContextTypeName XLookupReportSystem.Models.XLookupReportingDB -Force```
+- After migrations have been enabled, type this below:
+```Add-Migration InitialCreate```
+- Then type this:
+```Update-Database```
+- Now the database tables should be added to your database 
+> You must update the database with application data every time you update the tables so the db and app are in sync
 # Screenshots
 
 - Welcome to the ADO Reporting System Screenshot Guide section. This section provides a comprehensive guideline on using the ADO Reporting System.
