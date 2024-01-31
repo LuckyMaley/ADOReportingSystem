@@ -23,6 +23,7 @@ Link to the website:
 
 # Config
 
+- Clone the project
 - To open the project solution just double click on [XLookupReportSystem.sln](/XLookupReportSystem.sln) 
 
 - (re)build application
