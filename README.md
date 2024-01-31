@@ -13,11 +13,30 @@ Link to the website:
 
 ### Project Structure
 
-[Profile](/#Profile)
 
 # Screenshots
 
 - Welcome to the ADO Reporting System Screenshot Guide section. This section provides a comprehensive guideline on using the ADO Reporting System.
+ ### Contents
+
+1. [Accessing System](/#Accessing%20System)
+ - [Logging in]
+ - Logging out
+
+2. Profile
+ - Edit Profile
+
+3. Users
+ - Add User
+ - Edit User
+ - Deleting Users
+
+4. Projects
+ - Create Project
+ - View Project
+ -Combine Project
+
+
 
 ### Accessing System
 1.	You need to log into the system. By default, there is only one owner created that can add users and make them owners, too.
