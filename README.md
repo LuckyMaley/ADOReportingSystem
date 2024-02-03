@@ -198,6 +198,4 @@ public ApplicationDbContext()
 
 # Demo
 
-<video src='https://www.youtube.com/watch?v=XX6pfbPN3os' width=100%/>
-
-[![ADORS Demo](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=XX6pfbPN3os)
+[![ADORS Demo](https://img.youtube.com/vi/XX6pfbPN3os/0.jpg)](https://www.youtube.com/watch?v=XX6pfbPN3os)
