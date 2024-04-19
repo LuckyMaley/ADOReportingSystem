@@ -394,7 +394,7 @@
                 <li class="nav-heading">Settings</li>
                 <li class="nav-item"><a class="nav-link collapsed" href="Profile"><i class="bx bx-user"></i><span>Profile</span> </a></li>
                 <li class="nav-item" runat="server" id ="usersLink"><a class="nav-link collapsed" href="Users"><i class="bx bx-user-plus"></i><span>Users</span> </a></li>
-                <li class="nav-item"><a class="nav-link collapsed" href="FAQ"><i class="bx bx-help-circle"></i><span>F.A.Q</span> </a></li>
+                <%--<li class="nav-item"><a class="nav-link collapsed" href="FAQ"><i class="bx bx-help-circle"></i><span>F.A.Q</span> </a></li>--%>
 <%--                <li class="nav-item"><a class="nav-link collapsed" href="Contact"><i class="bi bi-envelope"></i><span>Contact</span> </a></li>--%>
                 <%--<li class="nav-item"><a class="nav-link collapsed" href="Error404"><i class="bi bi-dash-circle"></i><span>Error 404</span> </a></li>
                 <li class="nav-item"><a class="nav-link collapsed" href="BlankPage"><i class="bi bi-file-earmark"></i><span>Blank</span> </a></li>--%>

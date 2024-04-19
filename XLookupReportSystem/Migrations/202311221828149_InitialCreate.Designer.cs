@@ -13,7 +13,7 @@ namespace XLookupReportSystem.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202311192313450_InitialCreate"; }
+            get { return "202311221828149_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
