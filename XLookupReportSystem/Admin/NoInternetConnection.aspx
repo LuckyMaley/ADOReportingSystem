@@ -41,7 +41,7 @@
             <div class="container">
                 <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
                     <h1>Error</h1>
-                    <h2>No Internet</h2>
+                    <h2>Please check that you are connected to the internet</h2>
                     <a class="btn" href="../Account/Login.aspx">Back to home</a>
                     <img src="../Assets/img/not-found.svg" class="img-fluid py-5" alt="Error Occured" /><div class="credits">Designed by <a href="#">TechMan Solutions</a>.</div>
                 </section>

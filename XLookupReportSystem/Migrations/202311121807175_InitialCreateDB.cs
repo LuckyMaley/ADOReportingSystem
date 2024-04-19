@@ -3,7 +3,7 @@ namespace XLookupReportSystem.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class InitialCreateDB : DbMigration
     {
         public override void Up()
         {
@@ -78,7 +78,6 @@ namespace XLookupReportSystem.Migrations
                         Firstname = c.String(maxLength: 50),
                         Surname = c.String(maxLength: 50),
                         StaffType = c.String(maxLength: 50),
-                        Discipline = c.String(maxLength: 50),
                         EmailAddress = c.String(maxLength: 50),
                         Campus = c.String(unicode: false, storeType: "text"),
                         StaffImg = c.Binary(),

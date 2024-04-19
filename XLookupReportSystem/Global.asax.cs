@@ -27,16 +27,7 @@ namespace XLookupReportSystem
                 // Handle the exception as needed
                 Response.Redirect("~/Admin/NoInternetConnection.aspx");
             }
-            else if (exception is NullReferenceException)
-            {
-                // Handle the exception as needed
-                Response.Redirect("~/Admin/Error.aspx");
-            }
-            else if (exception is Exception)
-            {
-                // Handle the exception as needed
-                Response.Redirect("~/Admin/Error.aspx");
-            }
+
             // Handle other exceptions or let them propagate
         }
 

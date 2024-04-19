@@ -31,55 +31,6 @@ namespace XLookupReportSystem.Controllers
             }
         }
 
-        public static void AddNewProject(List<Project> projList)
-        {
-
-            using (var context = new XLookupReportingDB())
-            {
-                foreach (var proj in projList)
-                {
-                    var newProject = new Project()
-                    {
-                        Project_ID = proj.Project_ID,
-                        ProjectName = proj.ProjectName,
-                        ProjectSemester = proj.ProjectSemester,
-                        ProjectYear = proj.ProjectYear,
-                        ProjectCampus = proj.ProjectCampus,
-                        ModuleCode = proj.ModuleCode,
-                        createdDate = DateTime.Now,
-                        modifiedDate = DateTime.Now,
-                        User_ID = proj.User_ID
-
-                    };
-                    context.Projects.Add(newProject);
-                }
-                context.SaveChanges();
-            }
-                
-           
-        }
-
-        public static string AddNewProject(string user, string projectName, string projectSemester, string projcampus, string projectYear, string moduleCode, ref List<Project> projList)
-        {
-            
-                var newProject = new Project()
-                {
-                    Project_ID = Guid.NewGuid().ToString(),
-                    ProjectName = projectName,
-                    ProjectSemester = projectSemester,
-                    ProjectYear = projectYear,
-                    ProjectCampus = projcampus,
-                    ModuleCode = moduleCode,
-                    createdDate = DateTime.Now,
-                    modifiedDate = DateTime.Now,
-                    User_ID = user
-
-                };
-                projList.Add(newProject);
-                return newProject.Project_ID;
-            
-        }
-
         public static void AddProjectFiles(string id, byte[] excelReg, byte[] excelMainExam, byte[] excelSupp, byte[] excelNegTermBeg, byte[] excelNegTermEnd)
         {
             var _db = new XLookupReportingDB();
@@ -105,8 +56,7 @@ namespace XLookupReportSystem.Controllers
         public static void RemoveProject(string projectID)
         {
             XLookupReportingDB db = new Models.XLookupReportingDB();
-            foreach (var row in db.Register_Attendances.Where(c => c.Project_ID == projectID))
-            {
+            foreach (var row in db.Register_Attendances.Where(c => c.Project_ID == projectID)) {
                 Register_Attendance regAttendance = db.Register_Attendances.Find(row.Register_Attendance_ID);
                 if (regAttendance != null)
                 {
