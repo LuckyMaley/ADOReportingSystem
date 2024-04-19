@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -233,6 +234,7 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Admin\AddUser.aspx" />
     <Content Include="Admin\BlankPage.aspx" />
+    <Content Include="Admin\CannotConnectToServer.aspx" />
     <Content Include="Admin\Components\Accordion.aspx" />
     <Content Include="Admin\Components\Alerts.aspx" />
     <Content Include="Admin\Components\ApexCharts.aspx" />
@@ -274,6 +276,45 @@
     <Content Include="Admin\ProjectView.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\help-img\Picture24.png" />
+    <Content Include="Assets\help-img\Picture25.png" />
+    <Content Include="Assets\help-img\Picture26.png" />
+    <Content Include="Assets\help-img\Picture27.png" />
+    <Content Include="Assets\help-img\Picture28.png" />
+    <Content Include="Assets\help-img\Picture29.png" />
+    <Content Include="Assets\help-img\Picture30.png" />
+    <Content Include="Assets\help-img\Picture31.png" />
+    <Content Include="Assets\help-img\Picture32.png" />
+    <Content Include="Assets\help-img\Picture33.png" />
+    <Content Include="Assets\help-img\Picture34.png" />
+    <Content Include="Assets\help-img\Picture35.png" />
+    <Content Include="Assets\help-img\Picture36.png" />
+    <Content Include="Assets\help-img\Picture37.png" />
+    <Content Include="Assets\help-img\Picture38.png" />
+    <Content Include="Assets\help-img\Picture39.png" />
+    <Content Include="Assets\help-img\Picture40.png" />
+    <Content Include="Assets\help-img\Picture41.png" />
+    <Content Include="Assets\help-img\Picture42.png" />
+    <Content Include="Assets\help-img\Picture43.png" />
+    <Content Include="Assets\help-img\Picture44.png" />
+    <Content Include="Assets\help-img\Picture45.png" />
+    <Content Include="Assets\help-img\Picture46.png" />
+    <Content Include="Assets\help-img\Picture47.png" />
+    <Content Include="Assets\help-img\Picture48.png" />
+    <Content Include="Assets\help-img\Picture49.png" />
+    <Content Include="Assets\help-img\Picture50.png" />
+    <Content Include="Assets\help-img\Picture51.png" />
+    <Content Include="Assets\help-img\Picture52.png" />
+    <Content Include="Assets\help-img\Picture53.png" />
+    <Content Include="Assets\help-img\Picture54.png" />
+    <Content Include="Assets\help-img\Picture55.png" />
+    <Content Include="Assets\help-img\Picture56.png" />
+    <Content Include="Assets\help-img\Picture57.png" />
+    <Content Include="Assets\help-img\Picture58.png" />
+    <Content Include="Assets\help-img\Picture59.png" />
+    <Content Include="Assets\help-img\Picture60.png" />
+    <Content Include="Assets\help-img\Picture61.png" />
+    <Content Include="Assets\help-img\Picture62.png" />
     <Content Include="Assets\img\ADOLogoblue.png" />
     <Content Include="Assets\img\adoLogopurp.png" />
     <Content Include="Assets\img\apple-touch-icon.png" />
@@ -444,12 +485,8 @@
     <Content Include="Controllers\ExportHandler.ashx" />
     <Content Include="Admin\Admin.Mobile.Master" />
     <Content Include="Admin\Components\Components.Mobile.Master" />
-    <None Include="Properties\PublishProfiles\ADOReportingAMS - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\ADOReportingAMS - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\ADOReportingSystem - FTP %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\ADOReportingSystem - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\ADOReportingSystem - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\ADOReportingSystem - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\adoreportingsystem - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\adoreportingsystem - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Migrations\Adding Migrations.txt" />
     <Content Include="Scripts\bootstrap.js" />
@@ -646,6 +683,13 @@
     </Compile>
     <Compile Include="Admin\BlankPage.aspx.designer.cs">
       <DependentUpon>BlankPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CannotConnectToServer.aspx.cs">
+      <DependentUpon>CannotConnectToServer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CannotConnectToServer.aspx.designer.cs">
+      <DependentUpon>CannotConnectToServer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Components\Accordion.aspx.cs">
       <DependentUpon>Accordion.aspx</DependentUpon>
@@ -996,13 +1040,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311121807175_InitialCreateDB.cs" />
-    <Compile Include="Migrations\202311121807175_InitialCreateDB.Designer.cs">
-      <DependentUpon>202311121807175_InitialCreateDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311192313450_InitialCreate.cs" />
-    <Compile Include="Migrations\202311192313450_InitialCreate.Designer.cs">
-      <DependentUpon>202311192313450_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202311221828149_InitialCreate.cs" />
+    <Compile Include="Migrations\202311221828149_InitialCreate.Designer.cs">
+      <DependentUpon>202311221828149_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1050,11 +1090,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202311121807175_InitialCreateDB.resx">
-      <DependentUpon>202311121807175_InitialCreateDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311192313450_InitialCreate.resx">
-      <DependentUpon>202311192313450_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311221828149_InitialCreate.resx">
+      <DependentUpon>202311221828149_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
